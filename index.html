@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+  <title>華南銀行 - 國內信用狀系統</title>
+  <link rel="stylesheet" href="./assets/MaterialDesign-Webfont/css/materialdesignicons.min.css" media="all" />
+  <link rel="stylesheet" href="./assets/css/custom.css">
+</head>
+
+<body>
+  <header class="navbar fixed-top flex-nowrap border-bottom p-0 shadow-sm">
+    <div class="navbar-brand hnb__logo me-0 px-3">
+      <img src="./assets/images/logo-hncb.png" alt="HNB logo" class="pe-2">
+      <span class="align-text-top fs-4 fw-bold custom-element" style="color: #2a91bc;">國內信用狀系統</span>
+    </div>
+    <nav class="d-inline-flex align-items-center me-4">
+      <span class="px-2 fw-bolder">經辦 王建明 您好，歡迎使用本系統</span>
+      <span class="px-2">|</span>
+      <a id="todoList" class="hnb__link--tab mx-2" href="javascript:void(0)">待辦事項</a>
+      <a id="info" class="hnb__link--tab mx-2" href="javascript:void(0)">訊息匣</a>
+      <button id="logout" class="btn logout btn-sm ms-3 px-3" type="button">
+        <span class="mdi mdi-logout"></span>
+        登出
+      </button>
+    </nav>
+  </header>
+  <div class="container-fluid px-0">
+    <nav id="sidebarMenu" class="d-block sidebar collapse">
+      <div class="position-sticky pb-5">
+        <div class="accordion" id="accordionSideMenu">
+          <!-- 補收開狀手續費作業 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading_01">
+              <button class="py-2 fs-1-5 fw-bold accordion-button hnb__menu--title rounded-0 collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#accordion_01" aria-expanded="true"
+                aria-controls="accordion_01">
+                補收開狀手續費作業
+              </button>
+            </h2>
+            <div id="accordion_01" class="accordion-collapse collapse" aria-labelledby="heading_01"
+              data-bs-parent="#accordionSideMenu">
+              <div class="accordion-body p-0">
+                <div class="list-group list-group-flush" id="list-tab" role="tablist">
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="chargeLc"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Amend', 'ChargeLc')" role="tab"
+                    aria-controls="list-home">
+                    補收開狀手續費
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="chargeAmendLc"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Amend', 'ChargeAmendLc')"
+                    role="tab" aria-controls="list-profile">
+                    當日更正補收開狀手續費
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 申請作業 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading_02">
+              <button class="py-2 fs-1-5 fw-bold accordion-button hnb__menu--title rounded-0 collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#accordion_02" aria-expanded="false"
+                aria-controls="accordion_02">
+                申請作業
+              </button>
+            </h2>
+            <div id="accordion_02" class="accordion-collapse collapse" aria-labelledby="heading_02"
+              data-bs-parent="#accordionSideMenu">
+              <div class="accordion-body p-0">
+                <div class="list-group list-group-flush" id="list-tab" role="tablist">
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="lcApp" data-bs-toggle="list"
+                    href="javascript:void(0)" onclick="loadPage('App', 'LcApp')" role="tab" aria-controls="list-home">
+                    開狀申請書
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="amendApp"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('App', 'AmendApp')" role="tab"
+                    aria-controls="list-profile">
+                    修改申請書
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="cancelApp"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('App', 'CancelApp')" role="tab"
+                    aria-controls="list-profile">
+                    註銷申請/切結書
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="draftApp"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('App', 'DraftApp')" role="tab"
+                    aria-controls="list-profile">
+                    押匯申請
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="amendLcApp"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('App', 'AmendLcApp')" role="tab"
+                    aria-controls="list-profile">
+                    當日更正開狀申請書
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="currentAmendApp"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('App', 'CurrentAmendApp')"
+                    role="tab" aria-controls="list-profile">
+                    當日更正修改申請書
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="currentCancelApp"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('App', 'CurrentCancelApp')"
+                    role="tab" aria-controls="list-profile">
+                    當日更正註銷申請/切結書
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="currentAmendDraftApp"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('App', 'CurrentAmendDraftApp')"
+                    role="tab" aria-controls="list-profile">
+                    當日更正押匯申請作業
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="expiredLc"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('App', 'ExpiredLc')" role="tab"
+                    aria-controls="list-profile">
+                    CDS平台-過期信用狀主動註銷
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="lcAdjustment"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('App', 'LcAdjustment')" role="tab"
+                    aria-controls="list-profile">
+                    開狀申請當日調整帳務
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="amendAdjustment"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('App', 'AmendAdjustment')"
+                    role="tab" aria-controls="list-profile">
+                    修改申請當日調整帳務
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="cancelAdjustment"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('App', 'CancelAdjustment')"
+                    role="tab" aria-controls="list-profile">
+                    註銷申請當日調整帳務
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="draftAdjustment"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('App', 'DraftAdjustment')"
+                    role="tab" aria-controls="list-profile">
+                    押匯申請當日調整帳務
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="amendAccept"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('App', 'AmendAccept')" role="tab"
+                    aria-controls="list-profile">
+                    修改接受註記
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 審核作業 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading_03">
+              <button class="py-2 fs-1-5 fw-bold accordion-button hnb__menu--title rounded-0 collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#accordion_03" aria-expanded="false"
+                aria-controls="accordion_03">
+                審核作業
+              </button>
+            </h2>
+            <div id="accordion_03" class="accordion-collapse collapse" aria-labelledby="heading_03"
+              data-bs-parent="#accordionSideMenu">
+              <div class="accordion-body p-0">
+                <div class="list-group list-group-flush" id="list-tab" role="tablist">
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="reviewLcApp"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Review', 'ReviewLcApp')"
+                    role="tab" aria-controls="list-home">
+                    開狀申請書
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="reviewAmendApp"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Review', 'ReviewAmendApp')"
+                    role="tab" aria-controls="list-profile">
+                    修改申請書
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="reviewCancelApp"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Review', 'ReviewCancelApp')"
+                    role="tab" aria-controls="list-profile">
+                    註銷申請/切結書
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="reviewDraftApp"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Review', 'ReviewDraftApp')"
+                    role="tab" aria-controls="list-profile">
+                    押匯申請
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="reviewInterestRate"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Review', 'ReviewInterestRate')"
+                    role="tab" aria-controls="list-profile">
+                    利率約定(改貸)
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 查詢作業 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading_04">
+              <button class="py-2 fs-1-5 fw-bold accordion-button hnb__menu--title rounded-0 collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#accordion_04" aria-expanded="false"
+                aria-controls="accordion_04">
+                查詢作業
+              </button>
+            </h2>
+            <div id="accordion_04" class="accordion-collapse collapse" aria-labelledby="heading_04"
+              data-bs-parent="#accordionSideMenu">
+              <div class="accordion-body p-0">
+                <div class="list-group list-group-flush" id="list-tab" role="tablist">
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="queryLcApp"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Query', 'QueryLcApp')" role="tab"
+                    aria-controls="list-home">
+                    開狀申請書
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="queryAmendApp"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Query', 'QueryAmendApp')"
+                    role="tab" aria-controls="list-home">
+                    修改申請書
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="queryAmendNotice"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Query', 'QueryAmendNotice')"
+                    role="tab" aria-controls="list-home">
+                    修改通知書
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="queryCancelApp"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Query', 'QueryCancelApp')"
+                    role="tab" aria-controls="list-home">
+                    註銷申請/切結書
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="queryLcList"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Query', 'QueryLcList')"
+                    role="tab" aria-controls="list-home">
+                    信用狀
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="queryDraftList"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Query', 'QueryDraftList')"
+                    role="tab" aria-controls="list-profile">
+                    押匯申請
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="queryMarLc"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Query', 'QueryMarLc')" role="tab"
+                    aria-controls="list-home">
+                    主管核准開狀紀錄
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="queryMarDraft"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Query', 'QueryMarDraft')"
+                    role="tab" aria-controls="list-home">
+                    主管核准押匯紀錄
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="queryOutstandLc"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Query', 'QueryOutstandLc')"
+                    role="tab" aria-controls="list-home">
+                    未結案信用狀額度與保證金
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="queryBlcAmount"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Query', 'QueryBlcAmount')"
+                    role="tab" aria-controls="list-home">
+                    分行信用狀暨押匯筆數金額
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="queryInterestRate"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Query', 'QueryInterestRate')"
+                    role="tab" aria-controls="list-home">
+                    利率約定 (改貸)
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="querySar"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Query', 'QuerySar')" role="tab"
+                    aria-controls="list-home">
+                    主管審核異常
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="queryAccount"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Query', 'QueryAccount')"
+                    role="tab" aria-controls="list-home">
+                    會計帳務分錄
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="queryAccessLog"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Query', 'QueryAccessLog')"
+                    role="tab" aria-controls="list-home">
+                    存取記錄
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="queryNegotiationFee"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Query', 'QueryNegotiationFee')"
+                    role="tab" aria-controls="list-home">
+                    國內信用狀押匯手續費優待明細表
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="queryBeneficiaryBlcAmount"
+                    data-bs-toggle="list" href="javascript:void(0)"
+                    onclick="loadPage('Query', 'QueryBeneficiaryBlcAmount')" role="tab" aria-controls="list-home">
+                    受益人分行信用狀暨押匯筆數金額
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="queryClientConnect"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Query', 'QueryClientConnect')"
+                    role="tab" aria-controls="list-home">
+                    Client連線狀態
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 電子押匯提示作業 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading_05">
+              <button class="py-2 fs-1-5 fw-bold accordion-button hnb__menu--title rounded-0 collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#accordion_05" aria-expanded="false"
+                aria-controls="accordion_05">
+                電子押匯提示作業
+              </button>
+            </h2>
+            <div id="accordion_05" class="accordion-collapse collapse" aria-labelledby="heading_05"
+              data-bs-parent="#accordionSideMenu">
+              <div class="accordion-body p-0">
+                <div class="list-group list-group-flush" id="list-tab" role="tablist">
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="promptDraft"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Prompt', 'PromptDraft')"
+                    role="tab" aria-controls="list-home">
+                    押匯提示
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="rePromptDraft"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Prompt', 'RePromptDraft')"
+                    role="tab" aria-controls="list-profile">
+                    重新提示
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="draftRejection"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Prompt', 'DraftRejection')"
+                    role="tab" aria-controls="list-profile">
+                    押匯拒絕原因維護
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="webPromptDraft"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Prompt', 'WebPromptDraft')"
+                    role="tab" aria-controls="list-profile">
+                    網銀押匯提示作業
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 客戶管理作業 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading_06">
+              <button class="py-2 fs-1-5 fw-bold accordion-button hnb__menu--title rounded-0 collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#accordion_06" aria-expanded="false"
+                aria-controls="accordion_06">
+                客戶管理作業
+              </button>
+            </h2>
+            <div id="accordion_06" class="accordion-collapse collapse" aria-labelledby="heading_06"
+              data-bs-parent="#accordionSideMenu">
+              <div class="accordion-body p-0">
+                <div class="list-group list-group-flush" id="list-tab" role="tablist">
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="setGroup"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Customer', 'SetGroup')"
+                    role="tab" aria-controls="list-home">
+                    設定客戶群組
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="setCustomer"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Customer', 'SetCustomer')"
+                    role="tab" aria-controls="list-profile">
+                    設定客戶資料
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="setCustomerBranch"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Customer', 'SetCustomerBranch')"
+                    role="tab" aria-controls="list-profile">
+                    客戶所屬分行異動
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="setBeneficiary"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Customer', 'SetBeneficiary')"
+                    role="tab" aria-controls="list-profile">
+                    受益人資料
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 會員管理作業 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="heading_07">
+              <button class="py-2 fs-1-5 fw-bold accordion-button hnb__menu--title rounded-0 collapsed" type="button"
+                data-bs-toggle="collapse" data-bs-target="#accordion_07" aria-expanded="false"
+                aria-controls="accordion_07">
+                會員管理作業
+              </button>
+            </h2>
+            <div id="accordion_07" class="accordion-collapse collapse" aria-labelledby="heading_07"
+              data-bs-parent="#accordionSideMenu">
+              <div class="accordion-body p-0">
+                <div class="list-group list-group-flush" id="list-tab" role="tablist">
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="managerBranch"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Member', 'ManagerBranch')"
+                    role="tab" aria-controls="list-home">
+                    分行管理
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="managerMember"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Member', 'ManagerMember')"
+                    role="tab" aria-controls="list-profile">
+                    會員管理
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="managerPersonal"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Member', 'ManagerPersonal')"
+                    role="tab" aria-controls="list-profile">
+                    個人設定
+                  </a>
+                  <a class="ps-4 list-group-item list-group-item-action hnb__menu--btn" id="managerBeneficiary"
+                    data-bs-toggle="list" href="javascript:void(0)" onclick="loadPage('Member', 'ManagerBeneficiary')"
+                    role="tab" aria-controls="list-profile">
+                    受益人資料維護
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="content__wrapper">
+      <iframe id="main-content" title="Inline Frame" src="./pages/todoList.html" style="width: 100%; height: 100%">
+      </iframe>
+    </main>
+  </div>
+  <footer class="navbar fixed-bottom flex-nowrap p-3">
+  </footer>
+
+  <script>
+    // 檢查 cookie 值是否存在
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+    const userName = getCookie('username');
+
+    window.onload = (event) => {
+      if (!userName) {
+        window.location.href = './login.html'
+      }
+    };
+
+    // 登出
+    const logout = document.querySelector('#logout');
+    logout.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('ok')
+      document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      window.location.href = './login.html'
+    });
+  </script>
+  <!-- JS Plugin -->
+  <script src="./assets/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/js/jquery-3.7.1.js"></script>
+  <script src="./assets/js/sideMenu.js"></script>
+</body>
+
+</html>
