@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>華南銀行 - 國內信用狀系統</title>
+  <link rel="stylesheet" href="../assets/MaterialDesign-Webfont/css/materialdesignicons.min.css" media="all" />
+  <link rel="stylesheet" href="../assets/css/custom.css">
+
+  <!-- flatpick plugin -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/zh-tw.js"></script>
+</head>
+
+<body>
+  <!-- 存取軌跡紀錄 -->
+  <div id="setLcTable" class="py-4 px-5">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb fs-6">
+        <li class="breadcrumb-item">
+          <a id="homePage" class="hnb__path" href="javascript:void(0)">首頁</a>
+        </li>
+        <li class="breadcrumb-item">系統紀錄</li>
+        <li class="breadcrumb-item active" aria-current="page">存取軌跡紀錄</li>
+      </ol>
+    </nav>
+    <h1 class="fs-4 fw-bolder">請選擇查詢方式</h1>
+    <div class="card">
+      <div class="card-body bg-light">
+        <form>
+          <div class="row">
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="mb-3 row">
+                <label for="userAccount" class="col-2 col-md-3 col-form-label text-end text-nowrap">使用者帳號</label>
+                <div class="col-10 col-md-9">
+                  <input type="text" class="form-control form-control-sm" id="userAccount">
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="mb-3 row">
+                <label for="type" class="col-2 col-md-3 col-form-label text-end text-nowrap">功能類別</label>
+                <div class="col-10 col-md-9">
+                  <select id="type" class="form-select">
+                    <option selected>= 請選擇 =</option>
+                    <option value="0001">全部</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="mb-3 row">
+                <label for="result" class="col-2 col-md-3 col-form-label text-end text-nowrap">執行結果</label>
+                <div class="col-10 col-md-9">
+                  <select id="result" class="form-select">
+                    <option selected>= 請選擇 =</option>
+                    <option value="0001">全部</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="mb-3 row">
+                <label for="appDate" class="col-2 col-md-3 col-form-label text-end text-nowrap">存取日期</label>
+                <div class="col-10 col-md-9">
+                  <div class="d-flex align-items-center">
+                    <div class="input-group flex-nowrap">
+                      <input type="datetime-local" id="startDate" placeholder="請點選起日"
+                        class="form-control form-control-sm hnb__calendar">
+                      <label class="input-group-text py-1" for="startDate">
+                        <span class="mdi mdi-calendar-month"></span>
+                      </label>
+                    </div>
+                    <span class="px-2">~</span>
+                    <div class="input-group flex-nowrap">
+                      <input type="datetime-local" id="endDate" placeholder="請點選訖日"
+                        class="form-control form-control-sm hnb__calendar">
+                      <label class="input-group-text py-1" for="endDate">
+                        <span class="mdi mdi-calendar-month"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="text-danger d-flex text-nowrap pt-1">
+                    <span class="text-danger dateAlert d-none pe-1">
+                      <span class="mdi mdi-close-thick pe-1"></span>
+                      結束日期須晚於開始日期
+                      <span class="px-2">|</span>
+                    </span>
+                    <span>
+                      <span class="mdi mdi-alert-circle-outline pe-1"></span>
+                      選取區間不能超過 6 個月
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col text-end py-1">
+              <button type="reset" id="reset" class="me-2 px-3 btn btn-sm hnb__btn--reset">清空</button>
+              <button type="button" id="search" class="px-3 btn btn-sm hnb__btn--default">查詢</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="trackList" class="hnb__hide">
+      <h1 class="pt-4 pb-2 fs-4 fw-bolder">存取軌跡紀錄</h1>
+      <div class="py-2 text-end">
+        <button type="button" id="downloadExcel" class="px-3 btn btn-sm hnb__btn--default">
+          <span class="mdi mdi-tray-arrow-down"></span>
+          匯出 Excel 檔
+        </button>
+      </div>
+      <div class="table-responsive">
+        <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white">
+          <thead>
+            <tr>
+              <th scope="col" class="hnb__tbhd">使用者帳號</th>
+              <th scope="col" class="hnb__tbhd">使用者姓名</th>
+              <th scope="col" class="hnb__tbhd">存取日期</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">執行功能</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">執行模式</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">執行結果</th>
+              <th scope="col" class="hnb__tbhd text-nowrap w-25">作業訊息</th>
+              <th scope="col" class="hnb__tbhd">修改前</th>
+              <th scope="col" class="hnb__tbhd">修改後</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">petersun</td>
+              <td class="text-center">peter</td>
+              <td class="text-center">2025/02/07 16:50:21</td>
+              <td class="text-center">帳號管理</td>
+              <td class="text-center">修改使用者帳號</td>
+              <td class="text-center">成功</td>
+              <td>使用者帳號修改成功</td>
+              <td>petersun</td>
+              <td>petersun05</td>
+            </tr>
+            <tr>
+              <td class="text-center">petersun</td>
+              <td class="text-center">peter</td>
+              <td class="text-center">2025/02/07 16:50:21</td>
+              <td class="text-center">登入</td>
+              <td class="text-center">Login</td>
+              <td class="text-center">成功</td>
+              <td>正常登入</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="text-center">petersun06</td>
+              <td class="text-center">petersun06</td>
+              <td class="text-center">2025/02/07 16:50:21</td>
+              <td class="text-center">帳號管理</td>
+              <td class="text-center">新增使用者帳號</td>
+              <td class="text-center">成功</td>
+              <td>使用者帳號新增成功</td>
+              <td></td>
+              <td>petersun06</td>
+            </tr>
+          </tbody>
+        </table>
+        <nav class="mt-3 d-flex align-items-center justify-content-between">
+          <div class="d-flex text-nowrap">
+            <ul class="pagination pagination-sm">
+              <li class="page--item hnb__page--item disabled">
+                <a class="page-link">第一頁</a>
+              </li>
+              <li class="page--item hnb__page--item disabled">
+                <a class="page-link">
+                  <span class="mdi mdi-chevron-left"></span>
+                </a>
+              </li>
+              <li class="page--item hnb__page--item active"><a class="page-link" href="#">1</a></li>
+              <li class="page--item hnb__page--item"><a class="page-link" href="#">2</a></li>
+              <li class="page--item hnb__page--item"><a class="page-link" href="#">3</a></li>
+              <li class="page--item hnb__page--item"><a class="page-link" href="#">4</a></li>
+              <li class="page--item hnb__page--item"><a class="page-link" href="#">5</a></li>
+              <li class="page--item hnb__page--item">
+                <a class="page-link" href="#">
+                  <span class="mdi mdi-chevron-right"></span>
+                </a>
+              </li>
+              <li class="page--item hnb__page--item">
+                <a class="page-link" href="#">最後一頁</a>
+              </li>
+            </ul>
+            <!-- <input class="form-control form-control-sm" type="text" value=""> -->
+            <div class="input-group input-group-sm ms-2 mb-3 text-nowrap page-width">
+              <span class="input-group-text" id="inputGroup-sizing-sm">第</span>
+              <input type="text" class="form-control" value="">
+              <span class="input-group-text" id="inputGroup-sizing-sm">頁</span>
+              <button class="btn hnb__btn--default" type="button" id="button-addon2">前往</button>
+            </div>
+          </div>
+          <div class="mb-3">
+            <span class="hnb__text--red">總筆數：</span>3 / <span class="hnb__text--red">總頁數：</span>1
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <!-- 存取軌跡紀錄 -->
+  <!-- JS -->
+  <script>
+    // 查詢
+    const search = document.querySelector('#search');
+    const trackList = document.querySelector('#trackList');
+    search.addEventListener('click', () => {
+      trackList.classList.remove('hnb__hide')
+    });
+
+    // 月曆
+    const dateAlert = document.querySelector(".dateAlert");
+    const currentTime = new Date()
+    const config = {
+      locale: 'zh_tw',
+      //enableTime: true, //可選時與分
+      dateFormat: "Y/m/d", //時間格式
+      time_24hr: true, //24 時制
+      minuteIncrement: 15, //分鐘每次選擇間隔單位
+      allowInput: true, //可輸入控制
+      //minDate: "today", //可選最小時間，可直接接受 'today' 字串
+      //maxDate: currentTime.setMonth(currentTime.getMonth() + 1), //可選最大時間，從今天起一個月
+      onChange: function (selectedDates, dateStr, instance) {
+        console.log(`你現在點選的是 ${instance.input.id}，時間為 ${selectedDates} / ${dateStr}`);
+        checkDateTime(dateStr, instance.input.id);
+      }
+    };
+    flatpickr('#startDate, #endDate', config);
+
+    let startDateValue = null
+    let endDateValue = null
+
+    // 辨別結束日期須晚於開始日期
+    function checkDateTime(dateStr, id) {
+      if (id === "startDate") {
+        startDateValue = dateStr
+      }
+
+      if (id === "endDate") {
+        endDateValue = dateStr
+      }
+
+      if (startDateValue > endDateValue) {
+        dateAlert.classList.remove("d-none");
+      } else {
+        dateAlert.classList.add("d-none");
+      }
+    };
+  </script>
+  <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/jquery-3.7.1.js"></script>
+  <script src="../assets/js/page.js"></script>
+</body>
+
+</html>

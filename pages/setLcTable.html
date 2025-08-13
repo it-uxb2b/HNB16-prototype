@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>華南銀行 - 國內信用狀系統</title>
+  <link rel="stylesheet" href="../assets/MaterialDesign-Webfont/css/materialdesignicons.min.css" media="all" />
+  <link rel="stylesheet" href="../assets/css/custom.css">
+
+  <!-- flatpick plugin -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/index.js"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/zh-tw.js"></script>
+</head>
+
+<body>
+  <!-- 台塑集團信用狀統計表 -->
+  <div id="setLcTable" class="py-4 px-5">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb fs-6">
+        <li class="breadcrumb-item">
+          <a id="homePage" class="hnb__path" href="javascript:void(0)">首頁</a>
+        </li>
+        <li class="breadcrumb-item">管理作業</li>
+        <li class="breadcrumb-item active" aria-current="page">台塑集團信用狀統計表</li>
+      </ol>
+    </nav>
+    <h1 class="fs-4 fw-bolder">請選擇查詢方式</h1>
+    <div class="card">
+      <div class="card-body bg-light">
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="mb-3 row">
+              <label for="appName" class="col-2 col-md-3 col-form-label text-end text-nowrap">申請人名稱</label>
+              <div class="col-10 col-md-9">
+                <select id="appName" class="form-select">
+                  <option selected>= 請選擇 =</option>
+                  <option value="tpc">台塑</option>
+                  <option value="fcfc">台化纖</option>
+                  <option value="fpcc">台塑石化</option>
+                  <option value="npc">南亞塑膠</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="mb-3 row">
+              <label for="appNo" class="col-2 col-md-3 col-form-label text-end text-nowrap">申請人統編</label>
+              <div class="col-10 col-md-9">
+                <input type="text" class="form-control form-control-sm" id="appNo">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="mb-3 row">
+              <label for="beneName" class="col-2 col-md-3 col-form-label text-end text-nowrap">受益人名稱</label>
+              <div class="col-10 col-md-9">
+                <select id="beneName" class="form-select">
+                  <option selected>= 請選擇 =</option>
+                  <option value="tpc">台塑</option>
+                  <option value="fcfc">台化纖</option>
+                  <option value="fpcc">台塑石化</option>
+                  <option value="npc">南亞塑膠</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="mb-3 row">
+              <label for="beneNo" class="col-2 col-md-3 col-form-label text-end text-nowrap">受益人統編</label>
+              <div class="col-10 col-md-9">
+                <input type="text" class="form-control form-control-sm" id="beneNo">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="mb-3 row">
+              <label for="appDate" class="col-2 col-md-3 col-form-label text-end text-nowrap">開狀月份</label>
+              <div class="col-10 col-md-9">
+                <div class="d-flex align-items-center">
+                  <div class="input-group flex-nowrap">
+                    <input type="datetime-local" id="startDate" placeholder="請點選起始月份"
+                      class="form-control form-control-sm hnb__calendar">
+                    <label class="input-group-text py-1" for="startDate">
+                      <span class="mdi mdi-calendar-month"></span>
+                    </label>
+                  </div>
+                  <span class="px-2">~</span>
+                  <div class="input-group flex-nowrap">
+                    <input type="datetime-local" id="endDate" placeholder="請點選結束月份"
+                      class="form-control form-control-sm hnb__calendar">
+                    <label class="input-group-text py-1" for="endDate">
+                      <span class="mdi mdi-calendar-month"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="text-danger d-flex text-nowrap pt-1">
+                  <span class="text-danger dateAlert pe-2 d-none pe-1">
+                    <span class="mdi mdi-close-thick"></span>
+                    結束日期須晚於開始日期
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-end py-1">
+            <button type="reset" id="reset" class="me-2 px-3 btn btn-sm hnb__btn--reset">清空</button>
+            <button type="button" id="search" class="px-3 btn btn-sm hnb__btn--default">查詢</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="setLcList" class="hnb__hide">
+      <h1 class="pt-4 pb-2 fs-4 fw-bolder">台塑集團信用狀統計表</h1>
+      <div class="py-2 text-end">
+        <button type="button" id="downloadExcel" class="px-3 btn btn-sm hnb__btn--default">
+          <span class="mdi mdi-tray-arrow-down"></span>
+          匯出 Excel 檔
+        </button>
+      </div>
+      <h5 class="mb-2 fs-6 fw-bolder hnb__title">
+        台灣塑膠工業股份有限公司
+      </h5>
+      <div class="table-responsive">
+        <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white">
+          <thead>
+            <tr>
+              <th scope="col" class="hnb__tbhd w-25">受益人</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">開狀分行</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">開狀日期</th>
+              <th scope="col" class="hnb__tbhd">申請人</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">申請人統編</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">筆數</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">幣別</th>
+              <th scope="col" class="hnb__tbhd">金額 (單位:元)</th>
+              <th scope="col" class="hnb__tbhd">押匯金額 (單位:元)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>台灣塑膠工業股份有限公司台北辦事處</td>
+              <td class="text-center">台北分行</td>
+              <td class="text-center">2025/01/20</td>
+              <td>大仁股份有限公司</td>
+              <td class="text-center">12346678</td>
+              <td class="text-end">3</td>
+              <td class="text-center">TWD - 新台幣</td>
+              <td class="text-end">$300,000.00</td>
+              <td class="text-end">$300,000.00</td>
+            </tr>
+            <tr>
+              <td>台灣塑膠工業股份有限公司</td>
+              <td class="text-center">台北分行</td>
+              <td class="text-center">2025/01/20</td>
+              <td>二仁股份有限公司</td>
+              <td class="text-center">87654321</td>
+              <td class="text-end">1</td>
+              <td class="text-center">TWD - 新台幣</td>
+              <td class="text-end">$20,000.00</td>
+              <td class="text-end">$20,000.00</td>
+            </tr>
+            <tr>
+              <td>台灣塑膠工業股份有限公司台高雄辦事處</td>
+              <td class="text-center">台北分行</td>
+              <td class="text-center">2025/01/20</td>
+              <td>三仁股份有限公司</td>
+              <td class="text-center">96325874</td>
+              <td class="text-end">1</td>
+              <td class="text-center">TWD - 新台幣</td>
+              <td class="text-end">$30,000.00</td>
+              <td class="text-end">$30,000.00</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <h5 class="mt-3 fs-6 fw-bolder hnb__title">
+        台灣化學纖維股份有限公司
+      </h5>
+      <div class="table-responsive">
+        <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white">
+          <thead>
+            <tr>
+              <th scope="col" class="hnb__tbhd w-25">受益人</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">開狀分行</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">開狀日期</th>
+              <th scope="col" class="hnb__tbhd">申請人</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">申請人統編</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">筆數</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">幣別</th>
+              <th scope="col" class="hnb__tbhd">金額 (單位:元)</th>
+              <th scope="col" class="hnb__tbhd">押匯金額 (單位:元)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>台灣化學纖維股份有限公司</td>
+              <td class="text-center">台北分行</td>
+              <td class="text-center">2025/01/20</td>
+              <td>大仁股份有限公司</td>
+              <td class="text-center">12346678</td>
+              <td class="text-end">3</td>
+              <td class="text-center">TWD - 新台幣</td>
+              <td class="text-end">$300,000.00</td>
+              <td class="text-end">$300,000.00</td>
+            </tr>
+            <tr>
+              <td>台灣化學纖維股份有限公司</td>
+              <td class="text-center">台北分行</td>
+              <td class="text-center">2025/01/20</td>
+              <td>二仁股份有限公司</td>
+              <td class="text-center">87654321</td>
+              <td class="text-end">1</td>
+              <td class="text-center">TWD - 新台幣</td>
+              <td class="text-end">$20,000.00</td>
+              <td class="text-end">$20,000.00</td>
+            </tr>
+            <tr>
+              <td>台灣化學纖維股份有限公司</td>
+              <td class="text-center">台北分行</td>
+              <td class="text-center">2025/01/20</td>
+              <td>三仁股份有限公司</td>
+              <td class="text-center">96325874</td>
+              <td class="text-end">1</td>
+              <td class="text-center">TWD - 新台幣</td>
+              <td class="text-end">$30,000.00</td>
+              <td class="text-end">$30,000.00</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <h5 class="mt-3 fs-6 fw-bolder hnb__title">
+        台塑石化股份有限公司
+      </h5>
+      <div class="table-responsive">
+        <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white">
+          <thead>
+            <tr>
+              <th scope="col" class="hnb__tbhd w-25">受益人</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">開狀分行</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">開狀日期</th>
+              <th scope="col" class="hnb__tbhd">申請人</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">申請人統編</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">筆數</th>
+              <th scope="col" class="hnb__tbhd text-nowrap">幣別</th>
+              <th scope="col" class="hnb__tbhd">金額 (單位:元)</th>
+              <th scope="col" class="hnb__tbhd">押匯金額 (單位:元)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>台塑石化股份有限公司</td>
+              <td class="text-center">台北分行</td>
+              <td class="text-center">2025/01/20</td>
+              <td>大仁股份有限公司</td>
+              <td class="text-center">12346678</td>
+              <td class="text-end">3</td>
+              <td class="text-center">TWD - 新台幣</td>
+              <td class="text-end">$300,000.00</td>
+              <td class="text-end">$300,000.00</td>
+            </tr>
+            <tr>
+              <td>台塑石化股份有限公司</td>
+              <td class="text-center">台北分行</td>
+              <td class="text-center">2025/01/20</td>
+              <td>二仁股份有限公司</td>
+              <td class="text-center">87654321</td>
+              <td class="text-end">1</td>
+              <td class="text-center">TWD - 新台幣</td>
+              <td class="text-end">$20,000.00</td>
+              <td class="text-end">$20,000.00</td>
+            </tr>
+            <tr>
+              <td>台塑石化股份有限公司</td>
+              <td class="text-center">台北分行</td>
+              <td class="text-center">2025/01/20</td>
+              <td>三仁股份有限公司</td>
+              <td class="text-center">96325874</td>
+              <td class="text-end">1</td>
+              <td class="text-center">TWD - 新台幣</td>
+              <td class="text-end">$30,000.00</td>
+              <td class="text-end">$30,000.00</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <h5 class="mt-3 fs-6 fw-bolder hnb__title">
+        南亞塑膠工業股份有限公司
+      </h5>
+      <div class="table-responsive">
+        <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white>
+          <thead>
+            <tr>
+              <th scope=" col" class="hnb__tbhd w-25">受益人</th>
+          <th scope="col" class="hnb__tbhd text-nowrap">開狀分行</th>
+          <th scope="col" class="hnb__tbhd text-nowrap">開狀日期</th>
+          <th scope="col" class="hnb__tbhd">申請人</th>
+          <th scope="col" class="hnb__tbhd text-nowrap">申請人統編</th>
+          <th scope="col" class="hnb__tbhd text-nowrap">筆數</th>
+          <th scope="col" class="hnb__tbhd text-nowrap">幣別</th>
+          <th scope="col" class="hnb__tbhd">金額 (單位:元)</th>
+          <th scope="col" class="hnb__tbhd">押匯金額 (單位:元)</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>南亞塑膠工業股份有限公司仁武廠</td>
+              <td class="text-center">台北分行</td>
+              <td class="text-center">2025/01/20</td>
+              <td>大仁股份有限公司</td>
+              <td class="text-center">12346678</td>
+              <td class="text-end">3</td>
+              <td class="text-center">TWD - 新台幣</td>
+              <td class="text-end">$300,000.00</td>
+              <td class="text-end">$300,000.00</td>
+            </tr>
+            <tr>
+              <td>南亞塑膠工業股份有限公司</td>
+              <td class="text-center">台北分行</td>
+              <td class="text-center">2025/01/20</td>
+              <td>二仁股份有限公司</td>
+              <td class="text-center">87654321</td>
+              <td class="text-end">1</td>
+              <td class="text-center">TWD - 新台幣</td>
+              <td class="text-end">$20,000.00</td>
+              <td class="text-end">$20,000.00</td>
+            </tr>
+            <tr>
+              <td>南亞塑膠工業股份有限公司仁武廠</td>
+              <td class="text-center">台北分行</td>
+              <td class="text-center">2025/01/20</td>
+              <td>三仁股份有限公司</td>
+              <td class="text-center">96325874</td>
+              <td class="text-end">1</td>
+              <td class="text-center">TWD - 新台幣</td>
+              <td class="text-end">$30,000.00</td>
+              <td class="text-end">$30,000.00</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- 台塑集團信用狀統計表 -->
+  <!-- JS -->
+  <script>
+    // 查詢
+    const search = document.querySelector('#search');
+    const setLcList = document.querySelector('#setLcList');
+    search.addEventListener('click', () => {
+      setLcList.classList.remove('hnb__hide')
+    });
+
+
+
+    // 月曆
+    const dateAlert = document.querySelector(".dateAlert");
+    const currentTime = new Date()
+    const config = {
+      locale: 'zh_tw',
+      plugins: [
+        new monthSelectPlugin({
+          //shorthand: true, //defaults to false
+          dateFormat: "Y/m", //defaults to "F Y"
+          altFormat: "F Y", //defaults to "F Y"
+          theme: "dark" // defaults to "light"
+        })
+      ],
+      //enableTime: true, //可選時與分
+      //dateFormat: "Y/m/d", //時間格式
+      //time_24hr: true, //24 時制
+      //minuteIncrement: 15, //分鐘每次選擇間隔單位
+      allowInput: true, //可輸入控制
+      //minDate: "today", //可選最小時間，可直接接受 'today' 字串
+      //maxDate: currentTime.setMonth(currentTime.getMonth() + 1), //可選最大時間，從今天起一個月
+
+      onChange: function (selectedDates, dateStr, instance) {
+        console.log(`你現在點選的是 ${instance.input.id}，時間為 ${selectedDates} / ${dateStr}`);
+        checkDateTime(dateStr, instance.input.id);
+      }
+    };
+    flatpickr('#startDate, #endDate', config);
+
+    let startDateValue = null
+    let endDateValue = null
+
+    // 辨別結束日期須晚於開始日期
+    function checkDateTime(dateStr, id) {
+      if (id === "startDate") {
+        startDateValue = dateStr
+      }
+
+      if (id === "endDate") {
+        endDateValue = dateStr
+      }
+
+      if (startDateValue > endDateValue) {
+        dateAlert.classList.remove("d-none");
+      } else {
+        dateAlert.classList.add("d-none");
+      }
+    };
+  </script>
+  <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/jquery-3.7.1.js"></script>
+  <script src="../assets/js/page.js"></script>
+</body>
+
+</html>

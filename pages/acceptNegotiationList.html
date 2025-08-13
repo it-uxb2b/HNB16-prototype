@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>華南銀行 - 國內信用狀系統</title>
+  <link rel="stylesheet" href="../assets/MaterialDesign-Webfont/css/materialdesignicons.min.css" media="all" />
+  <link rel="stylesheet" href="../assets/css/custom.css">
+</head>
+
+<body>
+  <!-- 受理押匯作業 -->
+  <div id="checkNegotiation" class="py-4 px-5">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb fs-6">
+        <li class="breadcrumb-item">
+          <a id="homePage" class="hnb__path" href="javascript:void(0)">首頁</a>
+        </li>
+        <li class="breadcrumb-item">押匯作業</li>
+        <li class="breadcrumb-item active" aria-current="page">受理押匯作業</li>
+      </ol>
+    </nav>
+    <h1 class="fs-4 fw-bolder">受理押匯申請</h1>
+    <div class="py-2 d-flex align-items-center justify-content-between">
+      <button type="button" id="reSendItem" class="px-3 btn btn-sm hnb__btn--default">
+        確認受理
+      </button>
+      <span class="hnb__text--red fw-bolder">
+        <span class="mdi mdi-account-box" style="font-size: 18px;"></span>
+        受益人：台灣塑膠工業股份有限公司
+      </span>
+    </div>
+    <div id="checkNegotiationList" class="table-responsive">
+      <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white">
+        <thead>
+          <tr>
+            <th scope="col" rowspan="2" class="hnb__tbhd">編號</th>
+            <th scope="col" class="hnb__tbhd">核准</th>
+            <th scope="col" class="hnb__tbhd">拒絕</th>
+            <th scope="col" rowspan="2" class="hnb__tbhd text-nowrap">拒絕原因</th>
+            <th scope="col" rowspan="2" class="hnb__tbhd">押匯日期</th>
+            <th scope="col" rowspan="2" class="hnb__tbhd">匯票號碼</th>
+            <th scope="col" rowspan="2" class="hnb__tbhd text-nowrap">匯票金額</th>
+            <th scope="col" rowspan="2" class="hnb__tbhd text-nowrap">信用狀號碼</th>
+            <th scope="col" class="hnb__tbhd text-nowrap">受益人名稱</th>
+            <th scope="col" rowspan="2" class="hnb__tbhd text-nowrap">信用狀金額</th>
+            <th scope="col" rowspan="2" class="hnb__tbhd">有效期限</th>
+          </tr>
+          <tr>
+            <th scope="col" class="hnb__tbhd3">
+              <button type="button" id="approveAll" class="px-2 btn btn-sm hnb__btn--default text-nowrap">
+                全選
+              </button>
+            </th>
+            <th scope="col" class="hnb__tbhd3">
+              <button type="button" id="rejectAll" class="px-2 btn btn-sm hnb__btn--default text-nowrap">
+                全選
+              </button>
+            </th>
+            <th scope="col" class="hnb__tbhd3 text-nowrap">受益人統編</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center">1</td>
+            <td class="text-center">
+              <input class="form-check-input" type="radio" id="qpprove_01" name="case_01">
+            </td>
+            <td class="text-center">
+              <input class="form-check-input" type="radio" id="reject_01" name="case_01">
+            </td>
+            <td class="text-center">
+              <input type="text" class="my-1 form-control form-control-sm" id="reason">
+            </td>
+            <td class="text-center">2025/02/07</td>
+            <td class="text-center">
+              <a href="javascript:void(0)" class="hnb__link--text" data-bs-toggle="modal" data-bs-target="#draftModal">
+                JF24111101
+              </a>
+            </td>
+            <td>
+              <div class="d-flex justify-content-between">
+                <span class="me-2">TWD</span>
+                <span>$10,000.00</span>
+              </div>
+            </td>
+            <td class="text-center">LC113A-99123</td>
+            <td>
+              <div class="py-1">台灣塑膠工業股份有限公司</div>
+              <div class="py-1">84613756</div>
+            </td>
+            <td>
+              <div class="d-flex justify-content-between">
+                <span class="me-2">TWD</span>
+                <span>$10,000.00</span>
+              </div>
+            </td>
+            <td class="text-center">2025/02/09</td>
+          </tr>
+          <tr>
+            <td class="text-center">2</td>
+            <td class="text-center">
+              <input class="form-check-input" type="radio" id="qpprove_02" name="case_02">
+            </td>
+            <td class="text-center">
+              <input class="form-check-input" type="radio" id="reject_02" name="case_02">
+            </td>
+            <td class="text-center">
+              <input type="text" class="my-1 form-control form-control-sm" id="reason">
+            </td>
+            <td class="text-center">2025/02/07</td>
+            <td class="text-center">
+              <a href="javascript:void(0)" class="hnb__link--text" data-bs-toggle="modal" data-bs-target="#draftModal">
+                JF24111102
+              </a>
+            </td>
+            <td>
+              <div class="d-flex justify-content-between">
+                <span class="me-2">USD</span>
+                <span>$1,500.00</span>
+              </div>
+            </td>
+            <td class="text-center">LC113A-99123</td>
+            <td>
+              <div class="py-1">台灣塑膠工業股份有限公司</div>
+              <div class="py-1">84613756</div>
+            </td>
+            <td>
+              <div class="d-flex justify-content-between">
+                <span class="me-2">USD</span>
+                <span>$1,500.00</span>
+              </div>
+            </td>
+            <td class="text-center">2025/02/09</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="py-2 d-flex align-items-center justify-content-end">
+      <div class="d-flex">
+        <div>
+          <span class="hnb__text--red">押匯總筆數：</span>2 筆
+        </div>
+        <span class="mx-2">/</span>
+        <div class="d-flex">
+          <span class="hnb__text--red">本頁押匯金額：</span>
+          <div>
+            <div class="d-flex justify-content-between">
+              <span class="me-2">TWD</span>
+              <span>$10,000.00</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span class="me-2">USD</span>
+              <span>$1,500.00</span>
+            </div>
+          </div>
+        </div>
+        <span class="mx-2">/</span>
+        <div class="d-flex">
+          <span class="hnb__text--red">押匯總金額：</span>
+          <div>
+            <div class="d-flex justify-content-between">
+              <span class="me-2">TWD</span>
+              <span>$10,000.00</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span class="me-2">USD</span>
+              <span>$1,500.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="py-2 d-flex align-items-center">
+      <span class="fw-bolder hnb__text--red pe-2">列印文件：</span>
+      <div class="form-check form-check-inline pt-1">
+        <input class="form-check-input" type="checkbox" id="checkbox1" value="option1">
+        <label class="form-check-label" for="checkbox1">受益人匯款資料</label>
+      </div>
+      <div class="form-check form-check-inline pt-1">
+        <input class="form-check-input" type="checkbox" id="checkbox2" value="option2">
+        <label class="form-check-label" for="checkbox2">匯票付款申請書</label>
+      </div>
+      <div class="form-check form-check-inline pt-1">
+        <input class="form-check-input" type="checkbox" id="checkbox3" value="option3">
+        <label class="form-check-label" for="checkbox3">發票</label>
+      </div>
+      <div>
+        <button type="button" id="print" class="px-3 btn btn-sm hnb__btn--default">
+          列印
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- 受理押匯作業 -->
+  <!-- draftModal -->
+  <div class="modal fade" id="draftModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="draftModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content hnb__modal">
+        <div class="modal-header py-2 border-bottom-0">
+          <h5 class="modal-title fs-5 fw-bolder" id="beneficiaryModalLabel">
+            匯票資料
+          </h5>
+          <button type="button" class="m-0 p-0 btn btn-link hnb__btn--close" data-bs-dismiss="modal" aria-label="Close">
+            <span class="mdi mdi-close"></span>
+          </button>
+        </div>
+        <div class="modal-body bg-light">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link hnb__tab active" id="draft1-tab" data-bs-toggle="tab" data-bs-target="#draft1"
+                type="button" role="tab" aria-controls="draft1" aria-selected="true">
+                受益人匯款資料
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link hnb__tab" id="draft2-tab" data-bs-toggle="tab" data-bs-target="#draft2"
+                type="button" role="tab" aria-controls="draft2" aria-selected="false">
+                匯票付款申請書
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link hnb__tab" id="draft3-tab" data-bs-toggle="tab" data-bs-target="#draft3"
+                type="button" role="tab" aria-controls="draft3" aria-selected="false">
+                發票
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="draft1" role="tabpanel" aria-labelledby="draft1-tab">
+              <div class="card rounded-0 rounded-bottom">
+                <div class="card-body bg-light">
+                  <h5 class="mb-2 fs-6 fw-bolder hnb__title">
+                    受益人匯款資料
+                  </h5>
+                  <div class="table-responsive bg-white">
+                    <table class="mb-0 table table-sm hnb__table hnb__bg--white">
+                      <tbody>
+                        <tr>
+                          <th class="hnb__tbhd2 w-25">匯入銀行</th>
+                          <td class="bg-white">0081267</td>
+                        </tr>
+                        <tr>
+                          <th class="hnb__tbhd2">銀行名稱</th>
+                          <td class="bg-white">富邦銀行台北分行</td>
+                        </tr>
+                        <tr>
+                          <th class="hnb__tbhd2">匯款帳號</th>
+                          <td class="bg-white">1234567890</td>
+                        </tr>
+                        <tr>
+                          <th class="hnb__tbhd2">匯款戶名</th>
+                          <td class="bg-white">台灣塑膠工業股份有限公司</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="modal-footer justify-content-center border-top mt-3 pb-0">
+                    <button type="button" id="print1" class="px-3 btn border-1 hnb__btn--confirm">列印</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="draft2" role="tabpanel" aria-labelledby="draft2-tab">
+              <div class="card rounded-0 rounded-bottom">
+                <div class="card-body bg-light">
+                  <h5 class="mb-2 fs-6 fw-bolder hnb__title">
+                    匯票付款申請書
+                  </h5>
+                  <div id="draftApplication">
+                    <div class="text-center fs-3">匯票付款申請書</div>
+                    <div class="table-responsive bg-white">
+                      <table class="mb-0 table table-striped table-sm hnb__table--print">
+                        <tbody>
+                          <tr>
+                            <td class="text-nowrap">信用狀號碼</td>
+                            <td>A0930022</td>
+                            <td class="text-nowrap">通知行編號</td>
+                            <td>0070937</td>
+                          </tr>
+                          <tr>
+                            <td class="text-nowrap">信用狀金額</td>
+                            <td>1,300</td>
+                            <td class="text-nowrap">信用狀有效期限</td>
+                            <td>114/08/28 止</td>
+                          </tr>
+                          <tr>
+                            <td class="text-nowrap">信用狀申請人</td>
+                            <td>台灣塑膠工業股份有限公司</td>
+                            <td class="text-nowrap">信用狀受益人或其他指定人</td>
+                            <td>台灣塑膠工業股份有限公司</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4" class="text-center">匯票</td>
+                          </tr>
+                          <tr>
+                            <td colspan="4">
+                              <div>金額：新台幣 100 元整</div>
+                              <div>付款人：富邦銀行</div>
+                              <div>到期日：114/08/28</div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="4">
+                              <div>貨品名稱：20250825_台塑開狀或物名稱測試_201</div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="py-3">
+                      <div class="py-1">上開貨品業於民國110年07月02日交貨，茲由信用狀受益人簽發匯票乙紙，檢附統一發票 1 紙，請惠予付款。</div>
+                      <div class="py-1">信用狀申請人及受益人並聲明上項交易如有不實，致 貴行遭受損失時，願連帶負損害賠償之責任。</div>
+                      <div class="py-1">本匯票付款申請書內所述信用狀(信用狀號碼：A0930022)項下所有押匯文件，業於本日完整提示，敬請受理。</div>
+                      <div class="py-4">此致</div>
+                      <div class="py-4 d-flex justify-content-between">
+                        <span>華南銀行</span>
+                        <span>信用狀受益人：台灣塑膠工業股份有限公司</span>
+                      </div>
+                      <div class="py-4 text-end">
+                        <img src="../assets/images/stamp.png" alt="stamp" class="pe-2">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer justify-content-center border-top mt-3 pb-0">
+                    <button type="button" id="print2" class="px-3 btn border-1 hnb__btn--confirm">列印</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="draft3" role="tabpanel" aria-labelledby="draft3-tab">
+              <div class="card rounded-0 rounded-bottom">
+                <div class="card-body bg-light">
+                  <h5 class="mb-2 fs-6 fw-bolder hnb__title">
+                    發票
+                  </h5>
+                  <div id="draftApplication">
+                    <div class="text-center fs-3">台灣塑膠工業股份有限公司</div>
+                    <div class="text-center fs-4">發票明細表</div>
+                    <div class="text-end">
+                      <p class="mb-1">信用狀號碼：A0930022</p>
+                      <p class="mb-1">匯票號碼：A0930022101</p>
+                    </div>
+                    <div>
+                      <div class="mb-1">
+                        <span>買受人統一編號：07066907</span>
+                        <span class="ps-5">買受人名稱：台灣塑膠工業股份有限公司</span>
+                        </span>
+                        <div class="mb-1">買受人地址：台北市中正區南海路100號20樓</div>
+                      </div>
+                      <div class="table-responsive bg-white">
+                        <table class="mb-0 table table-striped table-sm hnb__table--print">
+                          <thead>
+                            <tr>
+                              <th scope="col" class="hnb__tbhd">統一發票號碼</th>
+                              <th scope="col" class="hnb__tbhd">統一發票開立日期</th>
+                              <th scope="col" class="hnb__tbhd">統一發票金額</th>
+                              <th scope="col" class="hnb__tbhd">貨品內容</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="text-nowrap">EP00012345</td>
+                              <td class="text-nowrap">中華民國110年07月02日</td>
+                              <td class="text-nowrap">
+                                新台幣 壹仟元整
+                                <br>
+                                (TWD 1,000)
+                              </td>
+                              <td>20250825_台塑開狀或物名稱測試_201</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="py-2 text-end">
+                        <div>
+                          <span class="hnb__text--red">小計：</span>1 筆發票 / TWD 1,000
+                          <span class="hnb__text--red ps-3">總計：</span>1 筆發票 / TWD 1,000
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer justify-content-center border-top mt-3 pb-0">
+                      <button type="button" id="print2" class="px-3 btn border-1 hnb__btn--confirm">列印</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/jquery-3.7.1.js"></script>
+    <script src="../assets/js/page.js"></script>
+</body>
+
+</html>

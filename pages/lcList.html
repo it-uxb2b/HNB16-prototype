@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>華南銀行 - 國內信用狀系統</title>
+  <link rel="stylesheet" href="../assets/MaterialDesign-Webfont/css/materialdesignicons.min.css" media="all" />
+  <link rel="stylesheet" href="../assets/css/custom.css">
+
+  <!-- flatpick plugin -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://npmcdn.com/flatpickr/dist/l10n/zh-tw.js"></script>
+</head>
+
+<body>
+  <!-- 查詢信用狀資料 -->
+  <div id="lcListPage" class="py-4 px-5">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb fs-6">
+        <li class="breadcrumb-item">
+          <a id="homePage" class="hnb__path" href="javascript:void(0)">首頁</a>
+        </li>
+        <li class="breadcrumb-item">查詢作業</li>
+        <li class="breadcrumb-item active" aria-current="page">查詢信用狀資料</li>
+      </ol>
+    </nav>
+    <h1 class="fs-4 fw-bolder">請選擇查詢方式</h1>
+    <div class="card">
+      <div class="card-body bg-light">
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="mb-3 row">
+              <label for="lcNo" class="col-2 col-md-3 col-form-label text-end text-nowrap">信用狀號碼</label>
+              <div class="col-10 col-md-9">
+                <input type="text" class="form-control form-control-sm" id="lcNo">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="mb-2 row">
+              <label for="status" class="col-2 col-md-3 col-form-label text-end text-nowrap">信用狀狀態</label>
+              <div class="col-10 col-md-9">
+                <select id="branchNo" class="form-select">
+                  <option selected>= 請選擇 =</option>
+                  <option value="1">有效</option>
+                  <option value="2">到期</option>
+                  <option value="3">沖正</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="mb-2 row">
+              <label for="beneNo" class="col-2 col-md-3 col-form-label text-end text-nowrap">申請人統編</label>
+              <div class="col-10 col-md-9">
+                <input type="text" class="form-control form-control-sm" id="beneNo">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="mb-2 row">
+              <label for="beneInNo" class="col-2 col-md-3 col-form-label text-end text-nowrap">受益人統編</label>
+              <div class="col-10 col-md-9">
+                <input type="text" class="form-control form-control-sm" id="beneInNo">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="row">
+              <label for="appDate" class="col-2 col-md-3 col-form-label text-end text-nowrap">開狀日期</label>
+              <div class="col-10 col-md-9">
+                <div class="d-flex align-items-center">
+                  <div class="input-group flex-nowrap">
+                    <input type="datetime-local" id="startDate" placeholder="請點選起日"
+                      class="form-control form-control-sm hnb__calendar">
+                    <label class="input-group-text py-1" for="startDate">
+                      <span class="mdi mdi-calendar-month"></span>
+                    </label>
+                  </div>
+                  <span class="px-2">~</span>
+                  <div class="input-group flex-nowrap">
+                    <input type="datetime-local" id="endDate" placeholder="請點選訖日"
+                      class="form-control form-control-sm hnb__calendar">
+                    <label class="input-group-text py-1" for="endDate">
+                      <span class="mdi mdi-calendar-month"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="text-danger d-flex text-nowrap pt-1">
+                  <span class="text-danger dateAlert pe-2 d-none pe-1">
+                    <span class="mdi mdi-close-thick"></span>
+                    結束日期須晚於開始日期
+                    <span class="px-2">|</span>
+                  </span>
+                  <span>
+                    <span class="mdi mdi-alert-circle-outline pe-1"></span>
+                    選取區間不能大於一年
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-end py-1">
+            <button type="reset" id="reset" class="me-2 px-3 btn btn-sm hnb__btn--reset">清空</button>
+            <button type="button" id="search" class="px-3 btn btn-sm hnb__btn--default">查詢</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="setLcList" class="hnb__hide">
+      <h1 class="pt-4 pb-2 fs-4 fw-bolder">信用狀</h1>
+      <div class="py-2 text-end">
+        <button type="button" id="downloadExcel" class="px-3 btn btn-sm hnb__btn--default">
+          <span class="mdi mdi-tray-arrow-down"></span>
+          匯出 Excel 檔
+        </button>
+      </div>
+      <div class="card">
+        <div class="card-body bg-light">
+          <div class="table-responsive">
+            <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white">
+              <thead>
+                <tr>
+                  <th scope="col" class="hnb__tbhd text-nowrap">開狀銀行</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">申請人統編</th>
+                  <th scope="col" class="hnb__tbhd">信用狀號碼</th>
+                  <th scope="col" class="hnb__tbhd">信用狀序號</th>
+                  <th scope="col" class="hnb__tbhd">幣別 / 金額</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">開狀日期</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">信用狀狀態</th>
+                  <th scope="col" class="hnb__tbhd">功能</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-center">台北分行</td>
+                  <td class="text-center">12345678</td>
+                  <td class="text-center">LC113A-99123</td>
+                  <td class="text-center">A12346678001</td>
+                  <td>
+                    <div class="d-flex justify-content-between">
+                      <span class="me-2">TWD</span>
+                      <span>$20,000.00</span>
+                    </div>
+                  </td>
+                  <td class="text-center">2025/01/20</td>
+                  <td class="text-center">有效</td>
+
+                  <td class="text-center">
+                    <button type="button" class="editItem my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                      data-bs-toggle="modal" data-bs-target="#detailModal">
+                      <span class="mdi mdi-note-text"></span>
+                      明細
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">台北分行</td>
+                  <td class="text-center">12345678</td>
+                  <td class="text-center">LC113A-99123</td>
+                  <td class="text-center">A12346678001</td>
+                  <td>
+                    <div class="d-flex justify-content-between">
+                      <span class="me-2">USD</span>
+                      <span>$1,500.00</span>
+                    </div>
+                  </td>
+                  <td class="text-center">2025/01/20</td>
+                  <td class="text-center">到期</td>
+
+                  <td class="text-center">
+                    <button type="button" class="editItem my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                      data-bs-toggle="modal" data-bs-target="#detailModal">
+                      <span class="mdi mdi-note-text"></span>
+                      明細
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">台北分行</td>
+                  <td class="text-center">12345678</td>
+                  <td class="text-center">LC113A-99123</td>
+                  <td class="text-center">A12346678001</td>
+                  <td>
+                    <div class="d-flex justify-content-between">
+                      <span class="me-2">TWD</span>
+                      <span>$20,000.00</span>
+                    </div>
+                  </td>
+                  <td class="text-center">2025/01/20</td>
+                  <td class="text-center">沖正</td>
+
+                  <td class="text-center">
+                    <button type="button" class="editItem my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                      data-bs-toggle="modal" data-bs-target="#detailModal">
+                      <span class="mdi mdi-note-text"></span>
+                      明細
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <nav class="mt-3 d-flex align-items-center justify-content-between">
+        <div class="d-flex text-nowrap">
+          <ul class="pagination pagination-sm">
+            <li class="page--item hnb__page--item disabled">
+              <a class="page-link">第一頁</a>
+            </li>
+            <li class="page--item hnb__page--item disabled">
+              <a class="page-link">
+                <span class="mdi mdi-chevron-left"></span>
+              </a>
+            </li>
+            <li class="page--item hnb__page--item active"><a class="page-link" href="#">1</a></li>
+            <li class="page--item hnb__page--item"><a class="page-link" href="#">2</a></li>
+            <li class="page--item hnb__page--item"><a class="page-link" href="#">3</a></li>
+            <li class="page--item hnb__page--item"><a class="page-link" href="#">4</a></li>
+            <li class="page--item hnb__page--item"><a class="page-link" href="#">5</a></li>
+            <li class="page--item hnb__page--item">
+              <a class="page-link" href="#">
+                <span class="mdi mdi-chevron-right"></span>
+              </a>
+            </li>
+            <li class="page--item hnb__page--item">
+              <a class="page-link" href="#">最後一頁</a>
+            </li>
+          </ul>
+          <!-- <input class="form-control form-control-sm" type="text" value=""> -->
+          <div class="input-group input-group-sm ms-2 mb-3 text-nowrap page-width">
+            <span class="input-group-text" id="inputGroup-sizing-sm">第</span>
+            <input type="text" class="form-control" value="">
+            <span class="input-group-text" id="inputGroup-sizing-sm">頁</span>
+            <button class="btn hnb__btn--default" type="button" id="button-addon2">前往</button>
+          </div>
+        </div>
+        <div class="mb-3">
+          <span class="hnb__text--red">總筆數：</span>3 / <span class="hnb__text--red">總頁數：</span>1
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- 查詢信用狀資料 -->
+  <!-- detailModal -->
+  <div class="modal fade" id="detailModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="detailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content hnb__modal">
+        <form id="accountManagerForm">
+          <div class="modal-header py-2 border-bottom-0">
+            <h5 class="modal-title fs-5 fw-bolder" id="detailModalLabel">
+              信用狀詳細資訊
+            </h5>
+            <button type="button" class="m-0 p-0 btn btn-link hnb__btn--close" data-bs-dismiss="modal"
+              aria-label="Close">
+              <span class="mdi mdi-close"></span>
+            </button>
+          </div>
+          <div class="modal-body bg-light">
+            <div class="table-responsive">
+              <table class="table table-sm hnb__table hnb__bg--white">
+                <tbody>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">信用狀狀態</th>
+                    <td class="bg-white">
+                      有效
+                    </td>
+                    <th class="hnb__tbhd2 w-15"></th>
+                    <td class="bg-white"></td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">受益人接收狀態</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                    <th class="hnb__tbhd2 w-15">開狀銀行</th>
+                    <td class="bg-white">
+                      台北分行
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">開狀人統一編號</th>
+                    <td class="bg-white">
+                      12345678
+                    </td>
+                    <th class="hnb__tbhd2 w-15">客戶公司中文名稱</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX有限公司
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">聯絡人姓名</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                    <th class="hnb__tbhd2 w-15">聯絡人電話</th>
+                    <td class="bg-white">
+                      0212345678
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">受益人統一編號</th>
+                    <td class="bg-white">
+                      12345678
+                    </td>
+                    <th class="hnb__tbhd2 w-15">受益人公司中文名稱</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX有限公司
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">受益人事業部</th>
+                    <td class="bg-white">
+                      XXXX部部
+                    </td>
+                    <th class="hnb__tbhd2 w-15">受益人地址</th>
+                    <td class="bg-white">
+                      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">客戶編號</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                    <th class="hnb__tbhd2 w-15">金額</th>
+                    <td class="bg-white">
+                      20,000
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">信用狀號碼</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                    <th class="hnb__tbhd2 w-15">信用狀序號</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">有效期限</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                    <th class="hnb__tbhd2 w-15">幣別</th>
+                    <td class="bg-white">
+                      TWD - 新台幣
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">品名內容</th>
+                    <td class="bg-white">
+                      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                    </td>
+                    <th class="hnb__tbhd2 w-15">押匯銀行</th>
+                    <td class="bg-white">
+                      台北分行
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">付款方式</th>
+                    <td class="bg-white">
+                      現金
+                    </td>
+                    <th class="hnb__tbhd2 w-15">付款天數</th>
+                    <td class="bg-white">
+                      2
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">分批註記</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                    <th class="hnb__tbhd2 w-15">交貨到期日</th>
+                    <td class="bg-white">
+                      2025/01/20
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">發票日期註記</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                    <th class="hnb__tbhd2 w-15">發票金額註記</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">發票地址註記</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                    <th class="hnb__tbhd2 w-15">匯票註記</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">客戶申請說明</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                    <th class="hnb__tbhd2 w-15">開狀申請時間</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">銀行審核時間</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                    <th class="hnb__tbhd2 w-15">銀行審核說明</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">傳送時間</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                    <th class="hnb__tbhd2 w-15">電子發票註記</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">指定匯票到期日</th>
+                    <td class="bg-white">
+                      2025/01/20
+                    </td>
+                    <th class="hnb__tbhd2 w-15">指定押匯日</th>
+                    <td class="bg-white">
+                      2025/01/20
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">押匯允差比例</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                    <th class="hnb__tbhd2 w-15">匯票起算基準</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2 w-15">發票起始開立日</th>
+                    <td class="bg-white">
+                      2025/01/20
+                    </td>
+                    <th class="hnb__tbhd2 w-15">通知銀行</th>
+                    <td class="bg-white">
+                      XXXXXXXXXX
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-center border-top-0">
+            <button type="button" class="px-3 btn border-1 hnb__btn--cancel" data-bs-dismiss="modal">關閉</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- JS -->
+  <script>
+    // 查詢
+    const search = document.querySelector('#search');
+    const setLcList = document.querySelector('#setLcList');
+    search.addEventListener('click', () => {
+      setLcList.classList.remove('hnb__hide')
+    });
+
+    // 月曆
+    const dateAlert = document.querySelector(".dateAlert");
+    const currentTime = new Date()
+    const config = {
+      locale: 'zh_tw',
+      //enableTime: true, //可選時與分
+      dateFormat: "Y/m/d", //時間格式
+      time_24hr: true, //24 時制
+      minuteIncrement: 15, //分鐘每次選擇間隔單位
+      allowInput: true, //可輸入控制
+      //minDate: "today", //可選最小時間，可直接接受 'today' 字串
+      //maxDate: currentTime.setMonth(currentTime.getMonth() + 1), //可選最大時間，從今天起一個月
+      onChange: function (selectedDates, dateStr, instance) {
+        console.log(`你現在點選的是 ${instance.input.id}，時間為 ${selectedDates} / ${dateStr}`);
+        checkDateTime(dateStr, instance.input.id);
+      }
+    };
+    flatpickr('#startDate, #endDate', config);
+
+    let startDateValue = null
+    let endDateValue = null
+
+    // 辨別結束日期須晚於開始日期
+    function checkDateTime(dateStr, id) {
+      if (id === "startDate") {
+        startDateValue = dateStr
+      }
+
+      if (id === "endDate") {
+        endDateValue = dateStr
+      }
+
+      if (startDateValue > endDateValue) {
+        dateAlert.classList.remove("d-none");
+      } else {
+        dateAlert.classList.add("d-none");
+      }
+    };    
+  </script>
+  <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/jquery-3.7.1.js"></script>
+  <script src="../assets/js/page.js"></script>
+</body>
+
+</html>
