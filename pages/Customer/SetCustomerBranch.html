@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <!-- 設定客戶資料 -->
+  <!-- 客戶所屬分行異動 -->
   <div id="lcListPage" class="py-4 px-5">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb fs-6">
@@ -23,14 +23,14 @@
           <a id="homePage" class="hnb__path" href="javascript:void(0)">首頁</a>
         </li>
         <li class="breadcrumb-item">客戶管理作業</li>
-        <li class="breadcrumb-item active" aria-current="page">設定客戶資料</li>
+        <li class="breadcrumb-item active" aria-current="page">客戶所屬分行異動</li>
       </ol>
     </nav>
 
-    <!-- 設定客戶資料清冊 -->
+    <!-- 客戶所屬分行異動清冊 -->
     <div id="editList">
       <div class="py-2 d-flex align-items-center justify-content-between">
-        <h1 class="mb-0 fs-4 fw-bolder">設定客戶資料</h1>
+        <h1 class="mb-0 fs-4 fw-bolder">客戶所屬分行異動</h1>
       </div>
       <div class="card">
         <div class="card-body bg-light">
@@ -38,77 +38,27 @@
             <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white">
               <thead>
                 <tr>
-                  <th scope="col" class="hnb__tbhd text-nowrap">公司名稱</th>
-                  <th scope="col" class="hnb__tbhd text-nowrap">統一編號</th>
-                  <th scope="col" class="hnb__tbhd text-nowrap">檢附本票</th>
-                  <th scope="col" class="hnb__tbhd text-nowrap">本票帳號</th>
-                  <th scope="col" class="hnb__tbhd text-nowrap">本票印鑑</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">客戶名稱</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">憑證序號</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">原開狀分行</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">新開狀分行</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">異動類別</th>
                   <th scope="col" class="hnb__tbhd text-nowrap">操作</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class="text-nowrap">網際股份有限公司</td>
-                  <td class="text-center text-nowrap">12345678</td>
-                  <td class="text-center text-nowrap">No</td>
-                  <td class="text-center text-nowrap"></td>
-                  <td class="text-center text-nowrap"></td>
+                  <td class="text-nowrap">70762411 網際股份有限公司</td>
+                  <td class="text-center text-nowrap">00000000000000000000004AD58039</td>
+                  <td class="text-center text-nowrap">7007高雄分行</td>
+                  <td class="text-center text-nowrap">7007高雄分行</td>
+                  <td class="text-center text-nowrap">變更憑證序號</td>
                   <td class="text-center text-nowrap">
-                    <button type="button" class="mx-1 px-3 btn btn-sm hnb__btn--default" data-bs-toggle="modal"
-                      data-bs-target="#setModal" onclick="editHandler('網際股份有限公司');">
-                      編輯
+                    <button type="button" class="mx-1 px-3 btn btn-sm hnb__btn--default" onclick="approveHandler();">
+                      核准
                     </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-nowrap">優仕股份有限公司</td>
-                  <td class="text-center text-nowrap">12345678</td>
-                  <td class="text-center text-nowrap">No</td>
-                  <td class="text-center text-nowrap"></td>
-                  <td class="text-center text-nowrap"></td>
-                  <td class="text-center text-nowrap">
-                    <button type="button" class="mx-1 px-3 btn btn-sm hnb__btn--default" data-bs-toggle="modal"
-                      data-bs-target="#setModal" onclick="editHandler('優仕股份有限公司');">
-                      編輯
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-nowrap">實枚股份有限公司</td>
-                  <td class="text-center text-nowrap">12345678</td>
-                  <td class="text-center text-nowrap">No</td>
-                  <td class="text-center text-nowrap"></td>
-                  <td class="text-center text-nowrap"></td>
-                  <td class="text-center text-nowrap">
-                    <button type="button" class="mx-1 px-3 btn btn-sm hnb__btn--default" data-bs-toggle="modal"
-                      data-bs-target="#setModal" onclick="editHandler('實枚股份有限公司');">
-                      編輯
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-nowrap">春源鋼鐵股份有限公司</td>
-                  <td class="text-center text-nowrap">12345678</td>
-                  <td class="text-center text-nowrap">No</td>
-                  <td class="text-center text-nowrap"></td>
-                  <td class="text-center text-nowrap"></td>
-                  <td class="text-center text-nowrap">
-                    <button type="button" class="mx-1 px-3 btn btn-sm hnb__btn--default" data-bs-toggle="modal"
-                      data-bs-target="#setModal" onclick="editHandler('春源鋼鐵股份有限公司');">
-                      編輯
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-nowrap">宏博鋼鐵股份有限公司</td>
-                  <td class="text-center text-nowrap">12345678</td>
-                  <td class="text-center text-nowrap">No</td>
-                  <td class="text-center text-nowrap"></td>
-                  <td class="text-center text-nowrap"></td>
-                  <td class="text-center text-nowrap">
-                    <button type="button" class="mx-1 px-3 btn btn-sm hnb__btn--default" data-bs-toggle="modal"
-                      data-bs-target="#setModal" onclick="editHandler('宏博鋼鐵股份有限公司');">
-                      編輯
+                    <button type="button" class="mx-1 px-3 btn btn-sm hnb__btn--red" onclick="rejectHandler();">
+                      拒絕
                     </button>
                   </td>
                 </tr>
@@ -187,37 +137,35 @@
     console.log('authType:', authType);
     let currentEditType = '';
 
-
-    // 編輯客戶資料 editHandler
-    const companyName = document.querySelector('#companyName');
-    const stampUrl = document.querySelector('#stampUrl');
-    const stampPreview = document.querySelector('#stampPreview');
-
-    function editHandler(copName) {
-      companyName.innerHTML = copName;
-      stampUrl.value = '';
-      stampPreview.innerHTML = '尚無印鑑資料';
-    };
-
-    // 上傳檔案
-    stampUrl.addEventListener('change', function () {
-      const file = this.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          stampPreview.innerHTML = `<img src="${e.target.result}" alt="Stamp Preview" class="img-thumbnail" style="max-width: 200px;">`;
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-
     // 訊息視窗
     const messageModalLabel = document.querySelector('#messageModalLabel');
     const msgBody = document.querySelector('#msgBody');
     const msgFooter = document.querySelector('#msgFooter');
 
+    // 核准 approveHandler
+    function approveHandler() {
+      messageModalLabel.innerHTML = '作業訊息';
+      msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
+                您確定將核准所選取的資料嗎？
+              </p>`;
+      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
+      $('#messageModal').modal('show');
+    };
+
+    // 拒絕 rejectHandler
+    function rejectHandler() {
+      messageModalLabel.innerHTML = '作業訊息';
+      msgBody.innerHTML = `<p class="fw-bold hnb__text--red text-center">
+                您確定將拒絕所選取的資料嗎？
+              </p>`;
+      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
+      $('#messageModal').modal('show');
+    };
+
     function confirmHandler() {
-      $('#setModal').modal('hide');
+      $('#messageModal').modal('hide');
       setTimeout(() => {
         messageModalLabel.innerHTML = '作業訊息';
         msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
