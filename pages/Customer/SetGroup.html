@@ -145,8 +145,7 @@
       <div class="row">
         <div class="col text-end my-3">
           <button type="reset" id="reset" class="me-2 px-3 btn btn-sm hnb__btn--reset">重設</button>
-          <button type="button" id="search" class="px-3 btn btn-sm hnb__btn--default"
-            onclick="searchHandler()">確定</button>
+          <button type="button" id="search" class="px-3 btn btn-sm hnb__btn--default" onclick="setHandler()">確定</button>
         </div>
       </div>
     </div>
@@ -247,53 +246,10 @@
     const editList = document.querySelector('#editList');
     const queryList = document.querySelector('#queryList');
 
-    // 查詢開狀申請書 searchHandler
-    function searchHandler() {
+    // 設定客戶群組 setHandler
+    function setHandler() {
       queryList.classList.remove('hnb__hide');
       editList.classList.add('hnb__hide');
-    };
-
-    const messageModalLabel = document.querySelector('#messageModalLabel');
-    const msgBody = document.querySelector('#msgBody');
-    const msgFooter = document.querySelector('#msgFooter');
-    // 新增拒絕原因 addHandler
-    function addHandler() {
-      console.log('Add new application');
-      messageModalLabel.innerHTML = '新增拒絕原因';
-      msgBody.innerHTML = `<div class="row">
-                  <label for="reason" class="col-3 col-form-label text-end text-nowrap">拒絕原因</label>
-                  <div class="col-9">
-                    <input type="text" class="form-control form-control-sm" id="reason">
-                  </div>
-                </div>`;
-      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
-        <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
-      $('#messageModal').modal('show');
-    };
-
-    // 編輯拒絕原因 editHandler
-    function editHandler(reason) {
-      messageModalLabel.innerHTML = '編輯拒絕原因';
-      msgBody.innerHTML = `<div class="row">
-                  <label for="reason" class="col-3 col-form-label text-end text-nowrap">拒絕原因</label>
-                  <div class="col-9">
-                    <input type="text" class="form-control form-control-sm" id="reason" value="${reason}">
-                  </div>
-                </div>`;
-      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
-        <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
-      $('#messageModal').modal('show');
-    };
-
-    // 刪除拒絕原因 deleteHandler
-    function deleteHandler() {
-      messageModalLabel.innerHTML = '作業訊息';
-      msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
-              您確定要刪除此筆資料嗎？
-            </p>`;
-      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
-        <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
-      $('#messageModal').modal('show');
     };
 
     function confirmHandler() {
