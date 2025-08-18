@@ -19,8 +19,8 @@
     <nav class="d-inline-flex align-items-center me-4">
       <span class="px-2 fw-bolder">經辦 王建明 您好，歡迎使用本系統</span>
       <span class="px-2">|</span>
-      <a id="todoList" class="hnb__link--tab mx-2" href="javascript:void(0)">待辦事項</a>
-      <a id="info" class="hnb__link--tab mx-2" href="javascript:void(0)">訊息匣</a>
+      <a id="todoList" class="hnb__link--tab mx-2" href="#" onclick="todoList()">待辦事項</a>
+      <a id="info" class="hnb__link--tab mx-2" href="#" onclick="infoList()">訊息匣</a>
       <button id="logout" class="btn logout btn-sm ms-3 px-3" type="button">
         <span class="mdi mdi-logout"></span>
         登出
@@ -436,10 +436,22 @@
     const logout = document.querySelector('#logout');
     logout.addEventListener('click', (e) => {
       e.preventDefault();
-      console.log('ok')
       document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       window.location.href = './login.html'
     });
+
+    // 待辦事項
+    function todoList() {
+      clearAccordionAction();
+      document.querySelector('#main-content').src = './pages/todoList.html';
+    };
+
+    // 訊息匣
+    function infoList() {
+      clearAccordionAction();
+      document.querySelector('#main-content').src = './pages/info.html';
+    };
+
   </script>
   <!-- JS Plugin -->
   <script src="./assets/js/bootstrap.bundle.min.js"></script>

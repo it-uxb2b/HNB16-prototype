@@ -21,89 +21,651 @@
       </ol>
     </nav>
     <h1 class="fs-4 fw-bolder">訊息匣列表</h1>
-    <div class="py-2">
-      <button type="button" id="addItem" class="px-3 btn btn-sm hnb__btn--red" data-bs-toggle="modal"
-        data-bs-target="#infoDelModal">
-        <span class="mdi mdi-trash-can-outline"></span>
-        刪除
-      </button>
+    <div class="d-flex justify-content-between">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link hnb__tab active" id="info01-tab" data-bs-toggle="tab" data-bs-target="#info01"
+            type="button" role="tab" aria-controls="info01" aria-selected="true">
+            補收開狀手續費作業
+            <span class="ms-1 badge bg-light hnb__text--red">
+              1
+            </span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link hnb__tab" id="info02-tab" data-bs-toggle="tab" data-bs-target="#info02" type="button"
+            role="tab" aria-controls="info02" aria-selected="false">
+            申請作業
+            <span class="ms-1 badge bg-light hnb__text--red">
+              2
+            </span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link hnb__tab" id="info03-tab" data-bs-toggle="tab" data-bs-target="#info03" type="button"
+            role="tab" aria-controls="info03" aria-selected="false">
+            審核作業
+            <span class="ms-1 badge bg-light hnb__text--red">
+              2
+            </span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link hnb__tab" id="info04-tab" data-bs-toggle="tab" data-bs-target="#info04" type="button"
+            role="tab" aria-controls="info04" aria-selected="false">
+            查詢作業
+            <span class="ms-1 badge bg-light hnb__text--red">
+              2
+            </span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link hnb__tab" id="info05-tab" data-bs-toggle="tab" data-bs-target="#info05" type="button"
+            role="tab" aria-controls="info05" aria-selected="false">
+            電子押匯提示作業
+            <span class="ms-1 badge bg-light hnb__text--red">
+              2
+            </span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link hnb__tab" id="info06-tab" data-bs-toggle="tab" data-bs-target="#info06" type="button"
+            role="tab" aria-controls="info06" aria-selected="false">
+            客戶管理作業
+            <span class="ms-1 badge bg-light hnb__text--red">
+              2
+            </span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link hnb__tab" id="info07-tab" data-bs-toggle="tab" data-bs-target="#info07" type="button"
+            role="tab" aria-controls="info07" aria-selected="false">
+            會員管理作業
+            <span class="ms-1 badge bg-light hnb__text--red">
+              99+
+            </span>
+          </button>
+        </li>
+      </ul>
     </div>
-    <div class="table-responsive">
-      <table class="table table-striped table-sm hnb__table hnb__bg--white">
-        <thead>
-          <tr>
-            <th scope="col" class="hnb__tbhd">
-              <input class="form-check-input" type="checkbox" id="checkAll" value="true">
-            </th>
-            <th scope="col" class="hnb__tbhd w-25">主旨</th>
-            <th scope="col" class="hnb__tbhd">訊息內容</th>
-            <th scope="col" class="hnb__tbhd w-15">訊息時間</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="text-center">
-              <input class="form-check-input" type="checkbox" id="check1" value="1">
-            </td>
-            <td>開狀完成通知</td>
-            <td>114年2月7日客戶多樂股份有限公司完成開立國內信用狀1筆(LC_TEST_2025020701)</td>
-            <td class="text-center">2025/02/07 16:50:21</td>
-          </tr>
-          <tr>
-            <td class="text-center">
-              <input class="form-check-input" type="checkbox" id="check2" value="2">
-            </td>
-            <td>押匯申請審核通知</td>
-            <td>114年2月7日客戶多樂股份有限公司提出國內信用狀開狀申請1筆(CDSD114000011)</td>
-            <td class="text-center">2025/02/07 16:44:42</td>
-          </tr>
-          <tr>
-            <td class="text-center">
-              <input class="form-check-input" type="checkbox" id="check3" value="3">
-            </td>
-            <td>押匯完成通知</td>
-            <td>受益人中國鋼鐵股份有限公司於民國113年11月5日已被核准押匯申請1筆(信用狀號碼：CDSD113000164，匯票號碼：TA24110503)</td>
-            <td class="text-center">2024/11/05 14:17:38</td>
-          </tr>
-        </tbody>
-      </table>
-      <nav class="d-flex align-items-center justify-content-between">
-        <div class="d-flex text-nowrap">
-          <ul class="pagination pagination-sm">
-            <li class="page--item hnb__page--item disabled">
-              <a class="page-link">第一頁</a>
-            </li>
-            <li class="page--item hnb__page--item disabled">
-              <a class="page-link">
-                <span class="mdi mdi-chevron-left"></span>
-              </a>
-            </li>
-            <li class="page--item hnb__page--item active"><a class="page-link" href="#">1</a></li>
-            <li class="page--item hnb__page--item"><a class="page-link" href="#">2</a></li>
-            <li class="page--item hnb__page--item"><a class="page-link" href="#">3</a></li>
-            <li class="page--item hnb__page--item"><a class="page-link" href="#">4</a></li>
-            <li class="page--item hnb__page--item"><a class="page-link" href="#">5</a></li>
-            <li class="page--item hnb__page--item">
-              <a class="page-link" href="#">
-                <span class="mdi mdi-chevron-right"></span>
-              </a>
-            </li>
-            <li class="page--item hnb__page--item">
-              <a class="page-link" href="#">最後一頁</a>
-            </li>
-          </ul>
-          <!-- <input class="form-control form-control-sm" type="text" value=""> -->
-          <div class="input-group input-group-sm ms-2 mb-3 text-nowrap page-width">
-            <span class="input-group-text" id="inputGroup-sizing-sm">第</span>
-            <input type="text" class="form-control" value="">
-            <span class="input-group-text" id="inputGroup-sizing-sm">頁</span>
-            <button class="btn hnb__btn--default" type="button" id="button-addon2">前往</button>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="info01" role="tabpanel" aria-labelledby="info01-tab">
+        <div class="card rounded-0 rounded-bottom">
+          <div class="card-body bg-light">
+            <div class="mb-2 align-items-center d-flex justify-content-between">
+              <h5 class="mb-0 py-1 fs-6 fw-bolder hnb__title">
+                補收開狀手續費作業
+              </h5>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped table-sm hnb__table hnb__bg--white">
+                <thead>
+                  <tr>
+                    <th scope="col" class="hnb__tbhd w-25">主旨</th>
+                    <th scope="col" class="hnb__tbhd">訊息內容</th>
+                    <th scope="col" class="hnb__tbhd w-15">訊息時間</th>
+                    <th scope="col" class="hnb__tbhd w-15">已讀</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>補收開狀手續費完成通知</td>
+                    <td>114年2月7日客戶多樂股份有限公司完成開立國內信用狀1筆(LC_TEST_2025020701)</td>
+                    <td class="text-center">2025/02/07 16:50:21</td>
+                    <td class="text-center">
+                      <button type="button" class="infoBtn px-3 btn btn-sm hnb__btn--default text-nowrap">讀取</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>當日更正補收開狀手續費完成通知</td>
+                    <td>受益人中國鋼鐵股份有限公司於民國113年11月5日已被核准押匯申請1筆(信用狀號碼：CDSD113000164，匯票號碼：TA24110503)</td>
+                    <td class="text-center">2024/11/05 14:17:38</td>
+                    <td class="text-center">
+                      <button type="button"
+                        class="infoBtn px-3 btn btn-sm hnb__btn--cancel text-nowrap disabled">已讀</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <nav class="d-flex align-items-center justify-content-between">
+                <div class="d-flex text-nowrap">
+                  <ul class="mb-0 pagination pagination-sm">
+                    <li class="page--item hnb__page--item disabled">
+                      <a class="page-link">第一頁</a>
+                    </li>
+                    <li class="page--item hnb__page--item disabled">
+                      <a class="page-link">
+                        <span class="mdi mdi-chevron-left"></span>
+                      </a>
+                    </li>
+                    <li class="page--item hnb__page--item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">2</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">3</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">4</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">5</a></li>
+                    <li class="page--item hnb__page--item">
+                      <a class="page-link" href="#">
+                        <span class="mdi mdi-chevron-right"></span>
+                      </a>
+                    </li>
+                    <li class="page--item hnb__page--item">
+                      <a class="page-link" href="#">最後一頁</a>
+                    </li>
+                  </ul>
+                  <div class="input-group input-group-sm ms-2 text-nowrap page-width">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">第</span>
+                    <input type="text" class="form-control" value="">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">頁</span>
+                    <button class="btn hnb__btn--default" type="button" id="button-addon2">前往</button>
+                  </div>
+                </div>
+                <div>
+                  <span class="hnb__text--red">總筆數：</span>100 / <span class="hnb__text--red">總頁數：</span>20
+                </div>
+              </nav>
+            </div>
           </div>
         </div>
-        <div class="mb-3">
-          <span class="hnb__text--red">總筆數：</span>100 / <span class="hnb__text--red">總頁數：</span>20
+      </div>
+      <div class="tab-pane fade" id="info02" role="tabpanel" aria-labelledby="info02-tab">
+        <div class="card rounded-0 rounded-bottom">
+          <div class="card-body bg-light">
+            <div class="mb-2 align-items-center d-flex justify-content-between">
+              <h5 class="mb-0 py-1 fs-6 fw-bolder hnb__title">
+                申請作業
+              </h5>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped table-sm hnb__table hnb__bg--white">
+                <thead>
+                  <tr>
+                    <th scope="col" class="hnb__tbhd w-25">主旨</th>
+                    <th scope="col" class="hnb__tbhd">訊息內容</th>
+                    <th scope="col" class="hnb__tbhd w-15">訊息時間</th>
+                    <th scope="col" class="hnb__tbhd w-15">已讀</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>開狀完成通知</td>
+                    <td>114年2月7日客戶多樂股份有限公司完成開立國內信用狀1筆(LC_TEST_2025020701)</td>
+                    <td class="text-center">2025/02/07 16:50:21</td>
+                    <td class="text-center">
+                      <button type="button" class="infoBtn px-3 btn btn-sm hnb__btn--default text-nowrap">讀取</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>押匯申請審核通知</td>
+                    <td>114年2月7日客戶多樂股份有限公司提出國內信用狀開狀申請1筆(CDSD114000011)</td>
+                    <td class="text-center">2025/02/07 16:44:42</td>
+                    <td class="text-center">
+                      <button type="button" class="infoBtn px-3 btn btn-sm hnb__btn--default text-nowrap">讀取</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>押匯完成通知</td>
+                    <td>受益人中國鋼鐵股份有限公司於民國113年11月5日已被核准押匯申請1筆(信用狀號碼：CDSD113000164，匯票號碼：TA24110503)</td>
+                    <td class="text-center">2024/11/05 14:17:38</td>
+                    <td class="text-center">
+                      <button type="button"
+                        class="infoBtn px-3 btn btn-sm hnb__btn--cancel text-nowrap disabled">已讀</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <nav class="d-flex align-items-center justify-content-between">
+                <div class="d-flex text-nowrap">
+                  <ul class="mb-0 pagination pagination-sm">
+                    <li class="page--item hnb__page--item disabled">
+                      <a class="page-link">第一頁</a>
+                    </li>
+                    <li class="page--item hnb__page--item disabled">
+                      <a class="page-link">
+                        <span class="mdi mdi-chevron-left"></span>
+                      </a>
+                    </li>
+                    <li class="page--item hnb__page--item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">2</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">3</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">4</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">5</a></li>
+                    <li class="page--item hnb__page--item">
+                      <a class="page-link" href="#">
+                        <span class="mdi mdi-chevron-right"></span>
+                      </a>
+                    </li>
+                    <li class="page--item hnb__page--item">
+                      <a class="page-link" href="#">最後一頁</a>
+                    </li>
+                  </ul>
+                  <div class="input-group input-group-sm ms-2 text-nowrap page-width">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">第</span>
+                    <input type="text" class="form-control" value="">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">頁</span>
+                    <button class="btn hnb__btn--default" type="button" id="button-addon2">前往</button>
+                  </div>
+                </div>
+                <div>
+                  <span class="hnb__text--red">總筆數：</span>100 / <span class="hnb__text--red">總頁數：</span>20
+                </div>
+              </nav>
+            </div>
+          </div>
         </div>
-      </nav>
+      </div>
+      <div class="tab-pane fade" id="info03" role="tabpanel" aria-labelledby="info03-tab">
+        <div class="card rounded-0 rounded-bottom">
+          <div class="card-body bg-light">
+            <div class="mb-2 align-items-center d-flex justify-content-between">
+              <h5 class="mb-0 py-1 fs-6 fw-bolder hnb__title">
+                審核作業
+              </h5>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped table-sm hnb__table hnb__bg--white">
+                <thead>
+                  <tr>
+                    <th scope="col" class="hnb__tbhd w-25">主旨</th>
+                    <th scope="col" class="hnb__tbhd">訊息內容</th>
+                    <th scope="col" class="hnb__tbhd w-15">訊息時間</th>
+                    <th scope="col" class="hnb__tbhd w-15">已讀</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>審核開狀完成通知</td>
+                    <td>114年2月7日客戶多樂股份有限公司完成開立國內信用狀1筆(LC_TEST_2025020701)</td>
+                    <td class="text-center">2025/02/07 16:50:21</td>
+                    <td class="text-center">
+                      <button type="button" class="infoBtn px-3 btn btn-sm hnb__btn--default text-nowrap">讀取</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>押匯申請審核通知</td>
+                    <td>114年2月7日客戶多樂股份有限公司提出國內信用狀開狀申請1筆(CDSD114000011)</td>
+                    <td class="text-center">2025/02/07 16:44:42</td>
+                    <td class="text-center">
+                      <button type="button" class="infoBtn px-3 btn btn-sm hnb__btn--default text-nowrap">讀取</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>審核押匯完成通知</td>
+                    <td>受益人中國鋼鐵股份有限公司於民國113年11月5日已被核准押匯申請1筆(信用狀號碼：CDSD113000164，匯票號碼：TA24110503)</td>
+                    <td class="text-center">2024/11/05 14:17:38</td>
+                    <td class="text-center">
+                      <button type="button"
+                        class="infoBtn px-3 btn btn-sm hnb__btn--cancel text-nowrap disabled">已讀</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <nav class="d-flex align-items-center justify-content-between">
+                <div class="d-flex text-nowrap">
+                  <ul class="mb-0 pagination pagination-sm">
+                    <li class="page--item hnb__page--item disabled">
+                      <a class="page-link">第一頁</a>
+                    </li>
+                    <li class="page--item hnb__page--item disabled">
+                      <a class="page-link">
+                        <span class="mdi mdi-chevron-left"></span>
+                      </a>
+                    </li>
+                    <li class="page--item hnb__page--item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">2</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">3</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">4</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">5</a></li>
+                    <li class="page--item hnb__page--item">
+                      <a class="page-link" href="#">
+                        <span class="mdi mdi-chevron-right"></span>
+                      </a>
+                    </li>
+                    <li class="page--item hnb__page--item">
+                      <a class="page-link" href="#">最後一頁</a>
+                    </li>
+                  </ul>
+                  <div class="input-group input-group-sm ms-2 text-nowrap page-width">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">第</span>
+                    <input type="text" class="form-control" value="">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">頁</span>
+                    <button class="btn hnb__btn--default" type="button" id="button-addon2">前往</button>
+                  </div>
+                </div>
+                <div>
+                  <span class="hnb__text--red">總筆數：</span>100 / <span class="hnb__text--red">總頁數：</span>20
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="info04" role="tabpanel" aria-labelledby="info04-tab">
+        <div class="card rounded-0 rounded-bottom">
+          <div class="card-body bg-light">
+            <div class="mb-2 align-items-center d-flex justify-content-between">
+              <h5 class="mb-0 py-1 fs-6 fw-bolder hnb__title">
+                查詢作業
+              </h5>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped table-sm hnb__table hnb__bg--white">
+                <thead>
+                  <tr>
+                    <th scope="col" class="hnb__tbhd w-25">主旨</th>
+                    <th scope="col" class="hnb__tbhd">訊息內容</th>
+                    <th scope="col" class="hnb__tbhd w-15">訊息時間</th>
+                    <th scope="col" class="hnb__tbhd w-15">已讀</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>查詢開狀完成通知</td>
+                    <td>114年2月7日客戶多樂股份有限公司完成開立國內信用狀1筆(LC_TEST_2025020701)</td>
+                    <td class="text-center">2025/02/07 16:50:21</td>
+                    <td class="text-center">
+                      <button type="button" class="infoBtn px-3 btn btn-sm hnb__btn--default text-nowrap">讀取</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>查詢押匯申請審核通知</td>
+                    <td>114年2月7日客戶多樂股份有限公司提出國內信用狀開狀申請1筆(CDSD114000011)</td>
+                    <td class="text-center">2025/02/07 16:44:42</td>
+                    <td class="text-center">
+                      <button type="button" class="infoBtn px-3 btn btn-sm hnb__btn--default text-nowrap">讀取</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <nav class="d-flex align-items-center justify-content-between">
+                <div class="d-flex text-nowrap">
+                  <ul class="mb-0 pagination pagination-sm">
+                    <li class="page--item hnb__page--item disabled">
+                      <a class="page-link">第一頁</a>
+                    </li>
+                    <li class="page--item hnb__page--item disabled">
+                      <a class="page-link">
+                        <span class="mdi mdi-chevron-left"></span>
+                      </a>
+                    </li>
+                    <li class="page--item hnb__page--item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">2</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">3</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">4</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">5</a></li>
+                    <li class="page--item hnb__page--item">
+                      <a class="page-link" href="#">
+                        <span class="mdi mdi-chevron-right"></span>
+                      </a>
+                    </li>
+                    <li class="page--item hnb__page--item">
+                      <a class="page-link" href="#">最後一頁</a>
+                    </li>
+                  </ul>
+                  <div class="input-group input-group-sm ms-2 text-nowrap page-width">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">第</span>
+                    <input type="text" class="form-control" value="">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">頁</span>
+                    <button class="btn hnb__btn--default" type="button" id="button-addon2">前往</button>
+                  </div>
+                </div>
+                <div>
+                  <span class="hnb__text--red">總筆數：</span>100 / <span class="hnb__text--red">總頁數：</span>20
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="info05" role="tabpanel" aria-labelledby="info05-tab">
+        <div class="card rounded-0 rounded-bottom">
+          <div class="card-body bg-light">
+            <div class="mb-2 align-items-center d-flex justify-content-between">
+              <h5 class="mb-0 py-1 fs-6 fw-bolder hnb__title">
+                電子押匯提示作業
+              </h5>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped table-sm hnb__table hnb__bg--white">
+                <thead>
+                  <tr>
+                    <th scope="col" class="hnb__tbhd w-25">主旨</th>
+                    <th scope="col" class="hnb__tbhd">訊息內容</th>
+                    <th scope="col" class="hnb__tbhd w-15">訊息時間</th>
+                    <th scope="col" class="hnb__tbhd w-15">已讀</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>押匯提示通知</td>
+                    <td>114年2月7日客戶多樂股份有限公司完成開立國內信用狀1筆(LC_TEST_2025020701)</td>
+                    <td class="text-center">2025/02/07 16:50:21</td>
+                    <td class="text-center">
+                      <button type="button" class="infoBtn px-3 btn btn-sm hnb__btn--default text-nowrap">讀取</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>押匯拒絕原因通知</td>
+                    <td>114年2月7日客戶多樂股份有限公司提出國內信用狀開狀申請1筆(CDSD114000011)</td>
+                    <td class="text-center">2025/02/07 16:44:42</td>
+                    <td class="text-center">
+                      <button type="button" class="infoBtn px-3 btn btn-sm hnb__btn--default text-nowrap">讀取</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>網銀押匯提示完成通知</td>
+                    <td>受益人中國鋼鐵股份有限公司於民國113年11月5日已被核准押匯申請1筆(信用狀號碼：CDSD113000164，匯票號碼：TA24110503)</td>
+                    <td class="text-center">2024/11/05 14:17:38</td>
+                    <td class="text-center">
+                      <button type="button"
+                        class="infoBtn px-3 btn btn-sm hnb__btn--cancel text-nowrap disabled">已讀</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <nav class="d-flex align-items-center justify-content-between">
+                <div class="d-flex text-nowrap">
+                  <ul class="mb-0 pagination pagination-sm">
+                    <li class="page--item hnb__page--item disabled">
+                      <a class="page-link">第一頁</a>
+                    </li>
+                    <li class="page--item hnb__page--item disabled">
+                      <a class="page-link">
+                        <span class="mdi mdi-chevron-left"></span>
+                      </a>
+                    </li>
+                    <li class="page--item hnb__page--item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">2</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">3</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">4</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">5</a></li>
+                    <li class="page--item hnb__page--item">
+                      <a class="page-link" href="#">
+                        <span class="mdi mdi-chevron-right"></span>
+                      </a>
+                    </li>
+                    <li class="page--item hnb__page--item">
+                      <a class="page-link" href="#">最後一頁</a>
+                    </li>
+                  </ul>
+                  <div class="input-group input-group-sm ms-2 text-nowrap page-width">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">第</span>
+                    <input type="text" class="form-control" value="">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">頁</span>
+                    <button class="btn hnb__btn--default" type="button" id="button-addon2">前往</button>
+                  </div>
+                </div>
+                <div>
+                  <span class="hnb__text--red">總筆數：</span>100 / <span class="hnb__text--red">總頁數：</span>20
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="info06" role="tabpanel" aria-labelledby="info06-tab">
+        <div class="card rounded-0 rounded-bottom">
+          <div class="card-body bg-light">
+            <div class="mb-2 align-items-center d-flex justify-content-between">
+              <h5 class="mb-0 py-1 fs-6 fw-bolder hnb__title">
+                客戶管理作業
+              </h5>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped table-sm hnb__table hnb__bg--white">
+                <thead>
+                  <tr>
+                    <th scope="col" class="hnb__tbhd w-25">主旨</th>
+                    <th scope="col" class="hnb__tbhd">訊息內容</th>
+                    <th scope="col" class="hnb__tbhd w-15">訊息時間</th>
+                    <th scope="col" class="hnb__tbhd w-15">已讀</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>設定客戶群組通知</td>
+                    <td>114年2月7日客戶多樂股份有限公司完成開立國內信用狀1筆(LC_TEST_2025020701)</td>
+                    <td class="text-center">2025/02/07 16:50:21</td>
+                    <td class="text-center">
+                      <button type="button" class="infoBtn px-3 btn btn-sm hnb__btn--default text-nowrap">讀取</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>客戶所屬分行異動通知</td>
+                    <td>114年2月7日客戶多樂股份有限公司提出國內信用狀開狀申請1筆(CDSD114000011)</td>
+                    <td class="text-center">2025/02/07 16:44:42</td>
+                    <td class="text-center">
+                      <button type="button" class="infoBtn px-3 btn btn-sm hnb__btn--default text-nowrap">讀取</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>查詢受益人資料通知</td>
+                    <td>受益人中國鋼鐵股份有限公司於民國113年11月5日已被核准押匯申請1筆(信用狀號碼：CDSD113000164，匯票號碼：TA24110503)</td>
+                    <td class="text-center">2024/11/05 14:17:38</td>
+                    <td class="text-center">
+                      <button type="button"
+                        class="infoBtn px-3 btn btn-sm hnb__btn--cancel text-nowrap disabled">已讀</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <nav class="d-flex align-items-center justify-content-between">
+                <div class="d-flex text-nowrap">
+                  <ul class="mb-0 pagination pagination-sm">
+                    <li class="page--item hnb__page--item disabled">
+                      <a class="page-link">第一頁</a>
+                    </li>
+                    <li class="page--item hnb__page--item disabled">
+                      <a class="page-link">
+                        <span class="mdi mdi-chevron-left"></span>
+                      </a>
+                    </li>
+                    <li class="page--item hnb__page--item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">2</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">3</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">4</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">5</a></li>
+                    <li class="page--item hnb__page--item">
+                      <a class="page-link" href="#">
+                        <span class="mdi mdi-chevron-right"></span>
+                      </a>
+                    </li>
+                    <li class="page--item hnb__page--item">
+                      <a class="page-link" href="#">最後一頁</a>
+                    </li>
+                  </ul>
+                  <div class="input-group input-group-sm ms-2 text-nowrap page-width">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">第</span>
+                    <input type="text" class="form-control" value="">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">頁</span>
+                    <button class="btn hnb__btn--default" type="button" id="button-addon2">前往</button>
+                  </div>
+                </div>
+                <div>
+                  <span class="hnb__text--red">總筆數：</span>100 / <span class="hnb__text--red">總頁數：</span>20
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="info07" role="tabpanel" aria-labelledby="info07-tab">
+        <div class="card rounded-0 rounded-bottom">
+          <div class="card-body bg-light">
+            <div class="mb-2 align-items-center d-flex justify-content-between">
+              <h5 class="mb-0 py-1 fs-6 fw-bolder hnb__title">
+                會員管理作業
+              </h5>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped table-sm hnb__table hnb__bg--white">
+                <thead>
+                  <tr>
+                    <th scope="col" class="hnb__tbhd w-25">主旨</th>
+                    <th scope="col" class="hnb__tbhd">訊息內容</th>
+                    <th scope="col" class="hnb__tbhd w-15">訊息時間</th>
+                    <th scope="col" class="hnb__tbhd w-15">已讀</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>分行管理通知</td>
+                    <td>114年2月7日客戶多樂股份有限公司完成開立國內信用狀1筆(LC_TEST_2025020701)</td>
+                    <td class="text-center">2025/02/07 16:50:21</td>
+                    <td class="text-center">
+                      <button type="button" class="infoBtn px-3 btn btn-sm hnb__btn--default text-nowrap">讀取</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>受益人資料維護完成通知</td>
+                    <td>受益人中國鋼鐵股份有限公司於民國113年11月5日已被核准押匯申請1筆(信用狀號碼：CDSD113000164，匯票號碼：TA24110503)</td>
+                    <td class="text-center">2024/11/05 14:17:38</td>
+                    <td class="text-center">
+                      <button type="button"
+                        class="infoBtn px-3 btn btn-sm hnb__btn--cancel text-nowrap disabled">已讀</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <nav class="d-flex align-items-center justify-content-between">
+                <div class="d-flex text-nowrap">
+                  <ul class="mb-0 pagination pagination-sm">
+                    <li class="page--item hnb__page--item disabled">
+                      <a class="page-link">第一頁</a>
+                    </li>
+                    <li class="page--item hnb__page--item disabled">
+                      <a class="page-link">
+                        <span class="mdi mdi-chevron-left"></span>
+                      </a>
+                    </li>
+                    <li class="page--item hnb__page--item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">2</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">3</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">4</a></li>
+                    <li class="page--item hnb__page--item"><a class="page-link" href="#">5</a></li>
+                    <li class="page--item hnb__page--item">
+                      <a class="page-link" href="#">
+                        <span class="mdi mdi-chevron-right"></span>
+                      </a>
+                    </li>
+                    <li class="page--item hnb__page--item">
+                      <a class="page-link" href="#">最後一頁</a>
+                    </li>
+                  </ul>
+                  <div class="input-group input-group-sm ms-2 text-nowrap page-width">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">第</span>
+                    <input type="text" class="form-control" value="">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">頁</span>
+                    <button class="btn hnb__btn--default" type="button" id="button-addon2">前往</button>
+                  </div>
+                </div>
+                <div>
+                  <span class="hnb__text--red">總筆數：</span>100 / <span class="hnb__text--red">總頁數：</span>20
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -130,7 +692,21 @@
     const modalDelConfirm = document.querySelector('#modalDelConfirm');
     modalDelConfirm.addEventListener('click', () => {
       $(infoDelModal).modal('hide');
-    });  
+    });
+
+    // 已讀 infoBtn
+    const infoBtnList = document.querySelectorAll('.infoBtn');
+    infoBtnList.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (!e.target.classList.contains('disabled')) {
+          e.target.innerText = '已讀';
+          e.target.classList.replace('hnb__btn--default', 'hnb__btn--cancel');
+          e.target.classList.add('disabled');
+        }
+
+      });
+    });
   </script>
 
   <!-- 查詢訊息匣資料 -->
