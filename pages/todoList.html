@@ -23,20 +23,46 @@
     <h1 class="fs-4 fw-bolder">待辦事項列表</h1>
     <div class="table-responsive">
       <div class="list-group">
-        <a href="javascript:void(0)" onclick="draftHandler()" class="list-group-item list-group-item-action hnb__list">
+        <a href="javascript:void(0)" onclick="processHandler('Review', 'ReviewLcApp')"
+          class="list-group-item list-group-item-action hnb__list">
           <span class="mdi mdi-play"></span>
-          <span class="">押匯作業待審核 2 筆</span>
+          <span class="">開狀申請待審核 2 筆</span>
         </a>
-        <a href="javascript:void(0)" onclick="resendHandler()" class="list-group-item list-group-item-action hnb__list">
+        <a href="javascript:void(0)" onclick="processHandler('Review', 'ReviewCancelApp')"
+          class="list-group-item list-group-item-action hnb__list">
           <span class="mdi mdi-play"></span>
-          <span class="">訊息重送 3 筆</span>
+          <span class="">註銷申請待審核 3 筆</span>
         </a>
       </div>
     </div>
   </div>
   <!-- 查詢代辦事項資料 -->
-  <script src="../assets/js/bootstrap.bundle.min.js"></script>  
+  <script>
+    function processHandler(menu, subMenu) {
+      const tabItem = window.parent.document.querySelector(`button[data-bs-target="#${menu}"]`);
+      const tabContent = window.parent.document.querySelector(`#${menu}`);
+      const subTab = window.parent.document.querySelector(`#${subMenu}`);
+      const parentNode = window.parent.document.querySelector('#main-content');
+      if (tabItem) {
+        // 初始化 Accordion
+        window.parent.clearAccordionAction();
+        if (tabItem) {
+          tabItem.classList.add('collapsed');
+          tabContent.classList.add('show');
+        };
+
+        // 初始化選項 active，再指定項目
+        window.parent.clearAction();
+        subTab.classList.add('active');
+
+
+        parentNode.src = `./pages/${menu}/${subMenu}.html`;
+      };
+    };
+  </script>
+  <script src="../assets/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/js/jquery-3.7.1.js"></script>
   <script src="../assets/js/page.js"></script>
 </body>
+
 </html>

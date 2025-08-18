@@ -2,10 +2,11 @@ window.addEventListener('load', () => {
   initMenu();
 });
 
+const accordionList = ['Amend','App','Review','Query','Prompt','Customer','Member'];
 // accordionSideMenu 切換監聽
 function initMenu() {
-  for (let n = 0; n <= 7; n++) {
-    const tab = document.querySelector(`button[data-bs-target="#accordion_0${n}"]`);
+  accordionList.forEach(accordion => {
+    const tab = document.querySelector(`button[data-bs-target="#${accordion}"]`);
 
     // 監聽連結
     if (tab) {
@@ -18,13 +19,13 @@ function initMenu() {
         tab.classList.remove('collapsed');
     });
     }
-  };
+  });
 };
 
 function clearAccordionAction() {
-  for (let n = 0; n <= 7; n++) {
-    const tabItem = document.querySelector(`#heading_0${n} button`);
-    const tabContent = document.querySelector(`#accordion_0${n}`);
+  accordionList.forEach(accordion => {
+    const tabItem = document.querySelector(`button[data-bs-target="#${accordion}"]`);
+    const tabContent = document.querySelector(`#${accordion}`);
     if (tabItem) {
       const hasCollapsed = tabItem.classList.contains('collapsed');
       if (!hasCollapsed) {
@@ -32,7 +33,7 @@ function clearAccordionAction() {
       }
       tabContent.classList.remove('show');
     }
-  }
+  });
 };
 
 // 監聽側邊選單連結
