@@ -16,11 +16,11 @@
 
 <body>
   <!-- 客戶所屬分行異動 -->
-  <div id="lcListPage" class="py-4 px-5">
+  <div id="SetCustomerBranch" class="py-4 px-5">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb fs-6">
         <li class="breadcrumb-item">
-          <a id="homePage" class="hnb__path" href="javascript:void(0)">首頁</a>
+          <a id="homePage" class="hnb__path" href="#" onclick="backHomeHandler()">首頁</a>
         </li>
         <li class="breadcrumb-item">客戶管理作業</li>
         <li class="breadcrumb-item active" aria-current="page">客戶所屬分行異動</li>
@@ -97,10 +97,9 @@
 
   <!-- JS -->
   <script src="../../assets/js/page.js"></script>
+  <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/jquery-3.7.1.js"></script>
   <script>
-    console.log('authType:', authType);
-    let currentEditType = '';
-
     // 訊息視窗
     const messageModalLabel = document.querySelector('#messageModalLabel');
     const msgBody = document.querySelector('#msgBody');
@@ -141,8 +140,6 @@
     };
 
   </script>
-  <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-  <script src="../../assets/js/jquery-3.7.1.js"></script>
 </body>
 
 </html>

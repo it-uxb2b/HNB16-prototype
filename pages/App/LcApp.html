@@ -16,11 +16,11 @@
 
 <body>
   <!-- 開狀申請書 -->
-  <div id="lcListPage" class="py-4 px-5">
+  <div id="LcApp" class="py-4 px-5">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb fs-6">
         <li class="breadcrumb-item">
-          <a id="homePage" class="hnb__path" href="javascript:void(0)">首頁</a>
+          <a id="homePage" class="hnb__path" href="#" onclick="backHomeHandler()">首頁</a>
         </li>
         <li class="breadcrumb-item">申請作業</li>
         <li class="breadcrumb-item active" aria-current="page">開狀申請書</li>
@@ -3073,9 +3073,9 @@
 
   <!-- JS -->
   <script src="../../assets/js/page.js"></script>
+  <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/jquery-3.7.1.js"></script>
   <script>
-    console.log('authType:', authType);
-    let currentEditType = '';
     // 受益人類別控制項
     const beneType = document.querySelector('#beneType');
     const beneSelect = document.querySelector('#beneSelect');
@@ -3234,8 +3234,6 @@
     flatpickr('#expDate, #deliveryDate, #draftDate', config);
 
   </script>
-  <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-  <script src="../../assets/js/jquery-3.7.1.js"></script>
 </body>
 
 </html>

@@ -16,7 +16,7 @@
 
 <body>
   <!-- 比對視窗 -->
-  <div id="lcListPage" class="p-4">
+  <div id="QueryCompare" class="p-4">
     <!-- 查詢註銷申請/切結書 -->
     <div id="queryForm">
       <h1 class="py-2 fs-4 fw-bolder">授信資料歷程調整</h1>
@@ -1827,9 +1827,9 @@
 
   <!-- JS -->
   <script src="../../assets/js/page.js"></script>
+  <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/jquery-3.7.1.js"></script>
   <script>
-    console.log('authType:', authType);
-    let currentEditType = '';
     // 查詢控制項
     const queryForm = document.querySelector('#queryForm');
     const queryList = document.querySelector('#queryList');
@@ -1911,8 +1911,6 @@
     flatpickr('#expDate, #deliveryDate, #draftDate', config);
 
   </script>
-  <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-  <script src="../../assets/js/jquery-3.7.1.js"></script>
 </body>
 
 </html>

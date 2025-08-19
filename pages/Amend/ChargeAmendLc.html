@@ -15,12 +15,12 @@
 </head>
 
 <body>
-  <!-- 查詢信用狀資料 -->
-  <div id="lcListPage" class="py-4 px-5">
+  <!-- 當日更正補收開狀手續費 -->
+  <div id="ChargeAmendLc" class="py-4 px-5">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb fs-6">
         <li class="breadcrumb-item">
-          <a id="homePage" class="hnb__path" href="javascript:void(0)">首頁</a>
+          <a id="homePage" class="hnb__path" href="#" onclick="backHomeHandler()">首頁</a>
         </li>
         <li class="breadcrumb-item">補收開狀手續費作業</li>
         <li class="breadcrumb-item active" aria-current="page">當日更正補收開狀手續費</li>
@@ -149,7 +149,7 @@
       </nav>
     </div>
   </div>
-  <!-- 查詢信用狀資料 -->
+  <!-- 當日更正補收開狀手續費 -->
 
   <!-- 確認更正 視窗 -->
   <div class="modal fade" id="confirmChargeFeeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -1398,8 +1398,9 @@
   </div>
   <!-- JS -->
   <script src="../../assets/js/page.js"></script>
+  <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/jquery-3.7.1.js"></script>
   <script>
-    console.log('authType:', authType);
     // 確認當日更正
     function confirmCharge() {
       if (confirm('您確認要更正此筆資料嗎？') === true) {
@@ -1446,8 +1447,6 @@
       }
     };    
   </script>
-  <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-  <script src="../../assets/js/jquery-3.7.1.js"></script>
 </body>
 
 </html>

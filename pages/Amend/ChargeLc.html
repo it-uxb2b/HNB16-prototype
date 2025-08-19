@@ -16,11 +16,11 @@
 
 <body>
   <!-- 查詢信用狀資料 -->
-  <div id="lcListPage" class="py-4 px-5">
+  <div id="ChargeLc" class="py-4 px-5">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb fs-6">
         <li class="breadcrumb-item">
-          <a id="homePage" class="hnb__path" href="javascript:void(0)">首頁</a>
+          <a id="homePage" class="hnb__path" href="#" onclick="backHomeHandler()">首頁</a>
         </li>
         <li class="breadcrumb-item">補收開狀手續費作業</li>
         <li class="breadcrumb-item active" aria-current="page">補收開狀手續費</li>
@@ -1573,8 +1573,9 @@
   </div>
   <!-- JS -->
   <script src="../../assets/js/page.js"></script>
+  <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/jquery-3.7.1.js"></script>
   <script>
-    console.log('authType:', authType);
     // 不收費用
     function noCharge() {
       if (confirm('確定不再補收此次之開狀手續費？') === true) {
@@ -1621,8 +1622,6 @@
       }
     };    
   </script>
-  <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-  <script src="../../assets/js/jquery-3.7.1.js"></script>
 </body>
 
 </html>
