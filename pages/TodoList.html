@@ -37,9 +37,9 @@
     </div>
   </div>
   <!-- 查詢代辦事項資料 -->
+  <script src="../assets/js/page.js"></script>
   <script src="../assets/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/js/jquery-3.7.1.js"></script>
-  <script src="../assets/js/page.js"></script>
   <script>
     function processHandler(menu, subMenu) {
       const tabItem = window.parent.document.querySelector(`button[data-bs-target="#${menu}"]`);
@@ -57,8 +57,6 @@
         // 初始化選項 active，再指定項目
         window.parent.clearAction();
         subTab.classList.add('active');
-
-
         parentNode.src = `./pages/${menu}/${subMenu}.html`;
       };
     };
