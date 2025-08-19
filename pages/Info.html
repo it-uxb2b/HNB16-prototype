@@ -11,11 +11,11 @@
 
 <body>
   <!-- 查詢訊息匣資料 -->
-  <div id="lcListPage" class="py-4 px-5">
+  <div id="Info" class="py-4 px-5">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb fs-6">
         <li class="breadcrumb-item">
-          <a id="homePage" class="hnb__path" href="javascript:void(0)">首頁</a>
+          <a id="homePage" class="hnb__path" href="#" onclick="backHomeHandler()">首頁</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">訊息匣</li>
       </ol>
@@ -686,6 +686,11 @@
       </div>
     </div>
   </div>
+
+  <!-- 查詢訊息匣資料 -->
+  <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/jquery-3.7.1.js"></script>
+  <script src="../assets/js/page.js"></script>
   <script>
     // modalConfirm button Handler
     const infoDelModal = document.querySelector('#infoDelModal');
@@ -704,15 +709,9 @@
           e.target.classList.replace('hnb__btn--default', 'hnb__btn--cancel');
           e.target.classList.add('disabled');
         }
-
       });
     });
   </script>
-
-  <!-- 查詢訊息匣資料 -->
-  <script src="../assets/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/js/jquery-3.7.1.js"></script>
-  <script src="../assets/js/page.js"></script>
 </body>
 
 </html>
