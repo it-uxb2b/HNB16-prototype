@@ -12,5 +12,5 @@ function backHomeHandler() {
   window.parent.clearAccordionAction();
   // 初始化選項 active，再指定項目
   window.parent.clearAction();
-  location.href="/pages/Home.html";
+  location.href="../../pages/Home.html";
 };
