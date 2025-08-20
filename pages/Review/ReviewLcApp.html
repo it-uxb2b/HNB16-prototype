@@ -1806,6 +1806,11 @@
     const inputField = document.querySelector('#inputField');
     const stringField = document.querySelector('#stringField');
 
+    // 確認 訊息及按鈕
+    const messageModalLabel = document.querySelector('#messageModalLabel');
+    const msgBody = document.querySelector('#msgBody');
+    const msgFooter = document.querySelector('#msgFooter');
+
     // 不同權限切換顯示欄位
     if (authType === 'BH') {
       stringField.classList.add('hnb__hide');
@@ -1830,7 +1835,6 @@
 
     // 審核確認
     function confirmReview() {
-      console.log({ authType })
       if (authType === 'BH') {
         if (reviewStatus === 'approved') {
           confirmHandler();
@@ -1922,19 +1926,6 @@
       } else {
         lcTypeDate.textContent = '見票即付。';
       };
-    };
-
-    // 確認 訊息及按鈕
-    const msgBody = document.querySelector('#msgBody');
-    const msgFooter = document.querySelector('#msgFooter');
-
-    function checkHandler() {
-      msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
-              您確定要更正此筆資料嗎？
-            </p>`;
-      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
-        <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
-      $('#messageModal').modal('show');
     };
 
     function confirmHandler() {
@@ -2045,7 +2036,6 @@
 
     // 匯票到期日 / 匯票發票日 - 日期選擇器
     flatpickr('#draftDate, #invoiceDate', config);
-
   </script>
 </body>
 
