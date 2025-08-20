@@ -1603,14 +1603,12 @@
     };
 
     // 主管權限檢查 核准/退回 是否有點選，再確認後續流程
-    let reviewStatue = '';
-    reviewStatusList.forEach(item => {
-      item.addEventListener('change', (e) => {
-        if (e.target.value) {
+    let reviewStatus = '';
+    reviewStatusList.forEach(status => {
+      status.addEventListener('change', () => {
+        if (!!status.value) {
           chargeFeeConfirmBtn.classList.remove('disabled');
-          reviewStatue = e.target.value;
-
-          console.log({ reviewStatue })
+          reviewStatus = status.value;
         }
       });
     });
@@ -1644,7 +1642,7 @@
       };
 
       if (authType === 'BS') {
-        if (reviewStatue === 'approved') {
+        if (reviewStatus === 'approved') {
           messageModalLabel.innerHTML = '主管放行密碼';
           msgBody.innerHTML = `
           <div class="row align-items-center">
@@ -1657,7 +1655,7 @@
           <button type="button" class="my-1 px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
           <button type="button" class="my-1 px-3 btn btn-sm border-1 hnb__btn--default" onclick="bossConfirmHandler()">確定</button>`;
         };
-        if (reviewStatue === 'reject') {
+        if (reviewStatus === 'reject') {
           messageModalLabel.innerHTML = '作業訊息';
           msgBody.innerHTML = `
             <p>
