@@ -532,7 +532,7 @@ form {
   }
 
   &__hide {
-    display: none;
+    display: none !important;
   }
 
   &__bankName {
