@@ -1796,9 +1796,7 @@
     function confirmHandler() {
       const messageModal = document.querySelector('#messageModal .modal-dialog');
       messageModal.classList.add('modal-xl');
-      $('#messageModal').modal('hide');
-      setTimeout(() => {
-        msgBody.innerHTML = reviewStatus === 'approved' ? `
+      msgBody.innerHTML = `
         <div class="table-responsive">
           <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white">
             <thead>
@@ -1820,34 +1818,10 @@
               </tr>
             </tbody>
           </table>
-        </div>` :
-          `
-        <div class="table-responsive">
-          <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white">
-            <thead>
-              <tr>
-                <th scope="col" class="hnb__tbhd">修改申請書號碼</th>
-                <th scope="col" class="hnb__tbhd">申請人</th>
-                <th scope="col" class="hnb__tbhd">受益人</th>
-                <th scope="col" class="hnb__tbhd text-nowrap">審核動作</th>
-                <th scope="col" class="hnb__tbhd text-nowrap">執行結果</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="text-center text-nowrap">099700017161000861-A-01</td>
-                <td class="text-nowrap">網際測試股份有限公司</td>
-                <td class="text-nowrap">優勢測試股份有限公司</td>
-                <td class="text-center text-nowrap">拒絕</td>
-                <td class="text-center">審核完成</td>
-              </tr>
-            </tbody>
-          </table>
         </div>`;
-        msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
+      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
                 onclick="location.href = 'ReviewAmendApp.html';">回修改申請書待審核清冊</button>`;
-        $('#messageModal').modal('show');
-      }, 300);
+      $('#messageModal').modal('show');
     };
 
     // 授信資料 creditData

@@ -184,11 +184,12 @@
     </div>
 
     <!-- 審核匯票資料 -->
-    <div id="lcAppList" class="hnb__hide">
+    <div id="draftDataList" class="hnb__hide">
       <h1 class="py-2 fs-4 fw-bolder">審核匯票資料</h1>
       <div class="mb-2 card">
         <div class="card-body bg-light">
-          <div class="table-responsive">
+          <!-- 經辦顯示 -->
+          <div class="table-responsive inputField">
             <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white">
               <tbody>
                 <tr>
@@ -216,7 +217,7 @@
               </tbody>
             </table>
           </div>
-          <div class="my-3 text-center">
+          <div class="inputField my-3 text-center">
             <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap">
               <span class="mdi mdi-cloud-download"></span>
               下載電子檔
@@ -226,9 +227,396 @@
               列印
             </button>
           </div>
+          <!-- 主管顯示 -->
+          <ul id="myTab" class="nav nav-tabs stringField" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link hnb__tab active" id="draft1-tab" data-bs-toggle="tab" data-bs-target="#draft1"
+                type="button" role="tab" aria-controls="draft1" aria-selected="true">
+                匯票正反面
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link hnb__tab" id="draft2-tab" data-bs-toggle="tab" data-bs-target="#draft2"
+                type="button" role="tab" aria-controls="draft2" aria-selected="false">
+                匯票申請書
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link hnb__tab" id="draft3-tab" data-bs-toggle="tab" data-bs-target="#draft3"
+                type="button" role="tab" aria-controls="draft3" aria-selected="false">
+                發票清冊
+              </button>
+            </li>
+          </ul>
+          <div id="myTabContent" class="tab-content stringField">
+            <!-- 匯票正反面 -->
+            <div class="tab-pane fade show active" id="draft1" role="tabpanel" aria-labelledby="draft1-tab">
+              <div class="card rounded-0 rounded-bottom">
+                <div class="card-body bg-light">
+                  <div class="table-responsive bg-white">
+                    <table class="mb-0 table table-sm hnb__table hnb__bg--white">
+                      <tbody>
+                        <tr>
+                          <td rowspan="2">
+                            <div class="px-2 hnb__bankName fs-2 text-center">
+                              <p class="py-3">匯</p>
+                              <p class="mb-0 py-3">票</p>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="container">
+                              <div class="row align-items-center">
+                                <div class="py-1 col-12">
+                                  <span class="me-3">E000000001 號</span>
+                                  <span class="me-3">
+                                    銀行代號
+                                    <span class="px-5">0081083</span>
+                                  </span>
+                                  <span class="px-5 hnb__bg--yellow">65.00</span>
+                                </div>
+                                <div class="py-1 col-12">
+                                  <p class="mb-1">一、憑票請於中華民國 114 年 01 月 03 日支付中鴻鋼鐵股份有限公司或其指定人</p>
+                                  <p class="mb-0 ms-4 fs-5 fw-bold">
+                                    <span class="p-2 pe-0">新台幣</span>
+                                    <span class="p-2 pe-5 hnb__text--red hnb__bg--yellow">陸拾伍元整</span>
+                                  </p>
+                                  <p class="mb-1">二、付款處所 華南商業銀行 城東分行</p>
+                                  <p class="mb-1">三、本匯票係依據 華南商業銀行 城東分行</p>
+                                  <p class="mb-1 ms-4">
+                                    中華民國 114 年 01 月 05 日第
+                                    <span class="px-3">wonLLC1</span>
+                                    號國內信用狀開立
+                                  </p>
+                                  <p>四、本匯票免除做成拒絕證書</p>
+                                </div>
+                                <div class="py-1 col-6">
+                                  <span class="fw-bold">此致 華南商業銀行 城東分行</span>
+                                </div>
+                                <div class="py-1 col-6" style="position: relative;">
+                                  <span class="ps-4 fw-bold">驗付</span>
+                                  <img src="../../assets/images/buyer_test.jpg" class="hnb__image--draft">
+                                </div>
+                                <div class="py-1 pe-5 col-12 text-end">
+                                  <span class="pe-3">中華民國 114 年 01 月 05日</span>
+                                  <span>發票人：中鴻鋼鐵股份有限公司</span>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td rowspan="2">
+                            <div class="px-2 text-center">
+                              <p class="py-2 text-nowrap">經副襄理</p>
+                              <p class="py-2 text-nowrap">會　　計</p>
+                              <p class="py-2 text-nowrap">營　　業</p>
+                              <p class="py-2 text-nowrap">記　　帳</p>
+                              <p class="mb-0 py-2 text-nowrap">核　　章</p>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="container">
+                              <div class="row align-items-center">
+                                <div class="py-1 col-12">
+                                  <p class="mb-1">茲經承兌屆期照付</p>
+                                  <p class="mb-0 ms-4 fs-5 fw-bold">
+                                    <span class="p-2 pe-0">新台幣</span>
+                                    <span class="p-2 pe-5 hnb__text--red hnb__bg--yellow">陸拾伍元整</span>
+                                  </p>
+                                </div>
+                                <div class="py-1 col-6">
+                                  <span class="fw-bold">此致 華南商業銀行 城東分行</span>
+                                </div>
+                                <div class="py-1 pe-4 col-12 d-flex align-items-end justify-content-end">
+                                  <span class="pe-3">承兌日期 中華民國　　年　　月　　日</span>
+                                  <span class="pe-2">承兌人<br>住　址</span>
+                                  <div class="hnb__address--draft"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="pt-3 text-center">
+                    請由上至下順序在背書欄背書人處背書，並著名背書之年，月，日，如記載背書人時，應在背書人處書明。
+                  </div>
+                  <div class="table-responsive bg-white">
+                    <table class="mb-0 table table-sm hnb__table">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div class="container">
+                              <div class="row">
+                                <div class="py-1 col-6">
+                                  <p class="mb-2">票面金額請付</p>
+                                  <p class="mb-2 text-end">背書人</p>
+                                  <p class="mb-2 text-end">住　址</p>
+                                </div>
+                                <div class="py-1 col-6 d-flex flex-column justify-content-between">
+                                  <p class="mb-2">或其指定人並免除作成拒絕書</p>
+                                  <p class="mb-0">
+                                    <img src="../../assets/images/endorse_test.jpg">
+                                  </p>
+                                  <p class="mb-0 text-end">中華民國　　年　　月　　日</p>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="container">
+                              <div class="row">
+                                <div class="py-1 col-6">
+                                  <p class="mb-2">票面金額請付</p>
+                                  <p class="mb-2 text-end">背書人</p>
+                                  <p class="mb-2 text-end">住　址</p>
+                                </div>
+                                <div class="py-1 col-6 d-flex flex-column justify-content-between">
+                                  <p class="mb-2">或其指定人並免除作成拒絕書</p>
+                                  <p class="mb-0"></p>
+                                  <p class="mb-0 text-end">中華民國　　年　　月　　日</p>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="container">
+                              <div class="row">
+                                <div class="py-1 col-6">
+                                  <p class="mb-2">票面金額請付</p>
+                                  <p class="mb-2 text-end">背書人</p>
+                                  <p class="mb-2 text-end">住　址</p>
+                                </div>
+                                <div class="py-1 col-6 d-flex flex-column justify-content-between">
+                                  <p class="mb-2">或其指定人並免除作成拒絕書</p>
+                                  <p class="mb-0"></p>
+                                  <p class="mb-0 text-end">中華民國　　年　　月　　日</p>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="modal-footer justify-content-center pb-0">
+                    <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap">
+                      <span class="mdi mdi-content-save"></span>
+                      另存新檔
+                    </button>
+                    <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--print text-nowrap">
+                      <span class="mdi mdi-printer"></span>
+                      列印
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 匯票申請書 -->
+            <div class="tab-pane fade" id="draft2" role="tabpanel" aria-labelledby="draft2-tab">
+              <div class="card rounded-0 rounded-bottom">
+                <div class="card-body bg-light">
+                  <div id="draftApplication">
+                    <table class="mb-0 table table-sm hnb__table hnb__bg--white">
+                      <tbody>
+                        <tr>
+                          <td class="p-3">
+                            <div class="container">
+                              <div class="row align-items-center">
+                                <div class="col-12 d-flex align-items-center justify-content-center fs-1-5 fw-bold">
+                                  <span class="mx-2">匯票</span>
+                                  <span class="mx-2">
+                                    <input type="checkbox" name="C1" value="ON" disabled>
+                                    承兌
+                                    <br>
+                                    <input type="checkbox" name="C12" value="ON" checked disabled>
+                                    付款
+                                  </span>
+                                  <span class="mx-2">申請書</span>
+                                </div>
+                                <div class="col-12 text-end">
+                                  中華民國 114 年 05 月 10 日
+                                </div>
+                              </div>
+                            </div>
+                            <table class="mb-0 table table-sm hnb__table hnb__bg--white">
+                              <tbody>
+                                <tr>
+                                  <td colspan="2">
+                                    <div class="container">
+                                      <div class="row align-items-center">
+                                        <div class="py-1 col-6">
+                                          <span class="fw-bold">信用狀號碼：</span>wonLLC1
+                                        </div>
+                                        <div class="py-1 col-6 text-end">
+                                          <span class="fw-bold">通知銀行編號：</span>0081083
+                                        </div>
+                                        <div class="py-1 col-6">
+                                          <span class="fw-bold">信用狀額度：</span>NT$ 88,188,500,000.00
+                                        </div>
+                                        <div class="py-1 col-6 text-end">
+                                          <span class="fw-bold">有效期限：</span>民國 115 年 03 月 28 日
+                                        </div>
+                                        <div class="py-1 col-12">
+                                          <span class="fw-bold">申請人：</span>測試公司A股份有限公司
+                                        </div>
+                                        <div class="py-1 col-12">
+                                          <span class="fw-bold">地址：</span>銀行縣測試鄉測試路ＸＸ３號
+                                        </div>
+                                        <div class="py-1 col-6">
+                                          <span class="fw-bold">受益人：</span>中鴻鋼鐵股份有限公司
+                                        </div>
+                                        <div class="py-1 col-6 text-end">
+                                          <span class="fw-bold">地址：</span>高雄市小港區臨海工業區
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <table class="mb-0 table table-sm hnb__table hnb__bg--white">
+                              <tbody>
+                                <tr>
+                                  <td class="px-2 text-center">
+                                    <span class="py-2">匯</span>
+                                    <br>
+                                    <span class="py-2">票</span>
+                                  </td>
+                                  <td>
+                                    <div class="container">
+                                      <div class="row align-items-center">
+                                        <div class="py-1 col-12">
+                                          <span class="fw-bold">金額：</span>
+                                          新台幣
+                                          <span class="hnb__text--red">陸拾伍元整</span>
+                                        </div>
+                                        <div class="py-1 col-12">
+                                          <span class="fw-bold">付款人：</span>
+                                          華南商業銀行 城東分行
+                                        </div>
+                                        <div class="py-1 col-12">
+                                          <span class="fw-bold">到期日：</span>
+                                          民國 115 年 01 月 03 日
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <table class="table table-sm table-striped hnb__table hnb__bg--white">
+                              <thead>
+                                <tr>
+                                  <th class="hnb__tbhd2 text-center">貨品名稱</th>
+                                  <th class="hnb__tbhd2 text-center">數量 (KG)</th>
+                                  <th class="hnb__tbhd2 text-center">總價</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>熱軋粗鋼捲 BAND FOR SAE 1008 REROLLING QUALITY,</td>
+                                  <td class="text-end">1300255</td>
+                                  <td class="text-end">13,420,565.00</td>
+                                </tr>
+                                <tr>
+                                  <td>熱軋粗鋼捲 BAND FOR SAE 1008 REROLLING QUALITY,</td>
+                                  <td class="text-end">1300255</td>
+                                  <td class="text-end">13,420,565.00</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <div>
+                              上開貨品業於民國 114 年 01月 03 日交貨，茲由信用狀受益人簽發匯票乙紙，檢附統一發票 4
+                              紙，請　惠予付款。信用狀　及　受益人並聲明上項交易如有不實，致　貴行遭受損失時，願負損害賠償之責任。
+                            </div>
+                            <p class="py-3 col-12">
+                              此致 華南商業銀行 城東分行
+                            </p>
+                            <p class="mb-0 py-0 col-12 text-end">
+                              <span class="fw-bold">信用狀受益人：</span>中鴻鋼鐵股份有限公司
+                            </p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="px-5">
+                      <div class="py-3 fs-6 fw-bold text-center">受益人完整提示</div>
+                      <p>受益人僅此通知，本匯票付款申請書內所述信用狀 ( 信用狀號碼 wonLLC1 ) 項下所有押匯文件，業於本日完整提示，敬請審核。</p>
+                      <p class="col-12">
+                        此致 華南商業銀行 城東分行
+                      </p>
+                      <p class="mb-0 col-12 text-end">
+                        <span class="fw-bold">信用狀受益人：</span>中鴻鋼鐵股份有限公司
+                      </p>
+                    </div>
+                  </div>
+                  <div class="modal-footer justify-content-center border-top mt-3 pb-0">
+                    <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap">
+                      <span class="mdi mdi-content-save"></span>
+                      另存新檔
+                    </button>
+                    <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--print text-nowrap">
+                      <span class="mdi mdi-printer"></span>
+                      列印
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 發票清冊 -->
+            <div class="tab-pane fade" id="draft3" role="tabpanel" aria-labelledby="draft3-tab">
+              <div class="card rounded-0 rounded-bottom">
+                <div class="card-body bg-light">
+                  <div id="draftApplication">
+                    <div class="table-responsive">
+                      <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white">
+                        <thead>
+                          <tr>
+                            <th scope="col" class="hnb__tbhd">發票號碼</th>
+                            <th scope="col" class="hnb__tbhd">發票金額</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-center">
+                              <a href="#" class="hnb__link--text" data-bs-toggle="modal"
+                                data-bs-target="#invoiceModal">WO00000029</a>
+                            </td>
+                            <td class="text-end text-nowrap">282,125.00</td>
+                          </tr>
+                          <tr>
+                            <td class="text-center">
+                              <a href="#" class="hnb__link--text" data-bs-toggle="modal"
+                                data-bs-target="#invoiceModal">WO00000039</a>
+                            </td>
+                            <td class="text-end text-nowrap">282,125.00</td>
+                          </tr>
+                          <tr>
+                            <td class="text-center">
+                              <a href="#" class="hnb__link--text" data-bs-toggle="modal"
+                                data-bs-target="#invoiceModal">WO00000049</a>
+                            </td>
+                            <td class="text-end text-nowrap">282,125.00</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="card my-3 mx-auto shadow-sm" style="max-width: 1000px">
             <div class="card-body p-4">
-              <div class="my-3 p-4 mx-auto border border-success">
+              <!-- 經辦顯示 -->
+              <div class="inputField my-3 p-4 mx-auto border border-success">
                 <h5 class="card-subtitle fw-bold mb-2 hnb__text--red">押匯方式：</h5>
                 <div class="my-2">
                   <div class="form-check">
@@ -534,24 +922,274 @@
                   </div>
                 </div>
               </div>
-              <div class="pt-2 pb-4 d-flex align-items-center justify-content-center">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="reviewStatus" id="iRadio1" value="approved">
-                  <label class="form-check-label" for="iRadio1">核准</label>
+              <!-- 主管顯示 -->
+              <div class="stringField my-3 p-4 mx-auto border border-success">
+                <h5 class="card-subtitle fw-bold mb-2 hnb__text--red">押匯方式：</h5>
+                <div class="my-2">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radio1" id="check1" checked disabled>
+                    <label class="d-flex align-items-center" for="check1">
+                      <span class="text-nowrap">押匯</span>
+                    </label>
+                  </div>
                 </div>
-                <div class="form-check form-check-inline me-1">
-                  <input class="form-check-input" type="radio" name="reviewStatus" id="iRadio2" value="reject">
-                  <label class="form-check-label" for="iRadio2">拒絕 / 拒絕原因：</label>
+                <div class="ps-4">
+                  <div class="fw-bold text-nowrap">撥款方式：</div>
+                  <div class="d-flex align-items-start">
+                    <div class="py-2 form-check">
+                      <input class="form-check-input" type="radio" name="draftRadio1" id="pay1" disabled>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center flex-wrap">
+                          <div class="text-end" style="width:110px">本行-轉入帳號：</div>
+                          <span>---</span>
+                        </div>
+                      </div>
+                      <div class="my-1 d-flex align-items-center flex-wrap">
+                        <div class="text-end" style="width:110px">戶名：</div>
+                        <span>台灣塑膠工業股份有限公司</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-start">
+                    <div class="py-2 form-check">
+                      <input class="form-check-input" type="radio" name="draftRadio1" id="pay2" disabled>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <div class="py-2">
+                        跨行-付款內容詳受益人匯出匯款申請書
+                      </div>
+                      <div class="d-flex flex-wrap">
+                        <div class="my-1 d-flex align-items-center">
+                          <div>匯入銀行：</div>
+                          <span>---</span>
+                        </div>
+                        <div class="my-1 ms-5 d-flex align-items-center">
+                          <div>銀行名稱：</div>
+                          <span>---</span>
+                        </div>
+                        <div class="my-1 ms-5 d-flex align-items-center">
+                          <div>匯款帳號：</div>
+                          <span>---</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-start">
+                    <div class="py-2 form-check">
+                      <input class="form-check-input" type="radio" name="draftRadio1" id="pay3" checked disabled>
+                    </div>
+                    <div class="d-flex align-items-start flex-wrap">
+                      <div class="py-2 text-nowrap">轉入科目：</div>
+                      <div class="py-2">
+                        <div class=" d-flex align-items-center">
+                          <span class="text-nowrap">轉入會計科目：</span>
+                          <span>13097-099：其他應收款-雜項</span>
+                        </div>
+                        <div class=" d-flex align-items-center">
+                          <span class="text-nowrap">轉入銷帳序號：</span>
+                          <span>111101</span>
+                        </div>
+                        <div class=" d-flex align-items-center">
+                          <span class="text-nowrap">轉入科目金額：</span>
+                          <span>100000.0</span>
+                        </div>
+                        <div class=" d-flex align-items-center">
+                          <span class="text-nowrap">轉入科目摘要：</span>
+                          <span>國內信用狀押匯台灣塑膠工業股份有限公司</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center flex-wrap">
+                    <div>押匯手續費：</div>
+                    <span>300.0</span>
+                    <div class="ms-5">是否扣印花稅：</div>
+                    <span>是</span>
+                  </div>
                 </div>
-                <select name="select2" class="form-select form-select-sm" style="width:200px">
-                  <option selected>=請選擇拒絕原因=</option>
-                  <option>拒絕原因 1</option>
-                  <option>拒絕原因 2</option>
-                  <option>拒絕原因 3</option>
-                  <option>拒絕原因 4</option>
-                </select>
+                <hr class="my-3 border border-0 border-top border-secondary">
+                <div class="my-2">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radio1" id="check2" disabled>
+                    <label class="d-flex align-items-center" for="check2">
+                      <span class="text-nowrap">承兌</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="ps-4">
+                  <div class="d-flex align-items-center flex-wrap">
+                    <span class="fw-bold text-nowrap">承兌手續費：</span>
+                    <span>0</span>
+                    <span class="fw-bold">是否扣印花稅：</span>
+                    <span>是</span>
+                  </div>
+                  <div class="d-flex align-items-center flex-wrap">
+                    <span class="fw-bold text-nowrap">承兌放款核號：</span>
+                    <span>---</span>
+                  </div>
+                  <div class="py-1 d-flex align-items-center flex-wrap">
+                    <span class="fw-bold text-nowrap">貸放經理人 ID：</span>
+                    <span>G101057626</span>
+                  </div>
+                  <div class="py-1 d-flex align-items-center flex-wrap">
+                    <span class="fw-bold text-nowrap">貸放經理人 ID-A：</span>
+                    <span>G101057626</span>
+                  </div>
+                  <div class="py-1 d-flex align-items-center flex-wrap">
+                    <span class="fw-bold text-nowrap">貸放經理人 ID-B：</span>
+                    <span>---</span>
+                  </div>
+                  <div class="py-1 d-flex align-items-center flex-wrap">
+                    <span class="fw-bold text-nowrap">押匯手續費：</span>
+                    <span>0</span>
+                    <span class="fw-bold">是否扣印花稅：</span>
+                    <span>是</span>
+                  </div>
+                  <div class="d-flex">
+                    <div class="fw-bold text-nowrap">風險條件：</div>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-6 py-1 d-flex align-items-center">
+                          <span class="fw-bold text-nowrap">風險類別一：</span>
+                          <span>B1 應收信用狀款-存款或存單</span>
+                        </div>
+                        <div class="col-6 py-1 d-flex align-items-center">
+                          <span class="fw-bold text-nowrap">風險類別一百分比 %：</span>
+                          <span>100</span>
+                        </div>
+                        <div class="col-6 py-1 d-flex align-items-center">
+                          <span class="fw-bold text-nowrap">風險類別二：</span>
+                          <span>B1 應收信用狀款-存款或存單</span>
+                        </div>
+                        <div class="col-6 py-1 d-flex align-items-center">
+                          <span class="fw-bold text-nowrap">風險類別二百分比 %：</span>
+                          <span>---</span>
+                        </div>
+                        <div class="col-6 py-1 d-flex align-items-center">
+                          <span class="fw-bold text-nowrap">風險類別三：</span>
+                          <span>B1 應收信用狀款-存款或存單</span>
+                        </div>
+                        <div class="col-6 py-1 d-flex align-items-center">
+                          <span class="fw-bold text-nowrap">風險類別三百分比 %：</span>
+                          <span>---</span>
+                        </div>
+                        <div class="col-6 py-1 d-flex align-items-center">
+                          <span class="fw-bold text-nowrap">風險類別四：</span>
+                          <span>B1 應收信用狀款-存款或存單</span>
+                        </div>
+                        <div class="col-6 py-1 d-flex align-items-center">
+                          <span class="fw-bold text-nowrap">風險類別四百分比 %：</span>
+                          <span>---</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <h5 class="card-subtitle fw-bold my-3 hnb__text--red">費用付款方式：</h5>
+                <div class="my-2">
+                  <div class="d-flex align-items-start">
+                    <div class="py-2 form-check">
+                      <input class="form-check-input" type="radio" name="draftRadio2" id="check21" checked disabled>
+                    </div>
+                    <div class="py-2">
+                      現金
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-start">
+                    <div class="py-2 form-check">
+                      <input class="form-check-input" type="radio" name="draftRadio2" id="check22" disabled>
+                    </div>
+                    <div class="d-flex flex-wrap">
+                      <div class="py-1 d-flex align-items-center">
+                        <span class="text-nowrap">支存帳號：</span>
+                        <span>---</span>
+                      </div>
+                      <div class="ms-5 py-1 d-flex align-items-center">
+                        <span class="text-nowrap">支票號碼：</span>
+                        <span>---</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-start">
+                    <div class="py-2 form-check">
+                      <input class="form-check-input" type="radio" name="draftRadio2" id="check23" disabled>
+                    </div>
+                    <div class="py-1 d-flex align-items-center">
+                      <span class="text-nowrap">活存帳號：</span>
+                      <span>---</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-start">
+                    <div class="py-2 form-check">
+                      <input class="form-check-input" type="radio" name="draftRadio2" id="check24" disabled>
+                    </div>
+                    <div class="py-2 d-flex align-items-center">
+                      <span class="text-nowrap">內扣</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-start">
+                    <div class="py-2 form-check">
+                      <input class="form-check-input" type="radio" name="draftRadio2" id="check25" disabled>
+                    </div>
+                    <div class="d-flex">
+                      <span class="py-2 text-nowrap">轉出科目：</span>
+                      <div>
+                        <div class="d-flex align-items-center">
+                          <span class="text-nowrap">轉出會計科目：</span>
+                          <span>00000-999：過度科目</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <span class="text-nowrap">轉出銷帳序號：</span>
+                          <span>---</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <span class="text-nowrap">轉出科目金額：</span>
+                          <span>55000.0</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <span class="text-nowrap">轉出科目摘要：</span>
+                          <span>押匯/承兌費用台灣塑膠工業股份有限公司</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <h5 class="card-subtitle fw-bold my-3 hnb__text--red">押匯手續費優惠：</h5>
+                <div class="my-2">
+                  <div class="d-flex align-items-start">
+                    <div class="py-2 form-check">
+                      <input class="form-check-input" type="checkbox" name="check1" id="check31" disabled>
+                    </div>
+                    <div class="d-flex flex-column">
+                      <span class="py-2 text-nowrap">押匯手續費優惠</span>
+                      <div class="d-flex align-items-center">
+                        <span class="text-nowrap">優惠原因：</span>
+                        <span>申請總行核准</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
+          <div class="pt-2 pb-4 d-flex align-items-center justify-content-center">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="reviewStatus" id="iRadio1" value="approved">
+              <label class="form-check-label" for="iRadio1">核准</label>
+            </div>
+            <div class="form-check form-check-inline me-1">
+              <input class="form-check-input" type="radio" name="reviewStatus" id="iRadio2" value="reject">
+              <label class="form-check-label" for="iRadio2">拒絕 / 拒絕原因：</label>
+            </div>
+            <select name="select2" class="form-select form-select-sm" style="width:200px">
+              <option selected>=請選擇拒絕原因=</option>
+              <option>拒絕原因 1</option>
+              <option>拒絕原因 2</option>
+              <option>拒絕原因 3</option>
+              <option>拒絕原因 4</option>
+            </select>
           </div>
 
           <div class="d-flex align-items-center justify-content-center">
@@ -559,10 +1197,334 @@
               取消
             </button>
             <button type="button" id="confirmButton" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap disabled"
-              onclick="confirmHandler();">
+              onclick="confirmReview();">
               確定
             </button>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 發票 視窗 -->
+  <div class="modal fade" id="invoiceModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="invoiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered">
+      <div class="modal-content hnb__modal">
+        <div class="modal-header py-2 border-bottom-0">
+          <h5 class="modal-title fs-5 fw-bolder text--hnb" id="invoiceModalLabel">
+            發票明細
+          </h5>
+          <button type="button" class="m-0 p-0 btn btn-link hnb__btn--close" data-bs-dismiss="modal" aria-label="Close">
+            <span class="mdi mdi-close"></span>
+          </button>
+        </div>
+        <div class="modal-body bg-light">
+          <div class="table-responsive">
+            <div class="py-2 fs-5 fw-bold text-center">
+              中鴻鋼鐵股份有限公司
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-6 d-flex align-items-center">
+                  <div class="pe-3">
+                    <span>統一發票：</span>
+                    <br>
+                    <span>號　　碼：</span>
+                  </div>
+                  <table class="mb-0 table table-sm hnb__table hnb__bg--white" style="width:auto;">
+                    <tbody>
+                      <tr>
+                        <td class="p-1 lh-1 fs-6 text-nowrap">
+                          高市<br>中鋼
+                        </td>
+                        <td class="p-1 lh-1 fs-6">WO00000029</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-6">
+                  <p class="fs-5 fw-bold">電子計算專用銷貨發票</p>
+                  <div class="mb-1">
+                    <span class="me-5 fs-0-8">[收執聯]</span>
+                    <span class="fs-0-8">中華民國 114 年 01 月 16 日</span>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <table class="mb-0 table table-sm hnb__table border border-2 border border-success hnb__bg--white"
+                    style="width:auto;">
+                    <tbody>
+                      <tr>
+                        <td width="15" rowspan="3" class="p-1 lh-1 text-center">
+                          申請人註記欄
+                        </td>
+                        <td class="p-1 lh-1 text-center">
+                          區分
+                        </td>
+                        <td class="p-1 lh-1 text-center">
+                          進貨及<br>費用
+                        </td>
+                        <td class="p-1 lh-1 text-center">
+                          固定<br>資產
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="p-1 lh-1 text-center">
+                          得扣<br>抵
+                        </td>
+                        <td class="p-1 lh-1"></td>
+                        <td class="p-1 lh-1"></td>
+                      </tr>
+                      <tr>
+                        <td class="p-1 lh-1 text-center">
+                          不得<br>扣抵
+                        </td>
+                        <td class="p-1 lh-1"></td>
+                        <td class="p-1 lh-1"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-9">
+                  <div class="p-2 border border-1 border border-success hnb__bg--white">
+                    <div class="lh-base">郵地區號： 82542</div>
+                    <div class="lh-base">地　　　址：銀行縣測試鄉測試路 103 號</div>
+                    <div class="lh-base">申請人名稱：押匯測試 B 股份有限公司</div>
+                    <div class="lh-base">及統一編號：77778888</div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <table class="mb-0 table table-sm hnb__table hnb__bg--white">
+                    <tbody>
+                      <tr>
+                        <td class="p-1 lh-1 text-center">買受人<br>稅籍編號</td>
+                        <td class="p-1 lh-1">850300956</td>
+                        <td class="p-1 lh-1 text-center">發貨通知<br>單編號</td>
+                        <td class="p-1 lh-1">HB2072</td>
+                        <td class="p-1 lh-1 text-center">中鋼檢查<br>號碼</td>
+                        <td class="p-1 lh-1">9202214</td>
+                        <td class="p-1 lh-1">合約編號</td>
+                        <td class="p-1 lh-1">LH2074</td>
+                        <td class="p-1 lh-1 text-center">信用狀<br>編號</td>
+                        <td class="p-1 lh-1">060/13200/01936</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="mb-0 table table-sm hnb__table border border-2 border border-success hnb__bg--white">
+                    <tbody>
+                      <tr>
+                        <td class="p-0">
+                          <table class="mb-0 table table-sm hnb__table hnb__bg--white">
+                            <tbody>
+                              <tr>
+                                <td rowspan="2" class="p-1 lh-1 text-center">
+                                  項目
+                                </td>
+                                <td width="150" rowspan="2" class="p-1 lh-1 text-center">
+                                  摘要
+                                </td>
+                                <td colspan="2" class="p-1 lh-1 text-center">
+                                  數量
+                                </td>
+                                <td colspan="2" class="p-1 lh-1 text-center">
+                                  單價
+                                </td>
+                                <td colspan="2" class="p-1 lh-1 text-center">
+                                  總價
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="p-1 lh-1 text-center">件 數</div>
+                                </td>
+                                <td>
+                                  <div class="p-1 lh-1 text-center">重量(公斤)</div>
+                                </td>
+                                <td>
+                                  <div class="p-1 lh-1 text-center">運 費</div>
+                                </td>
+                                <td>
+                                  <div class="p-1 lh-1 text-center">貨 款</div>
+                                </td>
+                                <td>
+                                  <div class="p-1 lh-1 text-center">運 費</div>
+                                </td>
+                                <td>
+                                  <div class="p-1 lh-1 text-center">貨 款</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="p-1 lh-1 text-center"></td>
+                                <td width="150" class="p-1 lh-1">
+                                  熱軋粗鋼捲 - BAND FOR SAE 1008 REROLLING QUALITY,
+                                </td>
+                                <td class="p-1 lh-1text-end"></td>
+                                <td class="p-1 lh-1text-end"></td>
+                                <td class="p-1 lh-1text-end" width="10%"></td>
+                                <td class="p-1 lh-1text-end" width="10%"></td>
+                                <td class="p-1 lh-1text-end" width="10%"></td>
+                                <td class="p-1 lh-1text-end" width="10%"></td>
+                              </tr>
+                              <tr>
+                                <td class="p-1 lh-1 text-center">
+                                  I093
+                                </td>
+                                <td class="p-1 lh-1">2.45X 1230</td>
+                                <td class="p-1 lh-1text-end">
+                                  5
+                                </td>
+                                <td class="p-1 lh-1text-end">
+                                  95,150.00
+                                </td>
+                                <td class="p-1 lh-1text-end">
+                                  0.1
+                                </td>
+                                <td class="p-1 lh-1text-end">
+                                  11.23
+                                </td>
+                                <td class="p-1 lh-1text-end">
+                                  9,515.00
+                                </td>
+                                <td class="p-1 lh-1text-end">
+                                  1,068,534.50
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="p-1 lh-1 text-center"></td>
+                                <td class="p-1 lh-1">數量折扣</td>
+                                <td class="p-1 lh-1text-end"></td>
+                                <td class="p-1 lh-1text-end"></td>
+                                <td class="p-1 lh-1text-end"></td>
+                                <td class="p-1 lh-1text-end"></td>
+                                <td class="p-1 lh-1text-end"></td>
+                                <td class="p-1 lh-1text-end">
+                                  -142,725.00
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="p-1 lh-1 text-center">
+                                  調整項
+                                </td>
+                                <td class="p-1 lh-1">角分調整</td>
+                                <td class="p-1 lh-1text-end"></td>
+                                <td class="p-1 lh-1text-end"></td>
+                                <td class="p-1 lh-1text-end"></td>
+                                <td class="p-1 lh-1text-end"></td>
+                                <td class="p-1 lh-1text-end"></td>
+                                <td class="p-1 lh-1text-end">
+                                  .50
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="p-1 lh-1 text-center"></td>
+                                <td class="p-1 lh-1"></td>
+                                <td class="p-1 lh-1text-end">
+                                  5
+                                </td>
+                                <td class="p-1 lh-1text-end">
+                                  95,150.00
+                                </td>
+                                <td class="p-1 lh-1text-end"></td>
+                                <td class="p-1 lh-1text-end"></td>
+                                <td class="p-1 lh-1text-end">
+                                  9,515.00
+                                </td>
+                                <td class="p-1 lh-1text-end">
+                                  925,810.00
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <table class="mb-0 table table-sm hnb__table hnb__bg--white">
+                            <tbody>
+                              <tr>
+                                <td colspan="7" class="p-1 lh-1 text-center">
+                                  運　　費　　及　　貨　　款　　總　　額
+                                </td>
+                                <td class="p-1 lh-1 text-end">935,325.00</td>
+                              </tr>
+                              <tr>
+                                <td class="p-1 lh-1 text-center">
+                                  營業稅
+                                </td>
+                                <td class="p-1 lh-1 text-center">
+                                  應稅
+                                </td>
+                                <td class="p-1 lh-1 text-center">V</td>
+                                <td class="p-1 lh-1 text-center">
+                                  零稅率
+                                </td>
+                                <td width="100" class="p-1 lh-1 text-end"></td>
+                                <td class="p-1 lh-1 text-center">
+                                  免稅
+                                </td>
+                                <td class="p-1 lh-1 text-end">
+                                  4,370.00
+                                </td>
+                                <td class="p-1 lh-1 text-end">46,766.00 </td>
+                              </tr>
+                              <tr>
+                                <td class="p-1 lh-1 text-center">
+                                  總計新台幣
+                                </td>
+                                <td colspan="6" class="p-1 lh-1">零仟零佰玖拾捌萬貳仟零佰玖拾壹元零角零分整</td>
+                                <td class="p-1 lh-1 text-end">982,091.00</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <table class="mb-0 table table-sm hnb__table hnb__bg--white">
+                    <tbody>
+                      <tr>
+                        <td height="60" class="p-1 lh-1">
+                          <span class="fw-bold">備註：</span>
+                          本發票金額已在華南銀行台北分行辦理押匯融資
+                        </td>
+                        <td width="170" rowspan="2" class="p-1 lh-1 text-nowrap">
+                          <div class="text-center">
+                            <img src="../../assets/images/invoice_test.jpg" width="180">
+                          </div>
+                          <div class="py-1 text-center">
+                            林文淵
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="p-1 lh-1">
+                          <ol class="hnb__list--ol">
+                            <li class="lh-lg">本銷貨發票奉財政部68年7月5日(68)台字第34516號函核准代替統一發票。</li>
+                            <li class="lh-lg">本銷貨發票凡經塗改即屬無效。</li>
+                            <li class="lh-lg">查詢中獎號碼網址:http:www.dot.gov.tw。</li>
+                          </ol>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="my-3 container">
+              <div class="row">
+                <div class="col-12 text-center">
+                  <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap">
+                    <span class="mdi mdi-content-save"></span>
+                    另存新檔
+                  </button>
+                  <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--print text-nowrap">
+                    <span class="mdi mdi-printer"></span>
+                    列印
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center border-top-0">
+          <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal"
+            aria-label="Close">關閉</button>
         </div>
       </div>
     </div>
@@ -1099,8 +2061,26 @@
     const beneList = document.querySelector('#beneList');
     const queryList = document.querySelector('#queryList');
     const lcForCdsAppList = document.querySelector('#lcForCdsAppList');
-    const lcAppList = document.querySelector('#lcAppList');
+    const draftDataList = document.querySelector('#draftDataList');
     const lcforOtherAppList = document.querySelector('#lcforOtherAppList');
+
+    // 訊息欄位
+    const inputField = document.querySelectorAll('.inputField');
+    const stringField = document.querySelectorAll('.stringField');
+
+    // 確認 訊息及按鈕
+    const messageModalLabel = document.querySelector('#messageModalLabel');
+    const msgBody = document.querySelector('#msgBody');
+    const msgFooter = document.querySelector('#msgFooter');
+
+    // 不同權限切換顯示欄位
+    if (authType === 'BH') {
+      stringField.forEach(item => item.classList.add('hnb__hide'));
+    };
+
+    if (authType === 'BS') {
+      inputField.forEach(item => item.classList.add('hnb__hide'));
+    };
 
     // 確認按鈕狀態監聽
     const reviewStatusList = document.querySelectorAll('input[name="reviewStatus"]');
@@ -1124,7 +2104,7 @@
     // 檢視開狀申請書
     function reviewLcApp() {
       queryList.classList.add('hnb__hide');
-      lcAppList.classList.remove('hnb__hide');
+      draftDataList.classList.remove('hnb__hide');
     };
 
     // 信用狀類別變更(即期 / 遠期) changeLcType
@@ -1139,71 +2119,103 @@
       };
     };
 
-    // 確認 訊息及按鈕
-    const msgBody = document.querySelector('#msgBody');
-    const msgFooter = document.querySelector('#msgFooter');
-
-    function checkHandler() {
-      msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
-              您確定要更正此筆資料嗎？
-            </p>`;
-      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
-        <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
-      $('#messageModal').modal('show');
-    };
-
-    function confirmHandler() {
+    // 審核確認
+    function confirmReview() {
       const messageModal = document.querySelector('#messageModal .modal-dialog');
-      messageModal.classList.add('modal-xl');
-      $('#messageModal').modal('hide');
-      setTimeout(() => {
-        msgBody.innerHTML = reviewStatus === 'approved' ? `
-        <div class="table-responsive">
-          <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white">
-            <thead>
-              <tr>
-                <th scope="col" class="hnb__tbhd">匯票號碼</th>
-                <th scope="col" class="hnb__tbhd text-nowrap">審核動作</th>
-                <th scope="col" class="hnb__tbhd text-nowrap">執行結果</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="text-center text-nowrap">H97000001</td>
-                <td class="text-center text-nowrap">核准</td>
-                <td class="text-center">審核完成</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>` :
-          `<div class="table-responsive">
-          <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white">
-            <thead>
-              <tr>
-                <th scope="col" class="hnb__tbhd">匯票號碼</th>
-                <th scope="col" class="hnb__tbhd text-nowrap">審核動作</th>
-                <th scope="col" class="hnb__tbhd text-nowrap">執行結果</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="text-center text-nowrap">H97000001</td>
-                <td class="text-center text-nowrap">拒絕</td>
-                <td class="text-center">審核完成</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>`;
-        msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
-                onclick="location.href = 'ReviewDraftApp.html';">回押匯申請-受益人清冊</button>`;
-        $('#messageModal').modal('show');
-      }, 300);
+      messageModal.classList.remove('modal-xl');
+      if (authType === 'BH') {
+        if (reviewStatus === 'approved') {
+          messageModalLabel.innerHTML = '作業訊息';
+          msgBody.innerHTML = `
+            <p>
+              <span class="fw-bold hnb__text--green">匯票號碼：</span>
+              <span>H97000001</span>
+            </p>
+            <p>
+              <span class="fw-bold hnb__text--green">審核動作：</span>
+              <span>核准</span>
+            </p>
+            <p>
+              <span class="fw-bold hnb__text--green">審核結果：</span>
+              <span>審核完成</span>
+            </p>`;
+          msgFooter.innerHTML = `
+            <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="cancelHandler();">回押匯申請-受益人清冊</button>`;
+        };
+        if (reviewStatus === 'reject') {
+          messageModalLabel.innerHTML = '作業訊息';
+          msgBody.innerHTML = `
+            <p>
+              <span class="fw-bold hnb__text--green">匯票號碼：</span>
+              <span>H97000001</span>
+            </p>
+            <p>
+              <span class="fw-bold hnb__text--green">審核動作：</span>
+              <span>拒絕</span>
+            </p>
+            <p>
+              <span class="fw-bold hnb__text--green">審核結果：</span>
+              <span>審核完成</span>
+            </p>`;
+          msgFooter.innerHTML = `
+            <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="cancelHandler();">回押匯申請-受益人清冊</button>`;
+        };
+      };
+
+      if (authType === 'BS') {
+        if (reviewStatus === 'approved') {
+          messageModalLabel.innerHTML = '作業訊息';
+          msgBody.innerHTML = `
+            <p>
+              <span class="fw-bold hnb__text--green">匯票號碼：</span>
+              <span>H97000001</span>
+            </p>
+            <p>
+              <span class="fw-bold hnb__text--green">審核動作：</span>
+              <span>核准</span>
+            </p>
+            <p>
+              <span class="fw-bold hnb__text--green">審核結果：</span>
+              <span>審核完成</span>
+            </p>
+            <p>
+              <span class="fw-bold hnb__text--green">銷帳序號：</span>
+              <span>654321</span>
+            </p>`;
+          msgFooter.innerHTML = `
+            <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="cancelHandler();">回押匯申請-受益人清冊</button>`;
+        };
+        if (reviewStatus === 'reject') {
+          messageModalLabel.innerHTML = '作業訊息';
+          msgBody.innerHTML = `
+            <p>
+              <span class="fw-bold hnb__text--green">匯票號碼：</span>
+              <span>H97000001</span>
+            </p>
+            <p>
+              <span class="fw-bold hnb__text--green">審核動作：</span>
+              <span>拒絕</span>
+            </p>
+            <p>
+              <span class="fw-bold hnb__text--green">審核結果：</span>
+              <span>審核完成</span>
+            </p>
+            <p>
+              <span class="fw-bold hnb__text--green">銷帳序號：</span>
+              <span>654321</span>
+            </p>`;
+          msgFooter.innerHTML = `
+            <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="cancelHandler();">回押匯申請-受益人清冊</button>`;
+        };
+      };
+      $('#messageModal').modal('show');
     };
 
     // 取消
     function cancelHandler() {
+      $('#messageModal').modal('hide');
       queryList.classList.remove('hnb__hide');
-      lcAppList.classList.add('hnb__hide');
+      draftDataList.classList.add('hnb__hide');
     };
 
     // 月曆

@@ -223,12 +223,13 @@
                   </div>
                 </div>
                 <div>
-                  <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap">
+                  <button type="button" id="queryPaymentBtn" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap">
                     查詢未退還保證金
                   </button>
                 </div>
               </div>
-              <div class="d-flex">
+              <!-- 經辦顯示 -->
+              <div id="inputField" class="d-flex">
                 <div class="py-2 text-nowrap text-end" style="width:120px">退還保證金方式：</div>
                 <div>
                   <div class="d-flex align-items-center">
@@ -277,6 +278,49 @@
                   </div>
                 </div>
               </div>
+              <!-- 主管顯示 -->
+              <div id="stringField" class="d-flex">
+                <div class="py-2 text-nowrap text-end" style="width:120px">退還保證金方式：</div>
+                <div class="py-2">
+                  <div class="d-flex align-items-center">
+                    <div class="form-check">
+                      <input class="form-check-input" name="radioGroup2" type="radio" id="ra01" value="radiobutton1"
+                        disabled>
+                    </div>
+                    <div class="d-flex align-items-center flex-wrap">
+                      <span>入帳帳號：</span>
+                      <span>--</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-top">
+                    <div class="py-2 form-check">
+                      <input class="form-check-input" name="radioGroup2" type="radio" id="ra02" value="radiobutton2"
+                        checked disabled>
+                    </div>
+                    <div class="d-flex align-items-top flex-wrap">
+                      <span class="py-2">轉入科目：</span>
+                      <div>
+                        <div class="d-flex align-items-center">
+                          <span class="text-nowrap">轉入會計科目：</span>
+                          <span>13097-099：其他應收款-雜項</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <span class="text-nowrap">轉入銷帳序號：</span>
+                          <span>--</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <span class="text-nowrap">轉入科目金額：</span>
+                          <span>55000.0</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                          <span class="text-nowrap">轉入科目摘要：</span>
+                          <span>信用狀保證金梅石股份有限公司</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="pt-2 pb-4 d-flex align-items-center justify-content-center">
@@ -301,7 +345,7 @@
               取消
             </button>
             <button type="button" id="confirmButton" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap disabled"
-              onclick="confirmHandler();">
+              onclick="confirmReview();">
               確定
             </button>
           </div>
@@ -843,6 +887,26 @@
     const lcAppList = document.querySelector('#lcAppList');
     const lcforOtherAppList = document.querySelector('#lcforOtherAppList');
 
+    // 訊息欄位
+    const inputField = document.querySelector('#inputField');
+    const stringField = document.querySelector('#stringField');
+    const queryPaymentBtn = document.querySelector('#queryPaymentBtn');
+
+    // 確認 訊息及按鈕
+    const messageModalLabel = document.querySelector('#messageModalLabel');
+    const msgBody = document.querySelector('#msgBody');
+    const msgFooter = document.querySelector('#msgFooter');
+
+    // 不同權限切換顯示欄位
+    if (authType === 'BH') {
+      stringField.classList.add('hnb__hide');
+    };
+
+    if (authType === 'BS') {
+      queryPaymentBtn.classList.add('hnb__hide');
+      inputField.classList.add('hnb__hide');
+    };
+
     // 確認按鈕狀態監聽
     const reviewStatusList = document.querySelectorAll('input[name="reviewStatus"]');
     const confirmButton = document.querySelector('#confirmButton');
@@ -858,7 +922,7 @@
 
     // 查詢帳號戶名
     function checkAccount() {
-      msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
+      msgBody.innerHTML = `<p class="fw-bold hnb__text--green">
               戶名有誤，請檢查！<br>
               此帳號在主機記載的戶名為：[ 此為測試帳號 ]，<br>
               此張信用狀的受益人戶名為：[ 台灣塑膠工業股份有限公司 ]。<br>
@@ -892,25 +956,64 @@
       };
     };
 
-    // 確認 訊息及按鈕
-    const msgBody = document.querySelector('#msgBody');
-    const msgFooter = document.querySelector('#msgFooter');
-
-    function checkHandler() {
-      msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
-              您確定要更正此筆資料嗎？
+    // 審核確認
+    function confirmReview() {
+      if (authType === 'BH') {
+        if (reviewStatus === 'approved') {
+          confirmHandler();
+        };
+        if (reviewStatus === 'reject') {
+          messageModalLabel.innerHTML = '作業訊息';
+          msgBody.innerHTML = `
+            <p>
+              <span class="fw-bold hnb__text--green">註銷申請書號碼：</span>
+              <span>	099700017161000861-V-01</span>
+            </p>
+            <p>
+              <span class="fw-bold hnb__text--green">審核動作：</span>
+              <span>退回經辦：王建明退回測試</span>
+            </p>
+            <p>
+              <span class="fw-bold hnb__text--green">審核結果：</span>
+              <span>審核未完成</span>
             </p>`;
-      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
-        <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
+          msgFooter.innerHTML = `
+            <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
+                onclick="location.href = 'ReviewCancelApp.html';">回註銷申請待審核清冊</button>`;
+        };
+      };
+
+      if (authType === 'BS') {
+        if (reviewStatus === 'approved') {
+          confirmHandler();
+        };
+        if (reviewStatus === 'reject') {
+          messageModalLabel.innerHTML = '作業訊息';
+          msgBody.innerHTML = `
+            <p>
+              <span class="fw-bold hnb__text--green">註銷申請書號碼：</span>
+              <span>	099700017161000861-V-01</span>
+            </p>
+            <p>
+              <span class="fw-bold hnb__text--green">審核動作：</span>
+              <span>退回經辦：王建明退回測試</span>
+            </p>
+            <p>
+              <span class="fw-bold hnb__text--green">審核結果：</span>
+              <span>審核未完成</span>
+            </p>`;
+          msgFooter.innerHTML = `
+            <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
+                onclick="location.href = 'ReviewCancelApp.html';">回註銷申請待審核清冊</button>`;
+        };
+      };
       $('#messageModal').modal('show');
     };
 
     function confirmHandler() {
       const messageModal = document.querySelector('#messageModal .modal-dialog');
       messageModal.classList.add('modal-xl');
-      $('#messageModal').modal('hide');
-      setTimeout(() => {
-        msgBody.innerHTML = reviewStatus === 'approved' ? `
+      msgBody.innerHTML = `
         <div class="table-responsive">
           <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white">
             <thead>
@@ -932,34 +1035,10 @@
               </tr>
             </tbody>
           </table>
-        </div>` :
-          `
-        <div class="table-responsive">
-          <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white">
-            <thead>
-              <tr>
-                <th scope="col" class="hnb__tbhd">信用狀號碼</th>
-                <th scope="col" class="hnb__tbhd">申請人</th>
-                <th scope="col" class="hnb__tbhd">受益人</th>
-                <th scope="col" class="hnb__tbhd text-nowrap">審核動作</th>
-                <th scope="col" class="hnb__tbhd text-nowrap">執行結果</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="text-center text-nowrap">099700049161000861</td>
-                <td class="text-nowrap">網際測試股份有限公司</td>
-                <td class="text-nowrap">優勢測試股份有限公司</td>
-                <td class="text-center text-nowrap">拒絕</td>
-                <td class="text-center">審核完成</td>
-              </tr>
-            </tbody>
-          </table>
         </div>`;
-        msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
+      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
                 onclick="location.href = 'ReviewCancelApp.html';">回註銷申請待審核清冊</button>`;
-        $('#messageModal').modal('show');
-      }, 300);
+      $('#messageModal').modal('show');
     };
 
     // 取消
