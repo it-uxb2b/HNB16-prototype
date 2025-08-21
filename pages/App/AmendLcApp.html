@@ -379,8 +379,12 @@
               data-bs-target="#creditModal">
               授信資料
             </button>
-            <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap" onclick="checkHandler();">
+            <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap" onclick="confirmReview()">
               當日更正
+            </button>
+            <button type="button" id="notConfirmBtn" class="m-1 px-3 btn btn-sm hnb__btn--red text-nowrap"
+              onclick="notConfirmReview()">
+              不更正
             </button>
           </div>
         </div>
@@ -723,6 +727,17 @@
     const lcAppList = document.querySelector('#lcAppList');
     const lcforOtherAppList = document.querySelector('#lcforOtherAppList');
 
+    // 確認 訊息及按鈕
+    const messageModalLabel = document.querySelector('#messageModalLabel');
+    const msgBody = document.querySelector('#msgBody');
+    const msgFooter = document.querySelector('#msgFooter');
+    const notConfirmBtn = document.querySelector('#notConfirmBtn');
+
+    // 不同權限切換顯示欄位
+    if (authType === 'BH') {
+      notConfirmBtn.classList.add('hnb__hide');
+    };
+
     // 查詢押匯申請 searchHandler
     function searchHandler() {
       queryList.classList.remove('hnb__hide');
@@ -746,27 +761,77 @@
       };
     };
 
-    // 確認 訊息及按鈕
-    const msgBody = document.querySelector('#msgBody');
-    const msgFooter = document.querySelector('#msgFooter');
+    // 更正確認
+    function confirmReview() {
+      if (authType === 'BH') {
+        messageModalLabel.innerHTML = '作業訊息';
+        msgBody.innerHTML = `
+          <p class="fw-bold hnb__text--green text-center">
+            您確定要更正此筆資料嗎？
+          </p>`;
+        msgFooter.innerHTML = `
+          <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
+          <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
+      };
 
-    function checkHandler() {
-      msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
-              您確定要更正此筆資料嗎？
-            </p>`;
-      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
-        <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
+      if (authType === 'BS') {
+        messageModalLabel.innerHTML = '作業訊息';
+        msgBody.innerHTML = `
+          <p class="fw-bold hnb__text--green text-center">
+            您確定要更正此筆資料嗎？
+          </p>`;
+        msgFooter.innerHTML = `
+          <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
+          <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
+      };
+      $('#messageModal').modal('show');
+    };
+
+    // 不更正 notConfirmReview
+    let revertStatus = false;
+    function notConfirmReview() {
+      messageModalLabel.innerHTML = '作業訊息';
+      msgBody.innerHTML = `
+          <p class="fw-bold hnb__text--green text-center">
+            您確定要還原此筆資料嗎？
+          </p>`;
+      msgFooter.innerHTML = `
+          <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
+          <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
+
+      revertStatus = true;
       $('#messageModal').modal('show');
     };
 
     function confirmHandler() {
       $('#messageModal').modal('hide');
       setTimeout(() => {
-        msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
-                作業已完成！
-              </p>`;
-        msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
-                onclick="location.href = 'AmendLcApp.html';">回當日更正開狀申請</button>`;
+        messageModalLabel.innerHTML = '作業訊息';
+        if (authType === 'BH') {
+          msgBody.innerHTML = `
+          <p class="fw-bold hnb__text--green text-center">
+            作業已完成！
+          </p>`;
+        };
+
+        if (authType === 'BS') {
+          if (revertStatus) {
+            msgBody.innerHTML = `
+            <p class="fw-bold hnb__text--green text-center">
+              作業已完成！<br>
+              您的申請書號碼：ENID099000089已還原
+            </p>`;
+          } else {
+            msgBody.innerHTML = `
+            <p class="fw-bold hnb__text--green text-center">
+              作業已完成！<br>
+              您的申請書號碼：ENID099000086已更正
+            </p>`;
+          }
+        };
+        msgFooter.innerHTML = `
+          <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
+            onclick="location.href = 'AmendLcApp.html'">回當日更正開狀申請</button>`;
         $('#messageModal').modal('show');
       }, 300);
     };
