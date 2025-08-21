@@ -65,8 +65,12 @@
                   <td class="text-end text-nowrap">$ 282,125.00</td>
                   <td class="text-nowrap">優勢測試股份有限公司</td>
                   <td class="text-center">
-                    <button type="button" class="editItem my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
-                      onclick="reviewCredit()">
+                    <button type="button" class="creditBh my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                      onclick="reviewCreditForBH()">
+                      授信資料
+                    </button>
+                    <button type="button" class="creditBs my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                      onclick="reviewCreditForBS()">
                       授信資料
                     </button>
                   </td>
@@ -85,8 +89,12 @@
                   <td class="text-end text-nowrap">$ 282,125.00</td>
                   <td class="text-nowrap">優勢測試股份有限公司</td>
                   <td class="text-center">
-                    <button type="button" class="editItem my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
-                      onclick="reviewCredit()">
+                    <button type="button" class="creditBh my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                      onclick="reviewCreditForBH()">
+                      授信資料
+                    </button>
+                    <button type="button" class="creditBs my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                      onclick="reviewCreditForBS()">
                       授信資料
                     </button>
                   </td>
@@ -105,8 +113,12 @@
                   <td class="text-end text-nowrap">$ 282,125.00</td>
                   <td class="text-nowrap">優勢測試股份有限公司</td>
                   <td class="text-center">
-                    <button type="button" class="editItem my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
-                      onclick="reviewCredit()">
+                    <button type="button" class="creditBh my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                      onclick="reviewCreditForBH()">
+                      授信資料
+                    </button>
+                    <button type="button" class="creditBs my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                      onclick="reviewCreditForBS()">
                       授信資料
                     </button>
                   </td>
@@ -156,8 +168,8 @@
       </nav>
     </div>
 
-    <!-- 授信資料 -->
-    <div id="creditList" class="hnb__hide">
+    <!-- 經辦 - 授信資料 -->
+    <div id="creditListBh" class="hnb__hide">
       <h1 class="py-2 fs-4 fw-bolder">開狀申請書-授信資料</h1>
       <div class="mb-2 card">
         <div class="card-body bg-light">
@@ -511,7 +523,7 @@
                 <tr>
                   <th scope="col" class="hnb__tbhd2 text-nowrap">風險條件</th>
                   <td colspan="3">
-                    <div class="container">
+                    <div class="container-fluid">
                       <div class="row">
                         <div class="col-6">
                           <div class="my-1 input-group input-group-sm flex-nowrap">
@@ -595,9 +607,272 @@
         </div>
       </div>
     </div>
+
+    <!-- 主管 - 授信資料 -->
+    <div id="creditListBs" class="hnb__hide">
+      <h1 class="py-2 fs-4 fw-bolder">開狀申請書-授信資料</h1>
+      <div class="mb-2 card">
+        <div class="card-body bg-light">
+          <div class="table-responsive">
+            <table class="table table-sm hnb__table hnb__bg--white">
+              <tbody>
+                <tr>
+                  <th width="20%" scope="col" class="hnb__tbhd2 text-nowrap" rowspan="4">定價指標</th>
+                  <td colspan="3">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" name="radiobutton" type="radio" id="ra01" value="radiobutton"
+                        checked disabled>
+                      <div>按貴行之基準利率加碼年率 0.0100000 % 計息 ( 目前合計為年率 4.0300000 % ) 計息，嗣後貴行基準利率每 1 個月調整時隨同調整，加碼幅度不變。</div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" name="radiobutton" type="radio" id="ra02" value="radiobutton"
+                        disabled>
+                      <div>固定利率，按年率 - % 計息。</div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" name="radiobutton" type="radio" id="ra03" value="radiobutton"
+                        disabled>
+                      <div>按貴行之貨幣市場 -- 天期均價利率 - 碼 - % ( 目前合計為年率 - % ) 計息，嗣後以貸放日後每滿 - 個月之相對日為利率變動調整日，自調整日起隨同調整，加減碼幅度不變。
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" name="radiobutton" type="radio" id="ra04" value="radiobutton"
+                        disabled>
+                      <div>其他：</div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th width="20%" scope="col" class="hnb__tbhd2 text-nowrap">放款戶號</th>
+                  <td>12356789 </td>
+                  <th width="20%" scope="col" class="hnb__tbhd2 text-nowrap">信用狀金額</th>
+                  <td class="text-end">1,000,000</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="hnb__tbhd2 text-nowrap">開狀放款核號</th>
+                  <td>12313213</td>
+                  <th scope="col" class="hnb__tbhd2 text-nowrap">承兌放款核號</th>
+                  <td>1234567890</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="hnb__tbhd2 text-nowrap">國內信用狀額(限)度</th>
+                  <td class="text-end">1,000,000</td>
+                  <th scope="col" class="hnb__tbhd2 text-nowrap">額(限)度到期日</th>
+                  <td>2025/12/10</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="hnb__tbhd2 text-nowrap">國內信用狀餘額(含本件)</th>
+                  <td class="text-end">500,000</td>
+                  <th scope="col" class="hnb__tbhd2 text-nowrap">貸放經理人ID</th>
+                  <td>12345687</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="hnb__tbhd2 text-nowrap">徵審主管 ID-A</th>
+                  <td>G101057626</td>
+                  <th scope="col" class="hnb__tbhd2 text-nowrap">徵審主管 ID-B</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th scope="col" class="hnb__tbhd2 text-nowrap">開狀手續費</th>
+                  <td>
+                    <div>500</div>
+                    <span class="fw-bold">是否扣印花稅：</span>
+                    是
+                  </td>
+                  <th scope="col" class="hnb__tbhd2 text-nowrap">承兌手續費</th>
+                  <td>
+                    <div>500</div>
+                    <span class="fw-bold">是否扣印花稅：</span>
+                    是
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="col" class="hnb__tbhd2 text-nowrap">存入保證金比率(%)</th>
+                  <td class="text-end">10</td>
+                  <th scope="col" class="hnb__tbhd2 text-nowrap">保證金</th>
+                  <td class="text-end">500</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="hnb__tbhd2 text-nowrap">收款方式</th>
+                  <td colspan="3">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="authOptions" id="rate1" value="lcType1" checked
+                        disabled>
+                      <div>有授權扣帳</div>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="authOptions" id="rate1" value="lcType1"
+                        disabled>
+                      <div>無授權扣帳</div>
+                    </div>
+                    <table class="table table-sm hnb__table hnb__bg--white">
+                      <tbody>
+                        <tr>
+                          <th width="120" scope="col" class="hnb__tbhd2 text-nowrap">現金：</th>
+                          <td class="text-end">100000</td>
+                        </tr>
+                        <tr>
+                          <th scope="col" class="hnb__tbhd2 text-nowrap" rowspan="2">支存轉帳：</th>
+                          <td>
+                            <div>
+                              <span class="fw-bold">支票存款帳號 1：</span>
+                              789465213798
+                            </div>
+                            <div>
+                              <span class="fw-bold">支票號碼 1：</span>
+                              132456987
+                            </div>
+                            <div class="d-flex justify-content-between">
+                              <span class="fw-bold">金額 1：</span>
+                              <span>1,000</span>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div>
+                              <span class="fw-bold">支票存款帳號 2：</span>
+                              789465213798
+                            </div>
+                            <div>
+                              <span class="fw-bold">支票號碼 2：</span>
+                              132456987
+                            </div>
+                            <div class="d-flex justify-content-between">
+                              <span class="fw-bold">金額 2：</span>
+                              <span>1,000</span>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="col" class="hnb__tbhd2 text-nowrap">活存轉帳：</th>
+                          <td>
+                            <div>
+                              <span class="fw-bold">活期存款帳號： 2：</span>
+                              123546798123
+                            </div>
+                            <div class="d-flex justify-content-between">
+                              <span class="fw-bold">第 1 張取款條金額：</span>
+                              <span>2,000</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                              <span class="fw-bold">第 2 張取款條金額：</span>
+                              <span>1,600</span>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="col" class="hnb__tbhd2 text-nowrap">轉出科目：</th>
+                          <td>
+                            <div>
+                              <span class="fw-bold">轉出會計科目：</span>
+                              <span>---</span>
+                            </div>
+                            <div>
+                              <span class="fw-bold">轉出銷帳序號：</span>
+                              <span>----</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                              <span class="fw-bold">轉出科目金額：</span>
+                              <span>---</span>
+                            </div>
+                            <div>
+                              <span class="fw-bold">轉出科目摘要：</span>
+                              <span>---</span>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="d-flex justify-content-between">
+                      <span class="fw-bold">現金與轉帳收款金額合計：</span>
+                      <span>300,000</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="col" class="hnb__tbhd2 text-nowrap">擔保條件</th>
+                  <td colspan="3">XXXXXXX</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="hnb__tbhd2 text-nowrap">放款狀號</th>
+                  <td colspan="3">123456789012</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="hnb__tbhd2 text-nowrap">風險條件</th>
+                  <td colspan="3">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-6">
+                          <span class="fw-bold">風險類別一：</span>
+                          <span>B1 應收信用狀款-存款或存單</span>
+                        </div>
+                        <div class="col-6">
+                          <span class="fw-bold">風險類別一百分比 %：</span>
+                          <span>100</span>
+                        </div>
+                        <div class="col-6">
+                          <span class="fw-bold">風險類別二 %：</span>
+                          <span>--</span>
+                        </div>
+                        <div class="col-6">
+                          <span class="fw-bold">風險類別二百分比 %：</span>
+                          <span>--</span>
+                        </div>
+                        <div class="col-6">
+                          <span class="fw-bold">風險類別三 %：</span>
+                          <span>--</span>
+                        </div>
+                        <div class="col-6">
+                          <span class="fw-bold">風險類別三百分比 %：</span>
+                          <span>--</span>
+                        </div>
+                        <div class="col-6">
+                          <span class="fw-bold">風險類別四 %：</span>
+                          <span>--</span>
+                        </div>
+                        <div class="col-6">
+                          <span class="fw-bold">風險類別四百分比 %：</span>
+                          <span>--</span>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex align-items-center justify-content-center">
+            <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--cancel text-nowrap" onclick="cancelHandler()">
+              取消
+            </button>
+            <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+              onclick="adjAccountHandler()">
+              當日帳務調整
+            </button>
+            <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--red text-nowrap"
+              onclick="notAdjAccountHandler()">
+              不調整
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- 授信資料 視窗 -->
+  <!-- 授信資料預覽 視窗 -->
   <div class="modal fade" id="creditModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="creditModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
@@ -811,7 +1086,7 @@
                 <tr>
                   <th scope="col" class="hnb__tbhd2 text-nowrap">風險條件</th>
                   <td colspan="3">
-                    <div class="container">
+                    <div class="container-fluid">
                       <div class="row">
                         <div class="col-6">
                           <span class="fw-bold">風險類別一：</span>
@@ -1190,18 +1465,42 @@
   <script>
     const queryList = document.querySelector('#queryList');
     const lcForCdsAppList = document.querySelector('#lcForCdsAppList');
-    const creditList = document.querySelector('#creditList');
+    const creditListBh = document.querySelector('#creditListBh');
+    const creditListBs = document.querySelector('#creditListBs');
     const lcforOtherAppList = document.querySelector('#lcforOtherAppList');
+    let status = '';
+
+    // 確認 訊息及按鈕
+    const messageModalLabel = document.querySelector('#messageModalLabel');
+    const msgBody = document.querySelector('#msgBody');
+    const msgFooter = document.querySelector('#msgFooter');
+    const creditBhList = document.querySelectorAll('.creditBh');
+    const creditBsList = document.querySelectorAll('.creditBs');
+
+    // 不同權限切換顯示欄位
+    if (authType === 'BH') {
+      creditBsList.forEach(item => item.classList.add('hnb__hide'));
+    };
+
+    if (authType === 'BS') {
+      creditBhList.forEach(item => item.classList.add('hnb__hide'));
+    };
 
     // 查詢押匯申請 searchHandler
     function searchHandler() {
       queryList.classList.remove('hnb__hide');
     };
 
-    // 檢視授信資料
-    function reviewCredit() {
+    // 經辦 - 檢視授信資料
+    function reviewCreditForBH() {
       queryList.classList.add('hnb__hide');
-      creditList.classList.remove('hnb__hide');
+      creditListBh.classList.remove('hnb__hide');
+    };
+
+    // 主管 - 檢視授信資料
+    function reviewCreditForBS() {
+      queryList.classList.add('hnb__hide');
+      creditListBs.classList.remove('hnb__hide');
     };
 
     // 信用狀類別變更(即期 / 遠期) changeLcType
@@ -1216,27 +1515,61 @@
       };
     };
 
-    // 確認 訊息及按鈕
-    const msgBody = document.querySelector('#msgBody');
-    const msgFooter = document.querySelector('#msgFooter');
-
-    function checkHandler() {
-      msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
-              您確定要調整此筆資料嗎？
-            </p>`;
+    // 當日帳務調整 adjAccountHandler
+    function adjAccountHandler() {
+      messageModalLabel.innerHTML = '作業訊息';
+      msgBody.innerHTML = `
+        <p class="fw-bold hnb__text--green text-center">
+          您確定要調整此筆資料嗎？
+        </p>`;
       msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
         <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
+      status = 'adjAccount';
+      $('#messageModal').modal('show');
+    };
+
+    // 不調整 notAdjAccountHandler
+    function notAdjAccountHandler() {
+      messageModalLabel.innerHTML = '作業訊息';
+      msgBody.innerHTML = `
+        <p class="fw-bold hnb__text--green text-center">
+          您確定要還原此筆資料嗎？
+        </p>`;
+      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
+      status = 'notAdjAccount';
       $('#messageModal').modal('show');
     };
 
     function confirmHandler() {
       $('#messageModal').modal('hide');
       setTimeout(() => {
-        msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
-                作業已完成！待主管審核中
-              </p>`;
+        messageModalLabel.innerHTML = '作業訊息';
+        if (authType === 'BH') {
+          msgBody.innerHTML = `
+            <p class="fw-bold hnb__text--green text-center">
+              作業已完成！待主管審核中
+            </p>`;
+        };
+
+        if (authType === 'BS') {
+          if (status === 'adjAccount') {
+            msgBody.innerHTML = `
+            <p class="fw-bold hnb__text--green text-center">
+              作業已完成！<br>
+              您的申請書號碼：ENID0990000089已調整
+            </p>`;
+          } else {
+            msgBody.innerHTML = `
+            <p class="fw-bold hnb__text--green text-center">
+              作業已完成！<br>
+              您的申請書號碼：ENID0990000089不調整
+            </p>`;
+          }
+        };
+
         msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
-                onclick="location.href = 'LcAdjustment.html';">回開狀申請當日調整帳務</button>`;
+                onclick="location.href = 'LcAdjustment.html'">回開狀申請當日調整帳務</button>`;
         $('#messageModal').modal('show');
       }, 300);
     };
@@ -1244,7 +1577,12 @@
     // 取消
     function cancelHandler() {
       queryList.classList.remove('hnb__hide');
-      creditList.classList.add('hnb__hide');
+      if (authType === 'BH') {
+        creditListBh.classList.add('hnb__hide');
+      };
+      if (authType === 'BS') {
+        creditListBs.classList.add('hnb__hide');
+      };
     };
 
     // 月曆

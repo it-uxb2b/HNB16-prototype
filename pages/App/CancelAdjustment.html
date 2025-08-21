@@ -68,8 +68,12 @@
                   <td class="text-nowrap">中國鋼鐵股份有限公司</td>
                   <td class="text-center">2025/06/05</td>
                   <td class="text-center">
-                    <button type="button" class="editItem my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
-                      onclick="reviewCredit()">
+                    <button type="button" class="creditBh my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                      onclick="reviewCreditForBH()">
+                      授信資料
+                    </button>
+                    <button type="button" class="creditBs my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                      onclick="reviewCreditForBS()">
                       授信資料
                     </button>
                   </td>
@@ -91,8 +95,12 @@
                   <td class="text-nowrap">優勢測試股份有限公司</td>
                   <td class="text-center">2025/06/05</td>
                   <td class="text-center">
-                    <button type="button" class="editItem my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
-                      onclick="reviewCredit()">
+                    <button type="button" class="creditBh my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                      onclick="reviewCreditForBH()">
+                      授信資料
+                    </button>
+                    <button type="button" class="creditBs my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                      onclick="reviewCreditForBS()">
                       授信資料
                     </button>
                   </td>
@@ -142,8 +150,8 @@
       </nav>
     </div>
 
-    <!-- 授信資料 -->
-    <div id="creditList" class="hnb__hide">
+    <!-- 經辦 - 授信資料 -->
+    <div id="creditListBh" class="hnb__hide">
       <h1 class="py-2 fs-4 fw-bolder">註銷申請/切結書-授信資料</h1>
       <div class="mb-2 card">
         <div class="card-body bg-light">
@@ -220,9 +228,83 @@
         </div>
       </div>
     </div>
+
+    <!-- 主管 - 授信資料 -->
+    <div id="creditListBs" class="hnb__hide">
+      <h1 class="py-2 fs-4 fw-bolder">註銷申請/切結書-授信資料</h1>
+      <div class="mb-2 card">
+        <div class="card-body bg-light">
+          <div class="my-3 mx-auto" style="width:650px">
+            <div class="py-2 d-flex">
+              <div class="text-nowrap text-end" style="width:120px">未退還保證金：</div>
+              <div>55000.0</div>
+            </div>
+            <div class="py-2 d-flex">
+              <div class="text-nowrap text-end" style="width:120px">退還保證金：</div>
+              <div>55000.0</div>
+            </div>
+            <div class="d-flex">
+              <div class="py-2 text-nowrap text-end" style="width:120px">退還保證金方式：</div>
+              <div>
+                <div class="d-flex align-items-center">
+                  <div class="form-check">
+                    <input class="form-check-input" name="radioGroup1" type="radio" id="ra01" value="radiobutton1"
+                      disabled>
+                  </div>
+                  <div class="d-flex align-items-center flex-wrap">
+                    <span>入帳帳號：</span>
+                    <span></span>
+                  </div>
+                </div>
+                <div class="d-flex align-items-top">
+                  <div class="py-2 form-check">
+                    <input class="form-check-input" name="radioGroup1" type="radio" id="ra02" value="radiobutton2"
+                      checked disabled>
+                  </div>
+                  <div class="d-flex align-items-top flex-wrap">
+                    <span class="py-2">轉入科目：</span>
+                    <div>
+                      <div class="d-flex align-items-center">
+                        <span class="text-nowrap">轉入會計科目：</span>
+                        <span>13097-099：其他應收款-雜項</span>
+                      </div>
+                      <div class="d-flex align-items-center">
+                        <span class="text-nowrap">轉入銷帳序號：</span>
+                        <span></span>
+                      </div>
+                      <div class="d-flex align-items-center">
+                        <span class="text-nowrap">轉入科目金額：</span>
+                        <span>55000.0</span>
+                      </div>
+                      <div class="d-flex align-items-center">
+                        <span class="text-nowrap">轉入科目摘要：</span>
+                        <span>信用狀保證金梅石股份有限公司</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-center">
+            <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--cancel text-nowrap" onclick="cancelHandler()">
+              取消
+            </button>
+            <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+              onclick="adjAccountHandler()">
+              當日帳務調整
+            </button>
+            <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--red text-nowrap"
+              onclick="notAdjAccountHandler()">
+              不調整
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- 授信資料 視窗 -->
+  <!-- 授信資料預覽 視窗 -->
   <div class="modal fade" id="creditModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="creditModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-lg modal-dialog-centered">
@@ -1182,18 +1264,43 @@
   <script>
     const queryList = document.querySelector('#queryList');
     const lcForCdsAppList = document.querySelector('#lcForCdsAppList');
-    const creditList = document.querySelector('#creditList');
+    const creditListBh = document.querySelector('#creditListBh');
+    const creditListBs = document.querySelector('#creditListBs');
     const lcforOtherAppList = document.querySelector('#lcforOtherAppList');
+
+    let status = '';
+
+    // 確認 訊息及按鈕
+    const messageModalLabel = document.querySelector('#messageModalLabel');
+    const msgBody = document.querySelector('#msgBody');
+    const msgFooter = document.querySelector('#msgFooter');
+    const creditBhList = document.querySelectorAll('.creditBh');
+    const creditBsList = document.querySelectorAll('.creditBs');
+
+    // 不同權限切換顯示欄位
+    if (authType === 'BH') {
+      creditBsList.forEach(item => item.classList.add('hnb__hide'));
+    };
+
+    if (authType === 'BS') {
+      creditBhList.forEach(item => item.classList.add('hnb__hide'));
+    };
 
     // 查詢押匯申請 searchHandler
     function searchHandler() {
       queryList.classList.remove('hnb__hide');
     };
 
-    // 檢視授信資料
-    function reviewCredit() {
+    // 經辦 - 檢視授信資料
+    function reviewCreditForBH() {
       queryList.classList.add('hnb__hide');
-      creditList.classList.remove('hnb__hide');
+      creditListBh.classList.remove('hnb__hide');
+    };
+
+    // 主管 - 檢視授信資料
+    function reviewCreditForBS() {
+      queryList.classList.add('hnb__hide');
+      creditListBs.classList.remove('hnb__hide');
     };
 
     // 信用狀類別變更(即期 / 遠期) changeLcType
@@ -1208,27 +1315,61 @@
       };
     };
 
-    // 確認 訊息及按鈕
-    const msgBody = document.querySelector('#msgBody');
-    const msgFooter = document.querySelector('#msgFooter');
-
-    function checkHandler() {
-      msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
-              您確定要調整此筆資料嗎？
-            </p>`;
+    // 當日帳務調整 adjAccountHandler
+    function adjAccountHandler() {
+      messageModalLabel.innerHTML = '作業訊息';
+      msgBody.innerHTML = `
+        <p class="fw-bold hnb__text--green text-center">
+          您確定要調整此筆資料嗎？
+        </p>`;
       msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
         <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
+      status = 'adjAccount';
+      $('#messageModal').modal('show');
+    };
+
+    // 不調整 notAdjAccountHandler
+    function notAdjAccountHandler() {
+      messageModalLabel.innerHTML = '作業訊息';
+      msgBody.innerHTML = `
+        <p class="fw-bold hnb__text--green text-center">
+          您確定要還原此筆資料嗎？
+        </p>`;
+      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
+      status = 'notAdjAccount';
       $('#messageModal').modal('show');
     };
 
     function confirmHandler() {
       $('#messageModal').modal('hide');
       setTimeout(() => {
-        msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
-                作業已完成！待主管審核中
-              </p>`;
-        msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
-                onclick="location.href = 'CancelAdjustment.html';">回註銷申請當日調整帳務</button>`;
+        messageModalLabel.innerHTML = '作業訊息';
+        if (authType === 'BH') {
+          msgBody.innerHTML = `
+            <p class="fw-bold hnb__text--green text-center">
+              作業已完成！待主管審核中
+            </p>`;
+        };
+
+        if (authType === 'BS') {
+          if (status === 'adjAccount') {
+            msgBody.innerHTML = `
+            <p class="fw-bold hnb__text--green text-center">
+              作業已完成！<br>
+              您的申請書號碼：099700017161000861-V-01已調整
+            </p>`;
+          } else {
+            msgBody.innerHTML = `
+            <p class="fw-bold hnb__text--green text-center">
+              作業已完成！<br>
+              您的申請書號碼：099700017161000861-V-01不調整
+            </p>`;
+          }
+        };
+
+        msgFooter.innerHTML = `
+          <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="location.href = 'CancelAdjustment.html'">回註銷申請當日調整帳務</button>`;
         $('#messageModal').modal('show');
       }, 300);
     };
@@ -1236,7 +1377,12 @@
     // 取消
     function cancelHandler() {
       queryList.classList.remove('hnb__hide');
-      creditList.classList.add('hnb__hide');
+      if (authType === 'BH') {
+        creditListBh.classList.add('hnb__hide');
+      };
+      if (authType === 'BS') {
+        creditListBs.classList.add('hnb__hide');
+      };
     };
 
     // 月曆

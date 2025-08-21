@@ -70,8 +70,12 @@
                   <td class="text-end text-nowrap">NT$ 1,000</td>
                   <td class="text-nowrap">中國鋼鐵股份有限公司</td>
                   <td class="text-center">
-                    <button type="button" class="editItem my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
-                      onclick="reviewCredit()">
+                    <button type="button" class="creditBh my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                      onclick="reviewCreditForBH()">
+                      授信資料
+                    </button>
+                    <button type="button" class="creditBs my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                      onclick="reviewCreditForBS()">
                       授信資料
                     </button>
                   </td>
@@ -94,8 +98,12 @@
                   <td class="text-end text-nowrap">NT$ 1,000</td>
                   <td class="text-nowrap">中國鋼鐵股份有限公司</td>
                   <td class="text-center">
-                    <button type="button" class="editItem my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
-                      onclick="reviewCredit()">
+                    <button type="button" class="creditBh my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                      onclick="reviewCreditForBH()">
+                      授信資料
+                    </button>
+                    <button type="button" class="creditBs my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                      onclick="reviewCreditForBS()">
                       授信資料
                     </button>
                   </td>
@@ -145,8 +153,8 @@
       </nav>
     </div>
 
-    <!-- 授信資料 -->
-    <div id="creditList" class="hnb__hide">
+    <!-- 經辦 - 授信資料 -->
+    <div id="creditListBh" class="hnb__hide">
       <h1 class="py-2 fs-4 fw-bolder">押匯申請-授信資料</h1>
       <div class="mb-2 card">
         <div class="card-body bg-light">
@@ -360,9 +368,189 @@
         </div>
       </div>
     </div>
+
+    <!-- 主管 - 授信資料 -->
+    <div id="creditListBs" class="hnb__hide">
+      <h1 class="py-2 fs-4 fw-bolder">押匯申請-授信資料</h1>
+      <div class="mb-2 card">
+        <div class="card-body bg-light">
+          <div class="card-body p-4">
+            <div class="my-3 p-4 mx-auto border border-success" style="max-width:1000px">
+              <h5 class="card-subtitle fw-bold mb-2 hnb__text--red">押匯方式：</h5>
+              <div class="my-2 fw-bold hnb__text--green">押匯</div>
+              <div>
+                <div class="fw-bold text-nowrap">撥款方式：</div>
+                <div class="d-flex align-items-center">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="draftRadio11" id="pay1" disabled>
+                  </div>
+                  <div>
+                    <div class="d-flex align-items-center">
+                      <div class="d-flex align-items-center flex-wrap">
+                        <div class="text-end" style="width:110px">本行-轉入帳號：</div>
+                        <span>--</span>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center flex-wrap">
+                      <div class="text-end" style="width:110px">戶名：</div>
+                      <span>台灣塑膠工業股份有限公司</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="draftRadio11" id="pay2" disabled>
+                  </div>
+                  <div>
+                    <div class="my-2">
+                      跨行-付款內容詳受益人匯出匯款申請書
+                    </div>
+                    <div class="d-flex align-items-center flex-wrap">
+                      <div>匯入銀行：</div>
+                      <span>--</span>
+                      <div class="ms-4">銀行名稱：</div>
+                      <span>--</span>
+                      <div class="ms-4">匯款帳號：</div>
+                      <span>--</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex align-items-start">
+                  <div class="py-2 form-check">
+                    <input class="form-check-input" type="radio" name="draftRadio11" id="pay3" checked disabled>
+                  </div>
+                  <div class="d-flex align-items-start flex-wrap">
+                    <div class="py-2 text-nowrap">轉入科目：</div>
+                    <div class="py-2">
+                      <div class="d-flex align-items-center">
+                        <span class="text-nowrap">轉入會計科目：</span>
+                        <span>00000-999：過度科目</span>
+                      </div>
+                      <div class=" d-flex align-items-center">
+                        <span class="text-nowrap">轉入銷帳序號：</span>
+                        <span>111101</span>
+                      </div>
+                      <div class=" d-flex align-items-center">
+                        <span class="text-nowrap">轉入科目金額：</span>
+                        <span>100000.0</span>
+                      </div>
+                      <div class=" d-flex align-items-center">
+                        <span class="text-nowrap">轉入科目摘要：</span>
+                        <span>國內信用狀押匯台灣塑膠工業股份有限公司</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center flex-wrap">
+                  <div>押匯手續費：</div>
+                  <span>300.0</span>
+                  <div>是否扣印花稅：</div>
+                  <span>是</span>
+                </div>
+              </div>
+              <h5 class="card-subtitle fw-bold my-3 hnb__text--red">費用付款方式：</h5>
+              <div class="my-2">
+                <div class="d-flex align-items-start">
+                  <div class="py-2 form-check">
+                    <input class="form-check-input" type="radio" name="radio2" id="check21" checked disabled>
+                  </div>
+                  <div class="py-2">
+                    現金
+                  </div>
+                </div>
+                <div class="d-flex align-items-start">
+                  <div class="py-2 form-check">
+                    <input class="form-check-input" type="radio" name="radio2" id="check22" disabled>
+                  </div>
+                  <div class="py-1 d-flex align-items-center">
+                    <span class="text-nowrap">支存帳號：</span>
+                    <span>--</span>
+                    <span class="text-nowrap">支票號碼：</span>
+                    <span>--</span>
+
+                  </div>
+                </div>
+                <div class="d-flex align-items-start">
+                  <div class="py-2 form-check">
+                    <input class="form-check-input" type="radio" name="radio2" id="check23" disabled>
+                  </div>
+                  <div class="py-1 d-flex align-items-center">
+                    <span class="text-nowrap">活存帳號：</span>
+                    <span>--</span>
+
+                  </div>
+                </div>
+                <div class="d-flex align-items-start">
+                  <div class="py-2 form-check">
+                    <input class="form-check-input" type="radio" name="radio2" id="check24" disabled>
+                  </div>
+                  <div class="py-2 d-flex align-items-center">
+                    <span class="text-nowrap">內扣</span>
+                  </div>
+                </div>
+                <div class="d-flex align-items-start">
+                  <div class="py-2 form-check">
+                    <input class="form-check-input" type="radio" name="radio2" id="check24" disabled>
+                  </div>
+                  <div class="d-flex">
+                    <span class="py-2 text-nowrap">轉出科目：</span>
+                    <div class="py-2">
+                      <div class="d-flex align-items-center">
+                        <span class="text-nowrap">轉出會計科目：</span>
+                        <span>00000-999：過度科目</span>
+                      </div>
+                      <div class="d-flex align-items-center">
+                        <span class="text-nowrap">轉出銷帳序號：</span>
+                        <span>--</span>
+                      </div>
+                      <div class="d-flex align-items-center">
+                        <span class="text-nowrap">轉出科目金額：</span>
+                        <span>55000.0</span>
+                      </div>
+                      <div class="d-flex align-items-center">
+                        <span class="text-nowrap">轉出科目摘要：</span>
+                        <span>押匯/承兌費用台灣塑膠工業股份有限公司</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h5 class="card-subtitle fw-bold my-3 hnb__text--red">押匯手續費優惠：</h5>
+              <div class="my-2">
+                <div class="d-flex align-items-start">
+                  <div class="py-2 form-check">
+                    <input class="form-check-input" type="checkbox" name="check1" id="check31" disabled>
+                  </div>
+                  <div class="d-flex flex-column">
+                    <span class="py-2 text-nowrap">押匯手續費優惠</span>
+                    <div class="d-flex align-items-center">
+                      <span class="text-nowrap">優惠原因：</span>
+                      <span>申請總行核准</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-center">
+            <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--cancel text-nowrap" onclick="cancelHandler()">
+              取消
+            </button>
+            <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+              onclick="adjAccountHandler()">
+              當日帳務調整
+            </button>
+            <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--red text-nowrap"
+              onclick="notAdjAccountHandler()">
+              不調整
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- 授信資料 視窗 -->
+  <!-- 授信資料預覽 視窗 -->
   <div class="modal fade" id="creditModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="creditModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-xl modal-dialog-centered">
@@ -2140,18 +2328,42 @@
   <script>
     const queryList = document.querySelector('#queryList');
     const lcForCdsAppList = document.querySelector('#lcForCdsAppList');
-    const creditList = document.querySelector('#creditList');
+    const creditListBh = document.querySelector('#creditListBh');
+    const creditListBs = document.querySelector('#creditListBs');
     const lcforOtherAppList = document.querySelector('#lcforOtherAppList');
+    let status = '';
+
+    // 確認 訊息及按鈕
+    const messageModalLabel = document.querySelector('#messageModalLabel');
+    const msgBody = document.querySelector('#msgBody');
+    const msgFooter = document.querySelector('#msgFooter');
+    const creditBhList = document.querySelectorAll('.creditBh');
+    const creditBsList = document.querySelectorAll('.creditBs');
+
+    // 不同權限切換顯示欄位
+    if (authType === 'BH') {
+      creditBsList.forEach(item => item.classList.add('hnb__hide'));
+    };
+
+    if (authType === 'BS') {
+      creditBhList.forEach(item => item.classList.add('hnb__hide'));
+    };
 
     // 查詢押匯申請 searchHandler
     function searchHandler() {
       queryList.classList.remove('hnb__hide');
     };
 
-    // 檢視授信資料
-    function reviewCredit() {
+    // 經辦 - 檢視授信資料
+    function reviewCreditForBH() {
       queryList.classList.add('hnb__hide');
-      creditList.classList.remove('hnb__hide');
+      creditListBh.classList.remove('hnb__hide');
+    };
+
+    // 主管 - 檢視授信資料
+    function reviewCreditForBS() {
+      queryList.classList.add('hnb__hide');
+      creditListBs.classList.remove('hnb__hide');
     };
 
     // 信用狀類別變更(即期 / 遠期) changeLcType
@@ -2166,27 +2378,61 @@
       };
     };
 
-    // 確認 訊息及按鈕
-    const msgBody = document.querySelector('#msgBody');
-    const msgFooter = document.querySelector('#msgFooter');
-
-    function checkHandler() {
-      msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
-              您確定要調整此筆資料嗎？
-            </p>`;
+    // 當日帳務調整 adjAccountHandler
+    function adjAccountHandler() {
+      messageModalLabel.innerHTML = '作業訊息';
+      msgBody.innerHTML = `
+        <p class="fw-bold hnb__text--green text-center">
+          您確定要調整此筆資料嗎？
+        </p>`;
       msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
         <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
+      status = 'adjAccount';
+      $('#messageModal').modal('show');
+    };
+
+    // 不調整 notAdjAccountHandler
+    function notAdjAccountHandler() {
+      messageModalLabel.innerHTML = '作業訊息';
+      msgBody.innerHTML = `
+        <p class="fw-bold hnb__text--green text-center">
+          您確定要還原此筆資料嗎？
+        </p>`;
+      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
+      status = 'notAdjAccount';
       $('#messageModal').modal('show');
     };
 
     function confirmHandler() {
       $('#messageModal').modal('hide');
       setTimeout(() => {
-        msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
-                作業已完成！待主管審核中
-              </p>`;
+        messageModalLabel.innerHTML = '作業訊息';
+        if (authType === 'BH') {
+          msgBody.innerHTML = `
+            <p class="fw-bold hnb__text--green text-center">
+              作業已完成！待主管審核中
+            </p>`;
+        };
+
+        if (authType === 'BS') {
+          if (status === 'adjAccount') {
+            msgBody.innerHTML = `
+            <p class="fw-bold hnb__text--green text-center">
+              作業已完成！<br>
+              您的匯票號碼：H970000002已調整
+            </p>`;
+          } else {
+            msgBody.innerHTML = `
+            <p class="fw-bold hnb__text--green text-center">
+              作業已完成！<br>
+              您的匯票號碼：H970000002不調整
+            </p>`;
+          }
+        };
+
         msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
-                onclick="location.href = 'DraftAdjustment.html';">回押匯申請當日調整帳務</button>`;
+                onclick="location.href = 'DraftAdjustment.html'">回押匯申請當日調整帳務</button>`;
         $('#messageModal').modal('show');
       }, 300);
     };
@@ -2194,7 +2440,12 @@
     // 取消
     function cancelHandler() {
       queryList.classList.remove('hnb__hide');
-      creditList.classList.add('hnb__hide');
+      if (authType === 'BH') {
+        creditListBh.classList.add('hnb__hide');
+      };
+      if (authType === 'BS') {
+        creditListBs.classList.add('hnb__hide');
+      };
     };
 
     // 月曆
