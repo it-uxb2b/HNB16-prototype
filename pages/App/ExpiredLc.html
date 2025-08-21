@@ -108,6 +108,13 @@
                 </div>
               </div>
             </div>
+            <div class="row">
+              <div class="col text-end py-1">
+                <button type="reset" id="resetBtn" class="me-2 px-3 btn btn-sm hnb__btn--reset">重設</button>
+                <button type="button" id="searchBtn" class="px-3 btn btn-sm hnb__btn--default text-nowrap"
+                  onclick="searchHandler()">確定</button>
+              </div>
+            </div>
           </div>
         </div>
       </form>
@@ -1160,7 +1167,30 @@
               您的申請書號碼為<br>
               099700031161000861-V-01
             </p>`;
-      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--print" data-bs-dismiss="modal" onclick="">註銷申請/切結書審核作業</button><button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" data-bs-dismiss="modal" onclick="cancelHandler()">回 CDS 過期案件主動註銷清冊</button>`;
+
+      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--print" data-bs-dismiss="modal" onclick="gotoCancelApp()">註銷申請/切結書審核作業</button><button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" data-bs-dismiss="modal" onclick="cancelHandler()">回 CDS 過期案件主動註銷清冊</button>`;
+    };
+
+    // 前往 註銷申請/切結書審核作業 gotoCancelApp
+    function gotoCancelApp() {
+      const tabItem = window.parent.document.querySelector('button[data-bs-target="#Review"]');
+      const tabContent = window.parent.document.querySelector('#Review');
+      const subTab = window.parent.document.querySelector('#ReviewCancelApp');
+      const parentNode = window.parent.document.querySelector('#main-content');
+      console.log({ tabItem, tabContent, subTab, parentNode });
+      if (tabItem) {
+        // 初始化 Accordion
+        window.parent.clearAccordionAction();
+        if (tabItem) {
+          tabItem.classList.add('collapsed');
+          tabContent.classList.add('show');
+        };
+
+        // 初始化選項 active，再指定項目
+        window.parent.clearAction();
+        subTab.classList.add('active');
+        parentNode.src = `./pages/Review/ReviewCancelApp.html`;
+      };
     };
 
     // 取消
