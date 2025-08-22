@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <!-- 當日更正押匯申請作業 -->
+  <!-- 押匯申請 -->
   <div id="ReviewDraftApp" class="py-4 px-5">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb fs-6">
@@ -718,6 +718,80 @@
                       <option>否</option>
                     </select>
                   </div>
+                  <div class="d-flex align-items-center flex-wrap">
+                    <span class="fw-bold text-nowrap">押匯放款核號：</span>
+                    <input type="text" class="mx-1 form-control form-control-sm" name="input1" value=""
+                      style="width:150px">
+                    <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap">
+                      檢查核號
+                    </button>
+                  </div>
+                  <div class="py-1 d-flex align-items-center flex-wrap">
+                    <span class="fw-bold text-nowrap">貸放經理人 ID：</span>
+                    <input type="text" class="mx-1 form-control form-control-sm" name="input1" value="G101057626"
+                      style="width:150px">
+                  </div>
+                  <div class="py-1 d-flex align-items-center flex-wrap">
+                    <span class="fw-bold text-nowrap">徵審主管 ID-A：</span>
+                    <input type="text" class="mx-1 form-control form-control-sm" name="input1" value="G101057626"
+                      style="width:150px">
+                  </div>
+                  <div class="py-1 d-flex align-items-center flex-wrap">
+                    <span class="fw-bold text-nowrap">徵審主管 ID-B：</span>
+                    <input type="text" class="mx-1 form-control form-control-sm" name="input1" value=""
+                      style="width:150px">
+                  </div>
+                  <div class="d-flex">
+                    <div class="fw-bold text-nowrap">風險條件：</div>
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-6 py-1 d-flex align-items-center">
+                          <span class="fw-bold text-nowrap">風險類別一：</span>
+                          <select name="select1" class="mx-1 form-select form-select-sm">
+                            <option>=請選擇=</option>
+                            <option selected>B1 應收信用狀款-存款或存單</option>
+                          </select>
+                        </div>
+                        <div class="col-6 py-1 d-flex align-items-center">
+                          <span class="fw-bold text-nowrap">風險類別一百分比 %：</span>
+                          <input type="text" class="mx-1 form-control form-control-sm" name="input1" value="100">
+                        </div>
+                        <div class="col-6 py-1 d-flex align-items-center">
+                          <span class="fw-bold text-nowrap">風險類別二：</span>
+                          <select name="select1" class="mx-1 form-select form-select-sm">
+                            <option selected>=請選擇=</option>
+                            <option>B1 應收信用狀款-存款或存單</option>
+                          </select>
+                        </div>
+                        <div class="col-6 py-1 d-flex align-items-center">
+                          <span class="fw-bold text-nowrap">風險類別二百分比 %：</span>
+                          <input type="text" class="mx-1 form-control form-control-sm" name="input1" value="">
+                        </div>
+                        <div class="col-6 py-1 d-flex align-items-center">
+                          <span class="fw-bold text-nowrap">風險類別三：</span>
+                          <select name="select1" class="mx-1 form-select form-select-sm">
+                            <option selected>=請選擇=</option>
+                            <option>B1 應收信用狀款-存款或存單</option>
+                          </select>
+                        </div>
+                        <div class="col-6 py-1 d-flex align-items-center">
+                          <span class="fw-bold text-nowrap">風險類別三百分比 %：</span>
+                          <input type="text" class="mx-1 form-control form-control-sm" name="input1" value="">
+                        </div>
+                        <div class="col-6 py-1 d-flex align-items-center">
+                          <span class="fw-bold text-nowrap">風險類別四：</span>
+                          <select name="select1" class="mx-1 form-select form-select-sm">
+                            <option selected>=請選擇=</option>
+                            <option>B1 應收信用狀款-存款或存單</option>
+                          </select>
+                        </div>
+                        <div class="col-6 py-1 d-flex align-items-center">
+                          <span class="fw-bold text-nowrap">風險類別四百分比 %：</span>
+                          <input type="text" class="mx-1 form-control form-control-sm" name="input1" value="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <hr class="my-3 border border-0 border-top border-secondary">
                 <div class="my-2">
@@ -754,12 +828,12 @@
                       style="width:150px">
                   </div>
                   <div class="py-1 d-flex align-items-center flex-wrap">
-                    <span class="fw-bold text-nowrap">貸放經理人 ID-A：</span>
+                    <span class="fw-bold text-nowrap">徵審主管 ID-A：</span>
                     <input type="text" class="mx-1 form-control form-control-sm" name="input1" value="G101057626"
                       style="width:150px">
                   </div>
                   <div class="py-1 d-flex align-items-center flex-wrap">
-                    <span class="fw-bold text-nowrap">貸放經理人 ID-B：</span>
+                    <span class="fw-bold text-nowrap">徵審主管 ID-B：</span>
                     <input type="text" class="mx-1 form-control form-control-sm" name="input1" value=""
                       style="width:150px">
                   </div>
@@ -1008,6 +1082,64 @@
                     <div class="ms-5">是否扣印花稅：</div>
                     <span>是</span>
                   </div>
+                  <div>
+                    <span class="fw-bold text-nowrap">押匯放款核號：</span>
+                    <span>1141161000</span>
+                    <button type="button" class="ms-5 m-1 px-3 btn btn-sm hnb__btn--default text-nowrap">
+                      檢查押匯核號
+                    </button>
+                  </div>
+                  <div>
+                    <span class="fw-bold text-nowrap">貸放經理人 ID：</span>
+                    <span>G101057626</span>
+                  </div>
+                  <div>
+                    <span class="fw-bold text-nowrap">徵審主管 ID-A：</span>
+                    <span>G101057626</span>
+                  </div>
+                  <div>
+                    <span class="fw-bold text-nowrap">徵審主管 ID-B：</span>
+                    <span>---</span>
+                  </div>
+                  <div class="d-flex">
+                    <div class="fw-bold text-nowrap">風險條件：</div>
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-6 d-flex">
+                          <span class="fw-bold text-nowrap">風險類別一：</span>
+                          <span>B1 應收信用狀款-存款或存單</span>
+                        </div>
+                        <div class="col-6">
+                          <span class="fw-bold text-nowrap">風險類別一百分比 %：</span>
+                          <span>100</span>
+                        </div>
+                        <div class="col-6">
+                          <span class="fw-bold text-nowrap">風險類別二：</span>
+                          <span>--</span>
+                        </div>
+                        <div class="col-6">
+                          <span class="fw-bold text-nowrap">風險類別二百分比 %：</span>
+                          <span>--</span>
+                        </div>
+                        <div class="col-6">
+                          <span class="fw-bold text-nowrap">風險類別三：</span>
+                          <span>--</span>
+                        </div>
+                        <div class="col-6">
+                          <span class="fw-bold text-nowrap">風險類別三百分比 %：</span>
+                          <span>--</span>
+                        </div>
+                        <div class="col-6">
+                          <span class="fw-bold text-nowrap">風險類別四：</span>
+                          <span>--</span>
+                        </div>
+                        <div class="col-6">
+                          <span class="fw-bold text-nowrap">風險類別四百分比 %：</span>
+                          <span>--</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <hr class="my-3 border border-0 border-top border-secondary">
                 <div class="my-2">
@@ -1034,11 +1166,11 @@
                     <span>G101057626</span>
                   </div>
                   <div class="py-1 d-flex align-items-center flex-wrap">
-                    <span class="fw-bold text-nowrap">貸放經理人 ID-A：</span>
+                    <span class="fw-bold text-nowrap">徵審主管 ID-A：</span>
                     <span>G101057626</span>
                   </div>
                   <div class="py-1 d-flex align-items-center flex-wrap">
-                    <span class="fw-bold text-nowrap">貸放經理人 ID-B：</span>
+                    <span class="fw-bold text-nowrap">徵審主管 ID-B：</span>
                     <span>---</span>
                   </div>
                   <div class="py-1 d-flex align-items-center flex-wrap">
