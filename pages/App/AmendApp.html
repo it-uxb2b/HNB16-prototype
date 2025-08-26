@@ -461,9 +461,9 @@
                           <div class="col-12 my-1 d-flex align-items-center">
                             <span class="fw-bold">最後交貨日期：</span>
                             <div class="mx-2 input-group flex-nowrap d-inline-flex" style="width:200px;">
-                              <input type="datetime-local" id="deliveryDate" placeholder="請點選日期"
+                              <input type="datetime-local" id="deliveryDate1" placeholder="請點選日期"
                                 class="form-control form-control-sm hnb__calendar" readonly>
-                              <label class="input-group-text py-1" for="deliveryDate">
+                              <label class="input-group-text py-1" for="deliveryDate1">
                                 <span class="mdi mdi-calendar-month"></span>
                               </label>
                             </div>
@@ -550,18 +550,6 @@
                       900000001
                     </td>
                   </tr>
-                  <!-- <tr>
-                    <th class="hnb__tbhd2" style="width: 300px">申請人聯絡人姓名：</th>
-                    <td>
-                      <input type="text" class="form-control form-control-sm" id="appName">
-                    </td>
-                  </tr>
-                  <tr>
-                    <th class="hnb__tbhd2">申請人聯絡人電話：</th>
-                    <td>
-                      <input type="text" class="form-control form-control-sm" id="appNo">
-                    </td>
-                  </tr> -->
                   <tr>
                     <th class="hnb__tbhd2">金額：</th>
                     <td>
@@ -633,21 +621,6 @@
                       <input type="text" class="form-control form-control-sm" id="email" value="xty@abc.com">
                     </td>
                   </tr>
-                  <!-- <tr>
-                    <th class="hnb__tbhd2">受益人事業部：</th>
-                    <td>
-                      <select id="dep" class="form-select form-select-sm">
-                        <option value="0" selected="">= 請選擇 =</option>
-                        <option>W工務部</option>
-                      </select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th class="hnb__tbhd2">客戶編號：</th>
-                    <td>
-                      <input type="text" class="form-control form-control-sm" id="cNo">
-                    </td>
-                  </tr> -->
                   <tr>
                     <td colspan="2" class="fw-bold">
                       本信用狀可由上開受益人在不超過上開金額範圍內，依本信用狀規定條件簽發匯票洽請洽兌/付款：
@@ -778,9 +751,9 @@
                           <div class="col-12 my-1">
                             3. 最後交貨日期：
                             <div class="mx-2 input-group flex-nowrap d-inline-flex" style="max-width: 180px">
-                              <input type="datetime-local" id="deliveryDate" placeholder="請點選日期"
+                              <input type="datetime-local" id="deliveryDate2" placeholder="請點選日期"
                                 class="form-control form-control-sm hnb__calendar" readonly>
-                              <label class="input-group-text py-1" for="deliveryDate">
+                              <label class="input-group-text py-1" for="deliveryDate2">
                                 <span class="mdi mdi-calendar-month"></span>
                               </label>
                             </div>
@@ -905,8 +878,7 @@
               <button type="reset" class="m-1 px-3 btn btn-sm hnb__btn--cancel text-nowrap">
                 重填
               </button>
-              <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap" data-bs-toggle="modal"
-                data-bs-target="#confirmModal">
+              <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap" onclick="confirmReview()">
                 確定
               </button>
             </div>
@@ -1200,9 +1172,9 @@
                           <div class="col-12 my-1 d-flex align-items-center">
                             4. 最後交貨日期：
                             <div class="mx-2 input-group flex-nowrap d-inline-flex" style="width:200px;">
-                              <input type="datetime-local" id="deliveryDate" placeholder="請點選日期"
+                              <input type="datetime-local" id="deliveryDate3" placeholder="請點選日期"
                                 class="form-control form-control-sm hnb__calendar" readonly>
-                              <label class="input-group-text py-1" for="deliveryDate">
+                              <label class="input-group-text py-1" for="deliveryDate3">
                                 <span class="mdi mdi-calendar-month"></span>
                               </label>
                             </div>
@@ -2518,6 +2490,25 @@
   </div>
 
   <!-- 訊息 視窗 -->
+  <div class="modal fade" id="messageModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+      <div class="modal-content hnb__modal">
+        <div class="modal-header py-2 border-bottom-0">
+          <h5 class="modal-title fs-5 fw-bolder text--hnb" id="messageModalLabel">
+            作業訊息
+          </h5>
+          <button type="button" class="m-0 p-0 btn btn-link hnb__btn--close" data-bs-dismiss="modal" aria-label="Close">
+            <span class="mdi mdi-close"></span>
+          </button>
+        </div>
+        <div id="msgBody" class="modal-body bg-light"></div>
+        <div id="msgFooter" class="modal-footer justify-content-center border-top-0"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 訊息 視窗 -->
   <div class="modal fade" id="confirmModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="confirmModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
@@ -2541,7 +2532,7 @@
           </div>
           <div class="modal-footer justify-content-center border-top-0">
             <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
-              onclick="location.href = 'AmendApp.html';">回修改申請書</button>
+              onclick="location.href = 'AmendApp.html'">回修改申請書</button>
           </div>
         </div>
       </form>
@@ -2669,6 +2660,32 @@
       };
     };
 
+    // 申請確認
+    function confirmReview() {
+      //const messageModal = document.querySelector('#messageModal .modal-dialog');
+      //messageModal.classList.remove('modal-xl');
+
+      messageModalLabel.innerHTML = '作業訊息';
+      msgBody.innerHTML = `
+        <p class="fw-bold hnb__text--green text-center">
+          作業已完成！<br>
+          您的申請書號碼為<br>
+          099700031161000861-A-011
+        </p>`;
+      msgFooter.innerHTML = `
+        <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
+          onclick="backAmendApp()">回修改申請書</button>`;
+
+      $('#messageModal').modal('show');
+    };
+
+    function backAmendApp() {
+      $('#messageModal').modal('hide');
+      lcAppList.classList.add('hnb__hide');
+      queryForm.classList.remove('hnb__hide');
+      queryList.classList.remove('hnb__hide');
+    };
+
     // 月曆
     const dateAlert = document.querySelector(".dateAlert");
     const currentTime = new Date()
@@ -2709,7 +2726,7 @@
     };
 
     // 有效期限 / 最後交貨日期 / 限定押匯日期 - 日期選擇器
-    flatpickr('#expDate, #deliveryDate, #draftDate', config);
+    flatpickr('#expDate, #deliveryDate1, #deliveryDate2, #deliveryDate3, #draftDate, #specifyExpDate, #lnd, #InvStartDate', config);
 
   </script>
 </body>

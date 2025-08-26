@@ -566,8 +566,8 @@
               <button type="reset" class="m-1 px-3 btn btn-sm hnb__btn--cancel text-nowrap">
                 重填
               </button>
-              <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap" data-bs-toggle="modal"
-                data-bs-target="#confirmModal">
+              <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                onclick="confirmReview();">
                 確定
               </button>
             </div>
@@ -997,8 +997,8 @@
               <button type="reset" class="m-1 px-3 btn btn-sm hnb__btn--cancel text-nowrap">
                 重填
               </button>
-              <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap" data-bs-toggle="modal"
-                data-bs-target="#confirmModal">
+              <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                onclick="confirmReview();">
                 確定
               </button>
             </div>
@@ -1413,8 +1413,8 @@
               <button type="reset" class="m-1 px-3 btn btn-sm hnb__btn--cancel text-nowrap">
                 重填
               </button>
-              <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap" data-bs-toggle="modal"
-                data-bs-target="#confirmModal">
+              <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
+                onclick="confirmReview();">
                 確定
               </button>
             </div>
@@ -3081,33 +3081,21 @@
   </div>
 
   <!-- 訊息 視窗 -->
-  <div class="modal fade" id="confirmModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal fade" id="messageModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="messageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-      <form id="accountManagerForm">
-        <div class="modal-content hnb__modal">
-          <div class="modal-header py-2 border-bottom-0">
-            <h5 class="modal-title fs-5 fw-bolder text--hnb" id="confirmModalLabel">
-              作業訊息
-            </h5>
-            <button type="button" class="m-0 p-0 btn btn-link hnb__btn--close" data-bs-dismiss="modal"
-              aria-label="Close">
-              <span class="mdi mdi-close"></span>
-            </button>
-          </div>
-          <div class="modal-body bg-light">
-            <p class="fw-bold hnb__text--green text-center">
-              作業已完成！<br>
-              您的申請書號碼為<br>
-              099700031161000861
-            </p>
-          </div>
-          <div class="modal-footer justify-content-center border-top-0">
-            <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
-              onclick="location.href = 'LcApp.html';">回開狀申請書</button>
-          </div>
+      <div class="modal-content hnb__modal">
+        <div class="modal-header py-2 border-bottom-0">
+          <h5 class="modal-title fs-5 fw-bolder text--hnb" id="messageModalLabel">
+            作業訊息
+          </h5>
+          <button type="button" class="m-0 p-0 btn btn-link hnb__btn--close" data-bs-dismiss="modal" aria-label="Close">
+            <span class="mdi mdi-close"></span>
+          </button>
         </div>
-      </form>
+        <div id="msgBody" class="modal-body bg-light"></div>
+        <div id="msgFooter" class="modal-footer justify-content-center border-top-0"></div>
+      </div>
     </div>
   </div>
 
@@ -3316,6 +3304,25 @@
         }
       });
     });
+
+    // 申請確認
+    function confirmReview() {
+      //const messageModal = document.querySelector('#messageModal .modal-dialog');
+      //messageModal.classList.remove('modal-xl');
+
+      messageModalLabel.innerHTML = '作業訊息';
+      msgBody.innerHTML = `
+        <p class="fw-bold hnb__text--green text-center">
+          作業已完成！<br>
+          您的申請書號碼為<br>
+          099700031161000861
+        </p>`;
+      msgFooter.innerHTML = `
+        <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
+          onclick="location.href = 'LcApp.html'">回開狀申請書</button>`;
+
+      $('#messageModal').modal('show');
+    };
 
     // 月曆
     const dateAlert = document.querySelector(".dateAlert");

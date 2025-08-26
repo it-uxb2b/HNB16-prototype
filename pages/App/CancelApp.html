@@ -40,8 +40,8 @@
                   <div class="col-10 col-md-9">
                     <select id="beneType" class="form-select form-select-sm">
                       <option value="0" selected>= 請選擇 =</option>
-                      <option value="cds">CDS 客戶 ( 中鋼、中鴻、中鋁、唐榮 )</option>
-                      <option value="fpc">台塑 e 化集團</option>
+                      <option value="cds">CDS 客戶 ( 中鋼、中鴻、中鋁、唐榮、華新麗華、東和鋼鐵 )</option>
+                      <option value="fpc">台塑 e 化平台客戶 ( 台塑集團、奇美集團 )</option>
                       <option value="other">其他客戶</option>
                     </select>
                   </div>
@@ -317,8 +317,7 @@
               <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--cancel text-nowrap" onclick="cancelHandler()">
                 取消
               </button>
-              <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap" data-bs-toggle="modal"
-                data-bs-target="#confirmPromptModal">
+              <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap" onclick="confirmReview()">
                 確定
               </button>
             </div>
@@ -1122,21 +1121,18 @@
   <div class="modal fade" id="messageModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="messageModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-      <form id="accountManagerForm">
-        <div class="modal-content hnb__modal">
-          <div class="modal-header py-2 border-bottom-0">
-            <h5 class="modal-title fs-5 fw-bolder text--hnb" id="messageModalLabel">
-              作業訊息
-            </h5>
-            <button type="button" class="m-0 p-0 btn btn-link hnb__btn--close" data-bs-dismiss="modal"
-              aria-label="Close">
-              <span class="mdi mdi-close"></span>
-            </button>
-          </div>
-          <div id="msgBody" class="modal-body bg-light"></div>
-          <div id="msgFooter" class="modal-footer justify-content-center border-top-0"></div>
+      <div class="modal-content hnb__modal">
+        <div class="modal-header py-2 border-bottom-0">
+          <h5 class="modal-title fs-5 fw-bolder text--hnb" id="messageModalLabel">
+            作業訊息
+          </h5>
+          <button type="button" class="m-0 p-0 btn btn-link hnb__btn--close" data-bs-dismiss="modal" aria-label="Close">
+            <span class="mdi mdi-close"></span>
+          </button>
         </div>
-      </form>
+        <div id="msgBody" class="modal-body bg-light"></div>
+        <div id="msgFooter" class="modal-footer justify-content-center border-top-0"></div>
+      </div>
     </div>
   </div>
 
@@ -1276,16 +1272,42 @@
     };
 
     // 確認 訊息及按鈕
+    const messageModalLabel = document.querySelector('#messageModalLabel');
     const msgBody = document.querySelector('#msgBody');
     const msgFooter = document.querySelector('#msgFooter');
+
+    // 申請確認
+    function confirmReview() {
+      const messageModal = document.querySelector('#messageModal .modal-dialog');
+      messageModal.classList.add('modal-lg');
+
+      messageModalLabel.innerHTML = '作業訊息';
+      msgBody.innerHTML = `
+        <p>(一) 若註銷「未過期」信用狀，<span class="hnb__text--red">請務必確認已取得受益人同意書</span>，若未取得逕予註銷，恐遭受益人訴諸法律求償。</p>
+        <p>(二) 若<span class="hnb__text--red">「電子信用狀」</span>內容有誤 ( 受益人為<span class="hnb__text--red">中鋼</span>集團、<span class="hnb__text--red">台塑</span>集團、<span class="hnb__text--red">華新麗華</span>、<span class="hnb__text--red">奇美</span>集團、<span class="hnb__text--red">東和鋼鐵</span>等 )，<span class="hnb__text--red">請以修狀方式修正，切勿隨意以先註銷再重新開狀之方式辦理。</span></p>
+        <p>(三) 若註銷「電子信用狀」後，<span class="hnb__text--red">無法執行當日更正交易</span>。</p>
+        <p>(四) 輸入本次欲註銷之信用狀號碼：<input type="text" class="ms-1 form-control form-control-sm d-inline-block" value="12345678" style="max-width:200px"></p>`;
+      msgFooter.innerHTML = `
+        <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
+
+      $('#messageModal').modal('show');
+    };
+
+
     function confirmHandler() {
-      msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
-              作業已完成！<br>
-              您的申請書號碼為<br>
-              099700031161000861-V-01
-            </p>`;
-      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
-              onclick="location.href = 'CancelApp.html';">回註銷申請書</button>`;
+      $('#messageModal').modal('hide');
+      setTimeout(() => {
+        msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
+          作業已完成！<br>
+          您的申請書號碼為<br>
+          099700031161000861-V-01
+        </p>`;
+        msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
+          onclick="location.href = 'CancelApp.html'">回註銷申請書</button>`;
+
+        $('#messageModal').modal('show');
+      }, 300)
     };
 
     // 取消
