@@ -31,12 +31,13 @@ const accordionMenu = {
         { id: 'CurrentAmendApp', text: '當日更正修改申請書' },
         { id: 'CurrentCancelApp', text: '當日更正註銷申請/切結書' },
         { id: 'CurrentAmendDraftApp', text: '當日更正押匯申請作業' },
-        { id: 'ExpiredLc', text: 'CDS平台-過期信用狀主動註銷' },
         { id: 'LcAdjustment', text: '開狀申請當日調整帳務' },
         { id: 'AmendAdjustment', text: '修改申請當日調整帳務' },
         { id: 'CancelAdjustment', text: '註銷申請當日調整帳務' },
         { id: 'DraftAdjustment', text: '押匯申請當日調整帳務' },
-        { id: 'AmendAccept', text: '修改接受註記' }
+        { id: 'AmendAccept', text: '修改接受註記' },
+        { id: 'SentTrfStatus', text: '傳送已轉帳狀態' },
+        { id: 'ExpiredLc', text: 'CDS 過期案件主動註銷' },
       ]
     },
     {
