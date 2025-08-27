@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <!-- 受益人分行信用狀暨押匯筆數金額 -->
+  <!-- 分行信用狀暨押匯筆數金額 -->
   <div id="QueryBeneficiaryBlcAmount" class="py-4 px-5">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb fs-6">
@@ -23,14 +23,14 @@
           <a id="homePage" class="hnb__path" href="#" onclick="backHomeHandler()">首頁</a>
         </li>
         <li class="breadcrumb-item">查詢作業</li>
-        <li class="breadcrumb-item active" aria-current="page">受益人分行信用狀暨押匯筆數金額</li>
+        <li class="breadcrumb-item active" aria-current="page">分行信用狀暨押匯筆數金額</li>
       </ol>
     </nav>
 
-    <!-- 查詢受益人分行信用狀暨押匯筆數金額 -->
+    <!-- 查詢分行信用狀暨押匯筆數金額 -->
     <div id="queryForm">
       <form>
-        <h1 class="py-2 fs-4 fw-bolder">查詢受益人分行信用狀暨押匯筆數金額</h1>
+        <h1 class="py-2 fs-4 fw-bolder">查詢分行信用狀暨押匯筆數金額</h1>
         <div class="mb-2 card">
           <div class="card-body bg-light">
             <div class="row py-2">
@@ -95,27 +95,6 @@
                 </div>
               </div>
             </div>
-            <div class="row py-2">
-              <div class="col-12 col-md-6 col-lg-4">
-                <div class="mb-2 row">
-                  <label for="beneNo" class="col-2 col-md-3 col-form-label text-end text-nowrap">受益人</label>
-                  <div class="col-10 col-md-9">
-                    <select id="branchNo" class="form-select form-select-sm">
-                      <option value="" selected>= 請選擇 =</option>
-                      <optgroup label="群組受益人">
-                        <option>CDS 客戶</option>
-                        <option>台塑 e 化集團</option>
-                      </optgroup>
-                      <optgroup label="單一受益人">
-                        <option>75708007台灣塑膠工業股份有限公司</option>
-                        <option>85236974泰西企業股份有限公司</option>
-                        <option>56751230海鮮爭先股份有限公司</option>
-                      </optgroup>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
             <div class="row">
               <div class="col text-end py-1">
                 <button type="reset" id="reset" class="me-2 px-3 btn btn-sm hnb__btn--reset">重設</button>
@@ -128,10 +107,10 @@
       </form>
     </div>
 
-    <!-- 受益人分行信用狀暨押匯筆數金額明細表 -->
+    <!-- 分行信用狀暨押匯筆數金額明細表 -->
     <div id="queryList" class="hnb__hide">
       <div class="py-2 d-flex align-items-center justify-content-between">
-        <h1 class="mb-0 fs-4 fw-bolder">受益人分行信用狀暨押匯筆數金額明細表</h1>
+        <h1 class="mb-0 fs-4 fw-bolder">分行信用狀暨押匯筆數金額明細表</h1>
         <div>
           <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap">
             <span class="mdi mdi-cloud-download"></span>
@@ -157,8 +136,8 @@
                   <th scope="col" class="hnb__tbhd text-nowrap">臨櫃開狀金額</th>
                   <th scope="col" class="hnb__tbhd text-nowrap">網銀開狀筆數</th>
                   <th scope="col" class="hnb__tbhd text-nowrap">網銀開狀金額</th>
-                  <th scope="col" class="hnb__tbhd text-nowrap">電子押匯筆數</th>
-                  <th scope="col" class="hnb__tbhd text-nowrap">電子押匯金額</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">押匯筆數</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">押匯金額</th>
                 </tr>
               </thead>
               <tbody>
@@ -259,7 +238,7 @@
     // 開啟列印視窗 printList
     function printList() {
       window.open(
-        '../Query/QueryPrint.html?page=QueryBeneficiaryBlcAmount',
+        '../Query/QueryPrint.html?page=QueryBlcAmount',
         'printList',
         'scrollbars=yes'
         //'width=800,height=600,scrollbars=yes'
