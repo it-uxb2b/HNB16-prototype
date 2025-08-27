@@ -156,7 +156,7 @@
         <div class="my-3 text-center">
           <button type="reset" id="resetBtn" class="me-2 px-3 btn btn-sm hnb__btn--reset">重設</button>
           <button type="button" id="setTypeBtn" class="px-3 btn btn-sm hnb__btn--default text-nowrap"
-            onclick="confirmHandler()">確定</button>
+            onclick="checkHandler()">確定</button>
         </div>
       </form>
     </div>
@@ -741,9 +741,12 @@
       const msgFooter = document.querySelector('#msgFooter');
 
       function checkHandler() {
-        msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
-              您確定要更正此筆資料嗎？
-            </p>`;
+        msgBody.innerHTML = `<p class="fw-bold hnb__text--green">
+              確定不接受下列信用狀的修正嗎？
+            </p><p>
+            信用狀號碼：09970017151000888<br>
+            信用狀號碼：09970017151000889
+              </p>`;
         msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
         <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="confirmHandler()">確定</button>`;
         $('#messageModal').modal('show');
