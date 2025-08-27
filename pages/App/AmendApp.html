@@ -33,22 +33,22 @@
         <h1 class="py-2 fs-4 fw-bolder">請選擇查詢方式</h1>
         <div class="mb-2 card">
           <div class="card-body bg-light">
-            <!-- <div class="row pb-2">
+            <div class="row pb-2">
               <div class="col-12 col-md-6 col-lg-4">
                 <div class="row">
                   <label for="beneType" class="col-2 col-md-3 col-form-label text-end text-nowrap">受益人類別</label>
                   <div class="col-10 col-md-9">
                     <select id="beneType" class="form-select form-select-sm">
-                      <option value="0" selected>= 請選擇 =</option>
-                      <option value="cds">CDS 客戶 ( 中鋼、中鴻、中鋁、唐榮 )</option>
-                      <option value="fpc">台塑 e 化集團</option>
+                      <option value="" selected>= 請選擇 =</option>
+                      <option value="cds">CDS 客戶 (中鋼、中鴻、中鋁、華新麗華、東和鋼鐵)</option>
+                      <option value="fpc">台塑 e 化平台客戶 (台塑集團、奇美集團)</option>
                       <option value="other">其他客戶</option>
                     </select>
                   </div>
                 </div>
               </div>
-            </div> -->
-            <!-- <hr class="my-0 mb-1 border border-0 border-top border-secondary"> -->
+            </div>
+            <hr class="my-0 mb-1 border border-0 border-top border-secondary">
             <div class="row">
               <div class="py-1 col-12 d-flex">
                 <div class="pt-2 form-check" style="width:25px;">
@@ -135,7 +135,7 @@
             <div class="row">
               <div class="col text-end py-1">
                 <button type="reset" id="resetBtn" class="me-2 px-3 btn btn-sm hnb__btn--reset">重設</button>
-                <button type="button" id="searchBtn" class="px-3 btn btn-sm hnb__btn--default text-nowrap"
+                <button type="button" id="searchBtn" class="px-3 btn btn-sm hnb__btn--default text-nowrap disabled"
                   onclick="searchHandler()">確定</button>
               </div>
             </div>
@@ -287,13 +287,7 @@
                     </td>
                     <th class="hnb__tbhd2" style="width: 150px">通知銀行：</th>
                     <td>
-                      <select id="noticeBranch" class="form-select form-select-sm">
-                        <option value="0" selected="">= 請選擇 =</option>
-                        <option>華南銀行彰化分行</option>
-                        <option>華南銀行桃園分行</option>
-                        <option>華南銀行南港分行</option>
-                        <option>華南銀行台北分行</option>
-                      </select>
+                      華南商業銀行 高雄分行
                     </td>
                   </tr>
                   <tr>
@@ -317,7 +311,9 @@
                     <th class="hnb__tbhd2">金額：</th>
                     <td>
                       <div class="d-flex align-items-center">
-                        <span class="mx-1 text-nowrap">新台幣</span>
+                        <select id="noticeBranch" class="form-select form-select-sm me-1">
+                          <option value="0" selected>新台幣</option>
+                        </select>
                         <input type="text" class="form-control form-control-sm" id="payment">
                         <span class="mx-1 text-nowrap">元整</span>
                       </div>
@@ -344,25 +340,25 @@
                   <tr>
                     <th class="hnb__tbhd2">受益人地址：</th>
                     <td colspan="3">
-                      高雄市小港區中鋼路1號
+                      <input type="text" class="form-control form-control-sm" id="address" value="高雄市小港區中鋼路1號">
                     </td>
                   </tr>
                   <tr>
                     <th class="hnb__tbhd2" style="width: 200px">申請人：</th>
                     <td colspan="3">
-                      <input type="text" class="form-control form-control-sm" id="appName" value="林大華">
-                    </td>
-                  </tr>
-                  <tr>
-                    <th class="hnb__tbhd2">申請人統一編號：</th>
-                    <td colspan="3">
-                      <input type="text" class="form-control form-control-sm" id="appNo" value="12345678">
+                      林大華
                     </td>
                   </tr>
                   <tr>
                     <th class="hnb__tbhd2">申請人地址：</th>
                     <td colspan="3">
-                      <input type="text" class="form-control form-control-sm" id="address" value="台北市中正區羅斯福路一段120號">
+                      台北市中正區羅斯福路一段120號
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="hnb__tbhd2">Email：</th>
+                    <td colspan="3">
+                      <input type="text" class="form-control form-control-sm" id="email" value="a1b2c3d4e5@example.com">
                     </td>
                   </tr>
                   <tr>
@@ -951,7 +947,7 @@
                     <td>
                       <div class="input-group flex-nowrap">
                         <input type="datetime-local" id="expDate" placeholder="請點選日期"
-                          class="form-control form-control-sm hnb__calendar" readonly>
+                          class="form-control form-control-sm hnb__calendar" style="max-width: 180px" readonly>
                         <label class="input-group-text py-1" for="expDate">
                           <span class="mdi mdi-calendar-month"></span>
                         </label>
@@ -1322,7 +1318,7 @@
                         <div class="py-1 col-6">
                           <span class="fw-bold">通知銀行編號：</span>01
                         </div>
-                        <div class="py-1 col-6">
+                        <div class="py-1 col-12">
                           <span class="fw-bold">受益人：</span>中鴻鋼鐵股份有限公司
                         </div>
                         <div class="py-1 col-6">
@@ -1330,6 +1326,9 @@
                         </div>
                         <div class="py-1 col-6">
                           <span class="fw-bold">地址：</span>高雄縣橋頭鄉芋寮村芋寮路317號
+                        </div>
+                        <div class="py-1 col-6">
+                          <span class="fw-bold">Email：</span>a1b2c3d4e5@example.com
                         </div>
                         <div class="py-1 col-12">
                           <span class="fw-bold">申請修改事項：</span>
@@ -1468,7 +1467,7 @@
                         <div class="py-1 col-6">
                           <span class="fw-bold">通知銀行編號：</span>01
                         </div>
-                        <div class="py-1 col-6">
+                        <div class="py-1 col-12">
                           <span class="fw-bold">受益人：</span>台灣塑膠工業股份有限公司
                         </div>
                         <div class="py-1 col-6">
@@ -1476,6 +1475,9 @@
                         </div>
                         <div class="py-1 col-6">
                           <span class="fw-bold">地址：</span>高雄縣中山路39號
+                        </div>
+                        <div class="py-1 col-6">
+                          <span class="fw-bold">Email：</span>a1b2c3d4e5@example.com
                         </div>
                         <div class="py-1 col-12">
                           <span class="fw-bold">申請修改事項：</span>
@@ -1614,7 +1616,7 @@
                         <div class="py-1 col-6">
                           <span class="fw-bold">通知銀行編號：</span>01
                         </div>
-                        <div class="py-1 col-6">
+                        <div class="py-1 col-12">
                           <span class="fw-bold">受益人：</span>網際優勢股份有限公司
                         </div>
                         <div class="py-1 col-6">
@@ -1622,6 +1624,9 @@
                         </div>
                         <div class="py-1 col-6">
                           <span class="fw-bold">地址：</span>台北市中正區中山路390號
+                        </div>
+                        <div class="py-1 col-6">
+                          <span class="fw-bold">Email：</span>a1b2c3d4e5@example.com
                         </div>
                         <div class="py-1 col-12">
                           <span class="fw-bold">申請修改事項：</span>
@@ -2610,13 +2615,14 @@
     // 查詢控制項
     const searchBtn = document.querySelector('#searchBtn');
     const beneType = document.querySelector('#beneType');
+    let currentEditType = '';
 
-    // beneType.addEventListener('change', () => {
-    //   currentEditType = beneType.value;
-    //   if (currentEditType !== '0') {
-    //     searchBtn.classList.remove('disabled');
-    //   }
-    // });
+    beneType.addEventListener('change', () => {
+      currentEditType = beneType.value;
+      if (currentEditType !== '') {
+        searchBtn.classList.remove('disabled');
+      }
+    });
 
     const queryForm = document.querySelector('#queryForm');
     const queryList = document.querySelector('#queryList');
@@ -2634,15 +2640,17 @@
       queryForm.classList.add('hnb__hide');
       queryList.classList.add('hnb__hide');
 
-      // if (currentEditType === 'cds') {
-      //   lcForCdsAppList.classList.remove('hnb__hide');
-      // }
-      // if (currentEditType === 'fpc') {
-      lcAppList.classList.remove('hnb__hide');
-      // }
-      // if (currentEditType === 'other') {
-      //   lcforOtherAppList.classList.remove('hnb__hide');
-      // }
+      switch (currentEditType) {
+        case 'cds':
+          lcForCdsAppList.classList.remove('hnb__hide');
+          break;
+        case 'fpc':
+          lcAppList.classList.remove('hnb__hide');
+          break;
+        case 'other':
+          lcforOtherAppList.classList.remove('hnb__hide');
+          break;
+      };
     };
 
     // 修改申請書類別變更(即期 / 遠期) changeLcType
