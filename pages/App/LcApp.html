@@ -389,7 +389,7 @@
                     <th class="hnb__tbhd2">金額：</th>
                     <td>
                       <div class="d-flex align-items-center">
-                        <select id="noticeBranch" class="form-select form-select-sm me-1">
+                        <select id="noticeBranch" class="form-select form-select-sm me-2" style="max-width: 100px">
                           <option value="0" selected>新台幣</option>
                         </select>
                         <input type="text" class="form-control form-control-sm" id="payment">
@@ -402,7 +402,7 @@
                     <td>
                       <div class="input-group flex-nowrap">
                         <input type="datetime-local" id="expDate" placeholder="請點選日期"
-                          class="form-control form-control-sm hnb__calendar" readonly>
+                          class="form-control form-control-sm hnb__calendar" style="max-width: 180px" readonly>
                         <label class="input-group-text py-1" for="expDate">
                           <span class="mdi mdi-calendar-month"></span>
                         </label>
@@ -442,7 +442,12 @@
                   <tr>
                     <th class="hnb__tbhd2">申請人統一編號：</th>
                     <td colspan="3">
-                      <input type="text" class="form-control form-control-sm" id="appNo" value="12345678">
+                      <div class="d-flex">
+                        <input type="text" class="form-control form-control-sm" id="appNo" value="12345678">
+                        <button type="button" class="ms-2 px-3 btn btn-sm hnb__btn--default text-nowrap">
+                          查詢
+                        </button>
+                      </div>
                     </td>
                   </tr>
                   <tr>
@@ -633,7 +638,12 @@
                   <tr>
                     <th class="hnb__tbhd2">申請人統一編號：</th>
                     <td>
-                      <input type="text" class="form-control form-control-sm" id="appNo">
+                      <div class="d-flex">
+                        <input type="text" class="form-control form-control-sm" id="appNo" value="12345678">
+                        <button type="button" class="ms-2 px-3 btn btn-sm hnb__btn--default text-nowrap">
+                          查詢
+                        </button>
+                      </div>
                     </td>
                   </tr>
                   <tr>
@@ -1064,14 +1074,18 @@
                   <tr>
                     <th class="hnb__tbhd2">申請人統一編號：</th>
                     <td>
-                      <input type="text" class="form-control form-control-sm" id="appNo">
+                      <div class="d-flex">
+                        <input type="text" class="form-control form-control-sm" id="appNo" value="12345678">
+                      </div>
                     </td>
                   </tr>
                   <tr>
                     <th class="hnb__tbhd2">金額：</th>
                     <td>
                       <div class="d-flex align-items-center">
-                        <span class="mx-1 text-nowrap">新台幣</span>
+                        <select id="noticeBranch" class="form-select form-select-sm me-2" style="max-width: 100px">
+                          <option value="0" selected>新台幣</option>
+                        </select>
                         <input type="text" class="form-control form-control-sm" id="payment">
                         <span class="mx-1 text-nowrap">元整</span>
                       </div>
