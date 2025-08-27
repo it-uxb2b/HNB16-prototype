@@ -165,7 +165,7 @@
                   <td class="text-center text-nowrap">未到期</td>
                   <td class="text-center">
                     <button type="button" class="editItem my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
-                      onclick="editHandler()">
+                      onclick="checkHandler()">
                       填寫匯票資料
                     </button>
                   </td>
@@ -205,7 +205,7 @@
                   <td class="text-center text-nowrap">未到期</td>
                   <td class="text-center">
                     <button type="button" class="editItem my-1 px-3 btn btn-sm hnb__btn--default text-nowrap"
-                      onclick="editHandler()">
+                      onclick="checkHandler()">
                       填寫匯票資料
                     </button>
                   </td>
@@ -882,6 +882,20 @@
       queryList.classList.remove('hnb__hide');
     };
 
+    // 確認 訊息及按鈕
+    const msgBody = document.querySelector('#msgBody');
+    const msgFooter = document.querySelector('#msgFooter');
+
+
+    // 檢核是否接受註記
+    function checkHandler() {
+      msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
+        此筆押匯尚未完成 "信用狀修改接受註記" 作業！<br>請點選下方按鈕前往接受註記或取消</p>`;
+      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" onclick="processHandler('App', 'AmendAccept')">前往接受註記</button>`;
+      $('#messageModal').modal('show');
+    };
+
     // 編輯押匯申請 editHandler
     function editHandler() {
       queryForm.classList.add('hnb__hide');
@@ -901,9 +915,7 @@
       };
     };
 
-    // 確認 訊息及按鈕
-    const msgBody = document.querySelector('#msgBody');
-    const msgFooter = document.querySelector('#msgFooter');
+    // 確認
     function confirmHandler() {
       msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
               作業已完成！<br>
@@ -920,6 +932,27 @@
       queryForm.classList.remove('hnb__hide');
       queryList.classList.remove('hnb__hide');
       lcAppList.classList.add('hnb__hide');
+    };
+
+    // 切換選項及頁面
+    function processHandler(menu, subMenu) {
+      const tabItem = window.parent.document.querySelector(`button[data-bs-target="#${menu}"]`);
+      const tabContent = window.parent.document.querySelector(`#${menu}`);
+      const subTab = window.parent.document.querySelector(`#${subMenu}`);
+      const parentNode = window.parent.document.querySelector('#main-content');
+      if (tabItem) {
+        // 初始化 Accordion
+        window.parent.clearAccordionAction();
+        if (tabItem) {
+          tabItem.classList.add('collapsed');
+          tabContent.classList.add('show');
+        };
+
+        // 初始化選項 active，再指定項目
+        window.parent.clearAction();
+        subTab.classList.add('active');
+        parentNode.src = `./pages/${menu}/${subMenu}.html`;
+      };
     };
 
     // 月曆

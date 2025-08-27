@@ -35,7 +35,7 @@ const accordionMenu = {
         { id: 'AmendAdjustment', text: '修改申請當日調整帳務' },
         { id: 'CancelAdjustment', text: '註銷申請當日調整帳務' },
         { id: 'DraftAdjustment', text: '押匯申請當日調整帳務' },
-        { id: 'AmendAccept', text: '修改接受註記' },
+        { id: 'AmendAccept', text: '修改信用狀接受註記' },
         { id: 'SentTrfStatus', text: '傳送已轉帳狀態' },
         { id: 'ExpiredLc', text: 'CDS 過期案件主動註銷' },
       ]
