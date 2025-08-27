@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <!-- 當日更正開狀申請書 -->
+  <!-- 當日沖正(EC)交易開狀申請書 -->
   <div id="lcListPage" class="py-4 px-5">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb fs-6">
@@ -23,14 +23,14 @@
           <a id="homePage" class="hnb__path" href="#" onclick="backHomeHandler()">首頁</a>
         </li>
         <li class="breadcrumb-item">申請作業</li>
-        <li class="breadcrumb-item active" aria-current="page">當日更正開狀申請書</li>
+        <li class="breadcrumb-item active" aria-current="page">當日沖正(EC)交易開狀申請書</li>
       </ol>
     </nav>
 
-    <!-- 當日更正開狀申請清冊 -->
+    <!-- 當日沖正(EC)交易開狀申請書清冊 -->
     <div id="queryList">
       <div class="py-2 d-flex align-items-center justify-content-between">
-        <h1 class="mb-0 fs-4 fw-bolder">當日更正開狀申請清冊</h1>
+        <h1 class="mb-0 fs-4 fw-bolder">當日沖正(EC)交易開狀申請書清冊</h1>
       </div>
       <div class="card">
         <div class="card-body bg-light">
@@ -383,11 +383,11 @@
               授信資料
             </button>
             <button type="button" class="m-1 px-3 btn btn-sm hnb__btn--default text-nowrap" onclick="confirmReview()">
-              當日更正
+              當日沖正(EC)交易
             </button>
             <button type="button" id="notConfirmBtn" class="m-1 px-3 btn btn-sm hnb__btn--red text-nowrap"
               onclick="notConfirmReview()">
-              不更正
+              不沖正
             </button>
           </div>
         </div>
@@ -780,13 +780,13 @@
       };
     };
 
-    // 更正確認
+    // 沖正確認
     function confirmReview() {
       if (authType === 'BH') {
         messageModalLabel.innerHTML = '作業訊息';
         msgBody.innerHTML = `
           <p class="fw-bold hnb__text--green text-center">
-            您確定要更正此筆資料嗎？
+            您確定要沖正此筆資料嗎？
           </p>`;
         msgFooter.innerHTML = `
           <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
@@ -797,7 +797,7 @@
         messageModalLabel.innerHTML = '作業訊息';
         msgBody.innerHTML = `
           <p class="fw-bold hnb__text--green text-center">
-            您確定要更正此筆資料嗎？
+            您確定要沖正此筆資料嗎？
           </p>`;
         msgFooter.innerHTML = `
           <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">取消</button>
@@ -806,7 +806,7 @@
       $('#messageModal').modal('show');
     };
 
-    // 不更正 notConfirmReview
+    // 不沖正 notConfirmReview
     let revertStatus = false;
     function notConfirmReview() {
       messageModalLabel.innerHTML = '作業訊息';
@@ -844,13 +844,13 @@
             msgBody.innerHTML = `
             <p class="fw-bold hnb__text--green text-center">
               作業已完成！<br>
-              您的申請書號碼：ENID099000086已更正
+              您的申請書號碼：ENID099000086已沖正
             </p>`;
           }
         };
         msgFooter.innerHTML = `
           <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
-            onclick="location.href = 'AmendLcApp.html'">回當日更正開狀申請</button>`;
+            onclick="location.href = 'AmendLcApp.html'">回當日沖正(EC)交易開狀申請</button>`;
         $('#messageModal').modal('show');
       }, 300);
     };
