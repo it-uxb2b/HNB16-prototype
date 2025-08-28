@@ -1,3 +1,7 @@
+/**
+ * index.html 左側選單資料表及生成/控制單元
+ */
+
 // 檢查 auth BH: 經辦，BS:主管，SM:系統管理員，MB:總行，BM:分行管理員
 let authType = null; // 預設經辦
 const urlSearchParams = new URLSearchParams(window.location.search);
@@ -271,8 +275,7 @@ switch(authType) {
     todoList.classList.add('hnb__hide');
     mainContent.src = './pages/Home.html';
     break;
-}
-
+};
 
 const accordionSideMenu = document.querySelector('#accordionSideMenu');
 // 建立側選單
@@ -294,6 +297,7 @@ currentMenu.forEach(accordion => {
   </div>
   `;
 
+  // 依登入權限找到對應選單資料並生成選單
   // 找到 id="list-tab" 並將選項加入群組
   const listGroup = accordionItem.childNodes[3].childNodes[1].childNodes[1];
   accordion.sub.forEach(item => {
@@ -313,7 +317,6 @@ currentMenu.forEach(accordion => {
   });
   accordionSideMenu.appendChild(accordionItem);
 });
-
 
 window.addEventListener('load', () => {
   initMenu();
