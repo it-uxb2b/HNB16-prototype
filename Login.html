@@ -50,7 +50,7 @@
     const signIn = document.querySelector('#signIn');
     const auth = document.querySelector('#auth');
     signIn.addEventListener('click', (e) => {
-      console.log('auth:', auth.value);
+      //console.log('auth:', auth.value);
       e.preventDefault();
       document.cookie = 'username=hnb';
       window.location.href = `./index.html?auth=${auth.value}`;

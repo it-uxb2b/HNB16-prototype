@@ -59,8 +59,16 @@
       if (parts.length === 2) return parts.pop().split(';').shift();
     }
     const userName = getCookie('username');
-    window.onload = (event) => {
-      if (!userName) {
+    let isAuth = false;
+    // 檢查 URL 參數
+    function checkAuth() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const auth = urlParams.get('auth');
+      isAuth = !!auth;
+    }
+    window.onload = () => {
+      checkAuth()
+      if (!userName || !isAuth) {
         window.location.href = './Login.html'
       }
     };
