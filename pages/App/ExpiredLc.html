@@ -1185,10 +1185,10 @@
               099700031161000861-V-01
             </p>`;
 
-      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--print" data-bs-dismiss="modal" onclick="gotoCancelApp()">註銷申請/切結書審核作業</button><button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" data-bs-dismiss="modal" onclick="cancelHandler()">回 CDS 過期案件主動註銷清冊</button>`;
+      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--print" data-bs-dismiss="modal" onclick="gotoCancelApp()">註銷申請/切結書編審作業</button><button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" data-bs-dismiss="modal" onclick="cancelHandler()">回 CDS 過期案件主動註銷清冊</button>`;
     };
 
-    // 前往 註銷申請/切結書審核作業 gotoCancelApp
+    // 前往 註銷申請/切結書編審作業 gotoCancelApp
     function gotoCancelApp() {
       const tabItem = window.parent.document.querySelector('button[data-bs-target="#Review"]');
       const tabContent = window.parent.document.querySelector('#Review');

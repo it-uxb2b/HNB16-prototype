@@ -21,8 +21,9 @@ const accordionMenu = {
       sub: [
         { id: 'LcApp', text: '開狀申請書' },
         { id: 'AmendApp', text: '修改申請書' },
-        { id: 'CancelApp', text: '註銷申請/切結書' },
         { id: 'DraftApp', text: '押匯申請' },
+        { id: 'AmendAccept', text: '修改信用狀接受註記' },
+        { id: 'CancelApp', text: '註銷申請/切結書' },
         { id: 'AmendLcApp', text: '當日沖正(EC)交易開狀申請書' },
         { id: 'CurrentAmendApp', text: '當日沖正(EC)交易修改申請書' },
         { id: 'CurrentCancelApp', text: '當日沖正註銷申請/切結書' },
@@ -31,14 +32,13 @@ const accordionMenu = {
         { id: 'AmendAdjustment', text: '修改申請當日調整帳務' },
         { id: 'CancelAdjustment', text: '註銷申請當日調整帳務' },
         { id: 'DraftAdjustment', text: '押匯申請當日調整帳務' },
-        { id: 'AmendAccept', text: '修改信用狀接受註記' },
         { id: 'SentTrfStatus', text: '傳送已轉帳狀態' },
         { id: 'ExpiredLc', text: 'CDS 過期案件主動註銷' },
       ]
     },
     {
       id: 'Review',
-      text: '審核作業',
+      text: '編審作業',
       sub: [
         { id: 'ReviewLcApp', text: '開狀申請書' },
         { id: 'ReviewAmendApp', text: '修改申請書' },
@@ -117,7 +117,7 @@ const accordionMenu = {
     },
     {
       id: 'Review',
-      text: '審核作業',
+      text: '編審作業',
       sub: [
         { id: 'ReviewLcApp', text: '開狀申請書' },
         { id: 'ReviewAmendApp', text: '修改申請書' },
