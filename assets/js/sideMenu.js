@@ -14,15 +14,7 @@ let currentMenu = [];
 
 // 側邊選單列表 BH: 經辦，BS:主管，SM:系統管理員，MB:總行，BM:分行管理員
 const accordionMenu = {
-  BH: [
-    {
-      id: 'Amend',
-      text: '補收開狀手續費作業',
-      sub: [
-        { id: 'ChargeLc', text: '補收開狀手續費' },
-        { id: 'ChargeAmendLc', text: '當日更正補收開狀手續費'  }
-      ]
-    },
+  BH: [    
     {
       id: 'App',
       text: '申請作業',
@@ -78,7 +70,15 @@ const accordionMenu = {
       sub: [
         { id: 'PromptDraft', text: '押匯提示' },
         { id: 'RePromptDraft', text: '重新提示' },
-        { id: 'WebPromptDraft', text: '網銀押匯提示作業' }
+        { id: 'WebPromptDraft', text: '網銀押匯提示' }
+      ]
+    },
+    {
+      id: 'Amend',
+      text: '補收開狀手續費作業',
+      sub: [
+        { id: 'ChargeLc', text: '補收開狀手續費' },
+        { id: 'ChargeAmendLc', text: '當日更正補收開狀手續費'  }
       ]
     },
     {
@@ -100,14 +100,6 @@ const accordionMenu = {
     },
   ],
   BS: [
-    {
-      id: 'Amend',
-      text: '補收開狀手續費作業',
-      sub: [
-        { id: 'ChargeLc', text: '補收開狀手續費' },
-        { id: 'ChargeAmendLc', text: '當日更正補收開狀手續費'  }
-      ]
-    },
     {
       id: 'App',
       text: '申請作業',
@@ -158,7 +150,15 @@ const accordionMenu = {
       sub: [
         { id: 'PromptDraft', text: '押匯提示' },
         { id: 'RePromptDraft', text: '重新提示' },
-        { id: 'WebPromptDraft', text: '網銀押匯提示作業' }
+        { id: 'WebPromptDraft', text: '網銀押匯提示' }
+      ]
+    },
+    {
+      id: 'Amend',
+      text: '補收開狀手續費作業',
+      sub: [
+        { id: 'ChargeLc', text: '補收開狀手續費' },
+        { id: 'ChargeAmendLc', text: '當日更正補收開狀手續費'  }
       ]
     },
     {
