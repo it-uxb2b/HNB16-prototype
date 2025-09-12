@@ -114,6 +114,14 @@ h1,
   font-size: 0.8rem !important;
 }
 
+.fs-0-8-75 {
+  font-size: 0.875rem !important;
+}
+
+.ps-4-5 {
+  padding-left: 1.75rem !important;
+}
+
 form {
   height: 100%;
   width: 100%;
@@ -487,6 +495,8 @@ form {
 
   &__menu {
     &--title {
+      height: 40px;
+
       &:not(.collapsed) {
         color: $tfb-text-color;
         background-color: #e7f7f8;

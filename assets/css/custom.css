@@ -10254,6 +10254,14 @@ h1, .h1,
   font-size: 0.8rem !important;
 }
 
+.fs-0-8-75 {
+  font-size: 0.875rem !important;
+}
+
+.ps-4-5 {
+  padding-left: 1.75rem !important;
+}
+
 form {
   height: 100%;
   width: 100%;
@@ -10543,6 +10551,9 @@ form {
   color: #fff;
   background-color: #46c8ce;
   border-color: #46c8ce;
+}
+.hnb__menu--title {
+  height: 40px;
 }
 .hnb__menu--title:not(.collapsed) {
   color: #b3000e;

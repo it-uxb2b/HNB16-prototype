@@ -24,14 +24,26 @@ const accordionMenu = {
         { id: 'DraftApp', text: '押匯申請' },
         { id: 'AmendAccept', text: '修改信用狀接受註記' },
         { id: 'CancelApp', text: '註銷申請/切結書' },
-        { id: 'AmendLcApp', text: '當日沖正(EC)交易開狀申請書' },
-        { id: 'CurrentAmendApp', text: '當日沖正(EC)交易修改申請書' },
-        { id: 'CurrentCancelApp', text: '當日沖正註銷申請/切結書' },
-        { id: 'CurrentAmendDraftApp', text: '當日沖正(EC)交易押匯申請作業' },
-        { id: 'LcAdjustment', text: '開狀申請當日調整帳務' },
-        { id: 'AmendAdjustment', text: '修改申請當日調整帳務' },
-        { id: 'CancelAdjustment', text: '註銷申請當日調整帳務' },
-        { id: 'DraftAdjustment', text: '押匯申請當日調整帳務' },
+        { 
+          id: 'SameDayReversal', 
+          text: '當日沖正交易',
+          sub: [
+            { id: 'AmendLcApp', text: '開狀沖正(EC)' },
+            { id: 'CurrentAmendApp', text: '修狀沖正(EC)' },
+            { id: 'CurrentCancelApp', text: '註銷信用狀(EC)' },
+            { id: 'CurrentAmendDraftApp', text: '押匯沖正(EC)' },
+          ]
+        },
+        { 
+          id: 'SameDayAdjustment',
+          text: '當日調整帳務',
+          sub: [
+            { id: 'LcAdjustment', text: '開狀申請當日調整帳務' },
+            { id: 'AmendAdjustment', text: '修改申請當日調整帳務' },
+            { id: 'CancelAdjustment', text: '註銷申請當日調整帳務' },
+            { id: 'DraftAdjustment', text: '押匯申請當日調整帳務' },
+          ]
+        },        
         { id: 'SentTrfStatus', text: '傳送已轉帳狀態' },
         { id: 'ExpiredLc', text: 'CDS 過期案件主動註銷' },
       ]
@@ -278,8 +290,9 @@ switch(authType) {
 };
 
 const accordionSideMenu = document.querySelector('#accordionSideMenu');
-// 建立側選單
+// 建立側選單-依登入權限找到對應選單資料並生成選單
 currentMenu.forEach(accordion => {
+  // 建立第一層手風琴選單
   const accordionItem = document.createElement('div');
   accordionItem.classList.add('accordion-item');
   accordionItem.innerHTML = `
@@ -297,52 +310,142 @@ currentMenu.forEach(accordion => {
   </div>
   `;
 
-  // 依登入權限找到對應選單資料並生成選單
-  // 找到 id="list-tab" 並將選項加入群組
+  // 第一層-找到 id="list-tab" 並將選項加入群組
   const listGroup = accordionItem.childNodes[3].childNodes[1].childNodes[1];
+
+  // 建立第二層手風琴選單
+  const subAccordionItem = document.createElement('div');
+  subAccordionItem.classList.add('accordion', 'accordion-flush');
+  subAccordionItem.id = `${accordion.id}-sub`;
   accordion.sub.forEach(item => {
-    const itemEl = document.createElement('a');
-    itemEl.classList.add('ps-4', 'list-group-item', 'list-group-item-action', 'hnb__menu--btn');
-    itemEl['id'] = `${item.id}`;
-    itemEl['href'] = 'javascript:void(0)';
-    itemEl['role'] = 'tab';
-    itemEl.setAttribute('data-bs-toggle', 'list');
-    itemEl.setAttribute('aria-controls', `list-${item.id}`);
-    itemEl.textContent = `${item.text}`;
-    itemEl.addEventListener('click', () => {
-      loadPage(accordion.id, item.id);
-    });
-    listGroup.appendChild(itemEl);
+    if (item.sub) {
+      const subAccordionContent = document.createElement('div');
+      subAccordionContent.classList.add('accordion-item', 'border-0');
+      subAccordionContent.innerHTML = `
+      <h3 class="px-2 accordion-header" id="heading_${item.id}">
+      <button class="py-2 ps-3 fs-0-8-75 fw-bold subAccordion accordion-button hnb__menu--title rounded-0 border-top border-bottom collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${item.id}" aria-expanded="false" aria-controls="${item.id}">${item.text}</button>        
+      </h3>
+      <div id="${item.id}" class="px-2 accordion-collapse collapse" aria-labelledby="heading_${item.id}" data-bs-parent="#${accordion.id}-sub">
+      <div class="accordion-body p-0 border-bottom"><div class="list-group list-group-flush" id="list-tab" role="tablist"></div></div></div>
+      `;
+      // 第二層-找到 id="list-tab" 並將選項加入群組      
+      const subListGroup = subAccordionContent.childNodes[3].childNodes[1].childNodes[0];
+      item.sub.forEach(subItem => {
+        const subItemEl = document.createElement('a');
+        subItemEl.classList.add('ps-4-5', 'list-group-item', 'list-group-item-action', 'hnb__menu--btn');
+        subItemEl['id'] = `${subItem.id}`;
+        subItemEl['href'] = 'javascript:void(0)';
+        subItemEl['role'] = 'tab';
+        subItemEl.setAttribute('data-bs-toggle', 'list');
+        subItemEl.setAttribute('aria-controls', `list-${subItem.id}`);
+        subItemEl.textContent = `${subItem.text}`;
+        subItemEl.addEventListener('click', () => {
+          loadPage(accordion.id, subItem.id);
+        });
+        subListGroup.appendChild(subItemEl);
+        subAccordionItem.appendChild(subAccordionContent);
+      });
+
+      listGroup.appendChild(subAccordionItem);
+    } else {
+      const itemEl = document.createElement('a');
+      itemEl.classList.add('ps-4', 'list-group-item', 'list-group-item-action', 'hnb__menu--btn');
+      itemEl['id'] = `${item.id}`;
+      itemEl['href'] = 'javascript:void(0)';
+      itemEl['role'] = 'tab';
+      itemEl.setAttribute('data-bs-toggle', 'list');
+      itemEl.setAttribute('aria-controls', `list-${item.id}`);
+      itemEl.textContent = `${item.text}`;
+      itemEl.addEventListener('click', () => {
+        loadPage(accordion.id, item.id);
+      });
+      listGroup.appendChild(itemEl);
+    };
 
   });
   accordionSideMenu.appendChild(accordionItem);
 });
 
+// 主選單列表
+const accordionList = ['Amend','App','Review','Query','Prompt','Customer','Member'];
+// 次選單列表
+const subAccordionList = ['SameDayReversal', 'SameDayAdjustment'];
+// 頁面載入後執行
 window.addEventListener('load', () => {
   initMenu();
 });
 
-const accordionList = ['Amend','App','Review','Query','Prompt','Customer','Member'];
-// accordionSideMenu 切換監聽
 function initMenu() {
-  accordionList.forEach(accordion => {
+  // 表單初始化
+  clearAccordionAction();
+  clearSubAccordionAction();
+  changeAccordion(accordionList, 'main');
+  changeAccordion(subAccordionList, 'sub');
+};
+
+// accordionSideMenu 切換監聽
+function changeAccordion(list, level) {
+  list.forEach(accordion => {
     const tab = document.querySelector(`button[data-bs-target="#${accordion}"]`);
     // 監聽連結
     if (tab) {
       tab.addEventListener('click', (event) => {
         event.preventDefault();
-      
-        // 表單初始化
-        clearAccordionAction();
+        const hasCollapsed = tab.classList.contains('collapsed');    
+        
         // 樣式切換
-        tab.classList.remove('collapsed');
-    });
+        if(!hasCollapsed) {        
+          if (level === 'main') {
+            clearAccordionAction();
+          }
+          clearSubAccordionAction();
+          tab.classList.remove('collapsed');
+        } else {
+          tab.classList.add('collapsed');
+        }
+      });
     }
   });
 };
 
+// accordionSideMenu 切換監聽
+subAccordionList.forEach(accordion => {
+  const tab = document.querySelector(`button[data-bs-target="#${accordion}"]`);
+  // 監聽連結
+  if (tab) {
+    tab.addEventListener('click', (event) => {
+      event.preventDefault();
+      const hasCollapsed = tab.classList.contains('collapsed');    
+      
+      // 樣式切換
+      if(!hasCollapsed) {        
+        clearSubAccordionAction();
+        tab.classList.remove('collapsed');
+      } else {
+        tab.classList.add('collapsed');
+      }
+    });
+  }
+});
+
+// 收闔第一層手風琴選單
 function clearAccordionAction() {
   accordionList.forEach(accordion => {
+    const tabItem = document.querySelector(`button[data-bs-target="#${accordion}"]`);
+    const tabContent = document.querySelector(`#${accordion}`);
+    if (tabItem) {
+      const hasCollapsed = tabItem.classList.contains('collapsed');
+      if (!hasCollapsed) {
+        tabItem.classList.add('collapsed');
+      }
+      tabContent.classList.remove('show');
+    }
+  });
+};
+
+// 收闔第二層手風琴選單
+function clearSubAccordionAction() {
+  subAccordionList.forEach(accordion => {
     const tabItem = document.querySelector(`button[data-bs-target="#${accordion}"]`);
     const tabContent = document.querySelector(`#${accordion}`);
     if (tabItem) {
