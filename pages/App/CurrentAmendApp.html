@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <!-- 當日沖正(EC)交易修改申請書 -->
+  <!-- 修狀沖正(EC) -->
   <div id="CurrentAmendApp" class="py-4 px-5">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
       <ol class="breadcrumb fs-6">
@@ -23,14 +23,15 @@
           <a id="homePage" class="hnb__path" href="#" onclick="backHomeHandler()">首頁</a>
         </li>
         <li class="breadcrumb-item">申請作業</li>
-        <li class="breadcrumb-item active" aria-current="page">當日沖正(EC)交易修改申請書</li>
+        <li class="breadcrumb-item">當日沖正交易</li>
+        <li class="breadcrumb-item active" aria-current="page">修狀沖正(EC)</li>
       </ol>
     </nav>
 
-    <!-- 當日沖正(EC)交易修改申請書清冊 -->
+    <!-- 修狀沖正(EC)清冊 -->
     <div id="queryList">
       <div class="py-2 d-flex align-items-center justify-content-between">
-        <h1 class="mb-0 fs-4 fw-bolder">當日沖正(EC)交易修改申請書清冊</h1>
+        <h1 class="mb-0 fs-4 fw-bolder">修狀沖正(EC)清冊</h1>
       </div>
       <div class="card">
         <div class="card-body bg-light">
@@ -1217,7 +1218,7 @@
         };
         msgFooter.innerHTML = `
           <button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default"
-            onclick="location.href = 'CurrentAmendApp.html'">回當日沖正(EC)交易修改申請</button>`;
+            onclick="location.href = 'CurrentAmendApp.html'">回修狀沖正(EC)清冊</button>`;
         $('#messageModal').modal('show');
       }, 300);
     };
