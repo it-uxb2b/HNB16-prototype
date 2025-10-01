@@ -435,12 +435,12 @@
               <input class="reviewStatus form-check-input" type="radio" name="reviewStatus" id="iRadio2" value="reject">
               <label class="form-check-label" for="iRadio2">拒絕 / 拒絕原因：</label>
             </div>
-            <select name="select2" class="form-select form-select-sm" style="width:200px">
-              <option selected>=請選擇拒絕原因=</option>
-              <option>拒絕原因 1</option>
-              <option>拒絕原因 2</option>
-              <option>拒絕原因 3</option>
-              <option>拒絕原因 4</option>
+            <select name="select2" id="rejectReason" class="form-select form-select-sm" style="width:200px">
+              <option value="none" selected>=請選擇拒絕原因=</option>
+              <option value="r1">拒絕原因 1</option>
+              <option value="r2">拒絕原因 2</option>
+              <option value="r3">拒絕原因 3</option>
+              <option value="r4">拒絕原因 4</option>
             </select>
           </div>
           <div class="d-flex align-items-center justify-content-center">
@@ -1868,17 +1868,29 @@
       inputField.classList.add('hnb__hide');
     };
 
-    // 確認按鈕狀態監聽
-    const reviewStatusList = document.querySelectorAll('.reviewStatus');
+    const reviewStatusList = document.querySelectorAll('input[name="reviewStatus"]');
+    const rejectReason = document.querySelector('#rejectReason');
     const confirmButton = document.querySelector('#confirmButton');
     let reviewStatus = '';
-    reviewStatusList.forEach(status => {
+    reviewStatusList.forEach((status) => {
       status.addEventListener('change', () => {
-        if (!!status.value) {
-          reviewStatus = status.value;
+        reviewStatus = status.value;
+        if (status.value === 'approved') {
           confirmButton.classList.remove('disabled');
-        };
+        } else {
+          confirmButton.classList.add('disabled');
+        }
       });
+    });
+
+    rejectReason.addEventListener('change', () => {
+      if (reviewStatus === 'reject') {
+        if (rejectReason.value !== 'none') {
+          confirmButton.classList.remove('disabled');
+        } else {
+          confirmButton.classList.add('disabled');
+        }
+      }
     });
 
     // 審核確認
