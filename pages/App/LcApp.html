@@ -3211,7 +3211,7 @@
       // 初始化選單
       if (beneItems.length > 0) {
         bene.value = '0';
-        selectType.reset();
+        // selectType.reset();
         beneItems.forEach(item => bene.removeChild(item));
       };
 
@@ -3242,7 +3242,7 @@
       // 依流程開啟清冊或填寫
       if (currentEditType === 'other') {
         beneSelect.classList.add('hnb__hide');
-        inputSelect.classList.add('hnb__hide');
+        inputSelect.classList.remove('hnb__hide');
         bene.value = '0';
         inputType.value = '0';
       } else {
@@ -3264,30 +3264,31 @@
     });
 
     function checkSetForm() {
+      let shouldEnable = false;
       if (beneType.value === 'other') {
-        setTypeBtn.classList.remove('disabled');
+        shouldEnable = inputType.value !== '0';
       } else {
-        setTypeBtn.classList.add('disabled');
-        if (bene.value !== '0' && inputType.value !== '0')
-          setTypeBtn.classList.remove('disabled');
-      };
+        shouldEnable = bene.value !== '0' && inputType.value !== '0';
+      }
+
+      setTypeBtn.classList.toggle('disabled', !shouldEnable);
     };
 
     // 選擇開狀申請書填寫方式 settingHandler
     function settingHandler() {
       setForm.classList.add('hnb__hide');
-      if (beneType.value === 'other') {
-        lcforOtherAppList.classList.remove('hnb__hide');
+      if (inputType.value === 'reWrite') {
+        if (beneType.value === 'cds') {
+          lcForCdsAppList.classList.remove('hnb__hide');
+        }
+        if (beneType.value === 'fpc') {
+          lcAppList.classList.remove('hnb__hide');
+        }
+        if (beneType.value === 'other') {
+          lcforOtherAppList.classList.remove('hnb__hide');
+        }
       } else {
-        if (inputType.value === 'reWrite') {
-          if (beneType.value === 'cds') {
-            lcForCdsAppList.classList.remove('hnb__hide');
-          } else {
-            lcAppList.classList.remove('hnb__hide');
-          }
-        } else {
-          queryForm.classList.remove('hnb__hide');
-        };
+        queryForm.classList.remove('hnb__hide');
       };
     };
 
@@ -3306,6 +3307,9 @@
           break;
         case 'fpc':
           lcAppList.classList.remove('hnb__hide');
+          break;
+        case 'other':
+          lcforOtherAppList.classList.remove('hnb__hide');
           break;
       };
     };
