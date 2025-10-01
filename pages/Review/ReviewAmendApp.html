@@ -1760,22 +1760,11 @@
     reviewStatusList.forEach((status) => {
       status.addEventListener('change', () => {
         reviewStatus = status.value;
-        console.log(
-          { rejectReason: rejectReason.value }
-        );
         if (status.value === 'approved') {
           confirmButton.classList.remove('disabled');
         } else {
           confirmButton.classList.add('disabled');
         }
-        // if (status.value === 'reject') {
-
-        //   if (rejectReason.value !== 'none') {
-        //     confirmButton.classList.remove('disabled');
-        //   } else {
-        //     confirmButton.classList.add('disabled');
-        //   }
-        // }
       });
     });
 
