@@ -30,8 +30,10 @@ const accordionMenu = {
           sub: [
             { id: 'AmendLcApp', text: '開狀沖正(EC)' },
             { id: 'CurrentAmendApp', text: '修狀沖正(EC)' },
-            { id: 'CurrentCancelApp', text: '註銷信用狀(EC)' },
+            { id: 'CurrentCancelApp', text: '註銷信用狀沖正(EC)' },
             { id: 'CurrentAmendDraftApp', text: '押匯沖正(EC)' },
+            { id: 'LoanTermModification', text: '利率約定改貸沖正(EC)' },
+            { id: 'ChargeAmendLc', text: '補收開狀手續費沖正(EC)'  }
           ]
         },
         { 
@@ -89,8 +91,7 @@ const accordionMenu = {
       id: 'Amend',
       text: '補收開狀手續費作業',
       sub: [
-        { id: 'ChargeLc', text: '補收開狀手續費' },
-        { id: 'ChargeAmendLc', text: '當日更正補收開狀手續費'  }
+        { id: 'ChargeLc', text: '補收開狀手續費' }
       ]
     },
     {
@@ -116,15 +117,29 @@ const accordionMenu = {
       id: 'App',
       text: '申請作業',
       sub: [
-        { id: 'AmendLcApp', text: '當日更正開狀申請書' },
-        { id: 'CurrentAmendApp', text: '當日更正修改申請書' },
-        { id: 'CurrentCancelApp', text: '當日更正註銷申請/切結書' },
-        { id: 'CurrentAmendDraftApp', text: '當日更正押匯申請作業' },
+        { 
+          id: 'SameDayReversal', 
+          text: '當日沖正交易',
+          sub: [
+            { id: 'AmendLcApp', text: '開狀沖正(EC)' },
+            { id: 'CurrentAmendApp', text: '修狀沖正(EC)' },
+            { id: 'CurrentCancelApp', text: '註銷信用狀沖正(EC)' },
+            { id: 'CurrentAmendDraftApp', text: '押匯沖正(EC)' },
+            { id: 'LoanTermModification', text: '利率約定改貸沖正(EC)' },
+            { id: 'ChargeAmendLc', text: '補收開狀手續費沖正(EC)'  }
+          ]
+        },
+        { 
+          id: 'SameDayAdjustment',
+          text: '當日調整帳務',
+          sub: [
+            { id: 'LcAdjustment', text: '開狀申請當日調整帳務' },
+            { id: 'AmendAdjustment', text: '修改申請當日調整帳務' },
+            { id: 'CancelAdjustment', text: '註銷申請當日調整帳務' },
+            { id: 'DraftAdjustment', text: '押匯申請當日調整帳務' },
+          ]
+        },   
         { id: 'ExpiredLc', text: 'CDS平台-過期信用狀主動註銷' },
-        { id: 'LcAdjustment', text: '開狀申請當日調整帳務' },
-        { id: 'AmendAdjustment', text: '修改申請當日調整帳務' },
-        { id: 'CancelAdjustment', text: '註銷申請當日調整帳務' },
-        { id: 'DraftAdjustment', text: '押匯申請當日調整帳務' }
       ]
     },
     {
@@ -170,7 +185,6 @@ const accordionMenu = {
       text: '補收開狀手續費作業',
       sub: [
         { id: 'ChargeLc', text: '補收開狀手續費' },
-        { id: 'ChargeAmendLc', text: '當日更正補收開狀手續費'  }
       ]
     },
     {

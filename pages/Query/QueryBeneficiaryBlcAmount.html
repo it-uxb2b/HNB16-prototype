@@ -34,10 +34,10 @@
         <div class="mb-2 card">
           <div class="card-body bg-light">
             <div class="row py-2">
-              <div class="col-12 col-md-6 col-lg-4">
+              <div class="col-12 col-md-6 col-lg-6">
                 <div class="row">
-                  <label for="appDate" class="col-2 col-md-3 col-form-label text-end text-nowrap">開狀日期</label>
-                  <div class="col-10 col-md-9">
+                  <label for="appDate" class="col-2 col-md-2 col-form-label text-end text-nowrap">開狀日期</label>
+                  <div class="col-10 col-md-10">
                     <div class="d-flex align-items-center">
                       <div class="input-group flex-nowrap">
                         <input type="datetime-local" id="lcStartDate" placeholder="請點選起日"
@@ -64,10 +64,10 @@
                   </div>
                 </div>
               </div>
-              <div class="col-12 col-md-6 col-lg-4">
+              <div class="col-12 col-md-6 col-lg-6">
                 <div class="row">
-                  <label for="appDate" class="col-2 col-md-3 col-form-label text-end text-nowrap">押匯日期</label>
-                  <div class="col-10 col-md-9">
+                  <label for="appDate" class="col-2 col-md-2 col-form-label text-end text-nowrap">押匯日期</label>
+                  <div class="col-10 col-md-10">
                     <div class="d-flex align-items-center">
                       <div class="input-group flex-nowrap">
                         <input type="datetime-local" id="draftStartDate" placeholder="請點選起日"
@@ -96,10 +96,10 @@
               </div>
             </div>
             <div class="row py-2">
-              <div class="col-12 col-md-6 col-lg-4">
+              <div class="col-12 col-md-6 col-lg-6">
                 <div class="mb-2 row">
-                  <label for="beneNo" class="col-2 col-md-3 col-form-label text-end text-nowrap">受益人</label>
-                  <div class="col-10 col-md-9">
+                  <label for="beneNo" class="col-2 col-md-2 col-form-label text-end text-nowrap">受益人</label>
+                  <div class="col-10 col-md-10">
                     <select id="branchNo" class="form-select form-select-sm">
                       <option value="" selected>= 請選擇 =</option>
                       <optgroup label="群組受益人">
@@ -145,6 +145,20 @@
       </div>
       <div class="card">
         <div class="card-body bg-light">
+          <div class="my-1 d-flex justify-content-between">
+            <div>
+              <span class="fw-bold">開狀日期區間：</span>
+              <span>2025/08/26 ~ 2025/08/30</span>
+            </div>
+            <div>
+              <span class="fw-bold">押匯日期區間：</span>
+              <span>2025/08/26 ~ 2025/08/30</span>
+            </div>
+            <div>
+              <span class="fw-bold">受益人：</span>
+              <span>台灣塑膠工業股份有限公司</span>
+            </div>
+          </div>
           <div class="table-responsive">
             <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white">
               <thead>
@@ -157,6 +171,8 @@
                   <th scope="col" class="hnb__tbhd text-nowrap">臨櫃開狀金額</th>
                   <th scope="col" class="hnb__tbhd text-nowrap">網銀開狀筆數</th>
                   <th scope="col" class="hnb__tbhd text-nowrap">網銀開狀金額</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">網銀押匯筆數</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">網銀押匯金額</th>
                   <th scope="col" class="hnb__tbhd text-nowrap">電子押匯筆數</th>
                   <th scope="col" class="hnb__tbhd text-nowrap">電子押匯金額</th>
                 </tr>
@@ -169,6 +185,8 @@
                   <td class="text-end">$0</td>
                   <td class="text-end">15</td>
                   <td class="text-end">$5,000,000</td>
+                  <td class="text-end">0</td>
+                  <td class="text-end">$0</td>
                   <td class="text-end">0</td>
                   <td class="text-end">$0</td>
                   <td class="text-end">0</td>
@@ -187,6 +205,8 @@
                   <td class="text-end">$0</td>
                   <td class="text-end">0</td>
                   <td class="text-end">$0</td>
+                  <td class="text-end">0</td>
+                  <td class="text-end">$0</td>
                 </tr>
                 <tr class="hnb__text--red">
                   <td class="text-center">總合計</td>
@@ -195,6 +215,8 @@
                   <td class="text-end">$0</td>
                   <td class="text-end">15</td>
                   <td class="text-end">$5,000,000</td>
+                  <td class="text-end">0</td>
+                  <td class="text-end">$0</td>
                   <td class="text-end">0</td>
                   <td class="text-end">$0</td>
                   <td class="text-end">0</td>
