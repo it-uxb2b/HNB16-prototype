@@ -42,15 +42,15 @@
                     <th scope="col" class="hnb__tbhd text-nowrap">編號</th>
                     <th scope="col" class="hnb__tbhd text-nowrap">
                       <div class="p-1">接受</div>
-                      <button type="button"
-                        class="editItem my-1 px-3 btn btn-sm hnb__btn--select shadow-sm text-nowrap">
+                      <button type="button" class="editItem my-1 px-3 btn btn-sm hnb__btn--select shadow-sm text-nowrap"
+                        onclick="approveHandler()">
                         全選
                       </button>
                     </th>
                     <th scope="col" class="hnb__tbhd text-nowrap">
                       <div class="p-1">不接受</div>
-                      <button type="button"
-                        class="editItem my-1 px-3 btn btn-sm hnb__btn--select shadow-sm text-nowrap">
+                      <button type="button" class="editItem my-1 px-3 btn btn-sm hnb__btn--select shadow-sm text-nowrap"
+                        onclick="rejectHandler()">
                         全選
                       </button>
                     </th>
@@ -67,10 +67,12 @@
                   <tr>
                     <td class="text-center" width="50">1</td>
                     <td class="text-center">
-                      <input class="form-check-input" type="radio" id="qpprove_01" name="case_01">
+                      <input class="form-check-input approveItem" type="radio" id="approve_01" name="case_01"
+                        value="approve">
                     </td>
                     <td class="text-center">
-                      <input class="form-check-input" type="radio" id="reject_01" name="case_01">
+                      <input class="form-check-input rejectItem" type="radio" id="reject_01" name="case_01"
+                        value="reject">
                     </td>
                     <td class="text-center text-nowrap">
                       <a href="#" class="hnb__link--text" data-bs-toggle="modal"
@@ -90,10 +92,12 @@
                   <tr>
                     <td class="text-center" width="50">2</td>
                     <td class="text-center">
-                      <input class="form-check-input" type="radio" id="qpprove_02" name="case_02">
+                      <input class="form-check-input approveItem" type="radio" id="qpprove_02" name="case_02"
+                        value="approve">
                     </td>
                     <td class="text-center">
-                      <input class="form-check-input" type="radio" id="reject_02" name="case_02">
+                      <input class="form-check-input rejectItem" type="radio" id="reject_02" name="case_02"
+                        value="reject">
                     </td>
                     <td class="text-center text-nowrap">
                       <a href="#" class="hnb__link--text" data-bs-toggle="modal"
@@ -736,13 +740,41 @@
         };
       };
 
+      // 接受 全選
+      function approveHandler() {
+        document.querySelectorAll('.approveItem').forEach(i => {
+          i.checked = true
+          selectedStatus = 'approve';
+        })
+      };
+
+      // 不接受 全選
+      function rejectHandler() {
+        document.querySelectorAll('.rejectItem').forEach(i => {
+          i.checked = true
+          selectedStatus = 'reject';
+        })
+      };
+
+      // 判斷接受/不接受
+      const lcTypeSelect = ['01', '02'];
+      let selectedStatus = null;
+      lcTypeSelect.forEach(item => {
+        const el = document.querySelectorAll(`input[name="case_${item}"]`)
+        el.forEach(i => {
+          i.addEventListener('change', (e) => {
+            selectedStatus = e.target.value;
+          });
+        })
+      });
+
       // 確認 訊息及按鈕
       const msgBody = document.querySelector('#msgBody');
       const msgFooter = document.querySelector('#msgFooter');
 
       function checkHandler() {
         msgBody.innerHTML = `<p class="fw-bold hnb__text--green">
-              確定接受下列信用狀的修正嗎？
+              確定${selectedStatus === 'approve' ? '接受' : '不接受'}下列信用狀的修正嗎？
             </p><p>
             信用狀號碼：09970017151000888<br>
             信用狀號碼：09970017151000889
