@@ -248,7 +248,9 @@ const accordionMenu = {
         { id: 'QueryAccessLog', text: '存取記錄' },
         { id: 'QueryNegotiationFee', text: '國內信用狀押匯手續費優待明細表' },
         { id: 'QueryBeneficiaryBlcAmount', text: '受益人分行信用狀暨押匯筆數金額' },
-        { id: 'QueryClientConnect', text: 'Client連線狀態' }
+        { id: 'QueryClientConnect', text: 'Client連線狀態' },
+        { id: 'QueryDomesticLcFee', text: '國內信用狀開狀手續費' },
+        { id: 'QueryLcFeeDetail', text: '信用狀手續費明細表' }
       ]
     },
     {
