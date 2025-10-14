@@ -48,6 +48,7 @@ const accordionMenu = {
         },        
         { id: 'SentTrfStatus', text: '傳送已轉帳狀態' },
         { id: 'ExpiredLc', text: 'CDS 過期案件主動註銷' },
+        { id: 'FpcCadSdi', text: '台塑押匯補登資料匯入' },
       ]
     },
     {
@@ -76,6 +77,8 @@ const accordionMenu = {
         { id: 'QueryOutstandLc', text: '未結案信用狀額度與保證金' },
         { id: 'QueryInterestRate', text: '利率約定 (改貸)' },
         { id: 'QueryAccount', text: '會計帳務分錄' },
+        { id: 'QueryFpcCtsv', text: '台塑網通訊傳輸排程檢視' },
+        { id: 'QueryFpcLcRpt', text: '台塑信用狀統計表' },
       ]
     },
     {
@@ -101,7 +104,8 @@ const accordionMenu = {
         { id: 'SetGroup', text: '設定客戶群組' },
         { id: 'SetCustomer', text: '設定客戶資料' },
         { id: 'SetCustomerBranch', text: '客戶所屬分行異動' },
-        { id: 'SetBeneficiary', text: '受益人資料' }
+        { id: 'SetBeneficiary', text: '受益人資料' },
+        { id: 'FpcBenBuImp', text: '台塑受益人事業部建檔匯入' }
       ]
     },
     {
@@ -168,7 +172,9 @@ const accordionMenu = {
         { id: 'QueryOutstandLc', text: '未結案信用狀額度與保證金' },
         { id: 'QueryInterestRate', text: '利率約定 (改貸)' },
         { id: 'QuerySar', text: '主管審核異常' },
-        { id: 'QueryAccount', text: '會計帳務分錄' },
+        { id: 'QueryAccount', text: '會計帳務分錄' },        
+        { id: 'QueryFpcCtsv', text: '台塑網通訊傳輸排程檢視' },
+        { id: 'QueryFpcLcRpt', text: '台塑信用狀統計表' },
       ]
     },
     {
@@ -250,7 +256,16 @@ const accordionMenu = {
         { id: 'QueryBeneficiaryBlcAmount', text: '受益人分行信用狀暨押匯筆數金額' },
         { id: 'QueryClientConnect', text: 'Client連線狀態' },
         { id: 'QueryDomesticLcFee', text: '國內信用狀開狀手續費' },
-        { id: 'QueryLcFeeDetail', text: '信用狀手續費明細表' }
+        { id: 'QueryLcFeeDetail', text: '信用狀手續費明細表' },        
+        { id: 'QueryFpcCtsv', text: '台塑網通訊傳輸排程檢視' },
+        { id: 'QueryFpcLcRpt', text: '台塑信用狀統計表' },
+      ]
+    },
+    {
+      id: 'Customer',
+      text: '客戶管理作業',
+      sub: [
+        { id: 'FpcBenBuImp', text: '台塑受益人事業部建檔匯入' }
       ]
     },
     {
@@ -259,6 +274,13 @@ const accordionMenu = {
       sub: [
         { id: 'ManagerPersonal', text: '個人設定' },
         { id: 'ManagerBeneficiary', text: '受益人資料維護' }
+      ]
+    },
+    {
+      id: 'SpecialInstruction',
+      text: '特別指示條款設定作業',
+      sub: [
+        { id: 'settingSi', text: '設定客戶特別指示條款' }
       ]
     },
   ],

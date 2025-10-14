@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>華南銀行 - 國內信用狀系統</title>
+  <link rel="stylesheet" href="../../assets/MaterialDesign-Webfont/css/materialdesignicons.min.css" media="all" />
+  <link rel="stylesheet" href="../../assets/css/custom.css">
+
+  <!-- flatpick plugin -->
+  <link rel="stylesheet" href="../../assets/flatpickr/flatpickr.min.css">
+  <script src="../../assets/flatpickr/flatpickr.js"></script>
+  <script src="../../assets/flatpickr/zh-tw.js"></script>
+</head>
+
+<body>
+  <!-- 台塑受益人事業部建檔匯入 -->
+  <div id="ExpiredLc" class="py-4 px-5">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb fs-6">
+        <li class="breadcrumb-item">
+          <a id="homePage" class="hnb__path" href="#" onclick="backHomeHandler()">首頁</a>
+        </li>
+        <li class="breadcrumb-item">申請作業</li>
+        <li class="breadcrumb-item active" aria-current="page">台塑受益人事業部建檔匯入</li>
+      </ol>
+    </nav>
+
+    <!-- 台塑受益人事業部建檔匯入 -->
+    <div id="queryForm">
+      <form>
+        <h1 class="py-2 fs-4 fw-bolder">請選擇檔案匯入</h1>
+        <div class="mb-2 card">
+          <div class="card-body bg-light">
+            <div class="row mx-0 flex-grow-1">
+              <div class="col-12">
+                <div class="row align-items-center">
+                  <label for="beneInNo" class="col-2 col-form-label text-end text-nowrap">
+                    匯入檔案範本
+                  </label>
+                  <div class="py-2 col-10">
+                    <p class="mb-1">
+                      <span class="mdi mdi-file-document-outline"></span>
+                      <a href="#" download class="hnb__link--text">每一列代表台塑集團受益人資料</a>
+                    </p>
+                    <p class="mb-1">
+                      <span class="mdi mdi-file-document-outline"></span>
+                      <a href="#" download class="hnb__link--text">每一列代表台塑集團事業部代號及名稱對照</a>
+                    </p>
+                    <p class="mb-1">請依據檔案中各欄位名稱填入相對應內容，若匯入資料已存在系統，系統會以編輯方式修改原存在資料，範本檔案為 Excel 格式，請另外存成 Xml 檔匯入</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="row align-items-center">
+                  <label for="status" class="col-2 col-form-label text-end text-nowrap">
+                    匯入資料類型
+                  </label>
+                  <div class="py-2 col-10">
+                    <div class="pt-1 col-10 col-md-9 d-flex flex-wrap align-items-center">
+                      <div class="py-1 form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="type1" name="type" value="option1">
+                        <label class="form-check-label text-nowrap" for="type1">匯入台塑集團受益人資料</label>
+                      </div>
+                      <div class="py-1 form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="type2" name="type" value="option2">
+                        <label class="form-check-label text-nowrap" for="type2">匯入台塑集團事業部代號及名稱對照</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="row align-items-center">
+                  <label for="status" class="col-2 col-form-label text-end text-nowrap">
+                    資料傳送
+                  </label>
+                  <div class="py-2 col-10">
+                    <div class="input-group input-group-sm">
+                      <input type="file" class="form-control" id="inputGroupFile01"
+                        accept=".xml,application/xml,text/xml">
+                      <span class="input-group-text">檔案格式：xml</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-end py-1 pt-2">
+                <button type="reset" id="resetBtn" class="me-2 px-3 btn btn-sm hnb__btn--reset">重設</button>
+                <button type="button" id="sendBtn" class="px-3 btn btn-sm hnb__btn--default text-nowrap"
+                  onclick="sendHandler()">確定</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 訊息 視窗 -->
+  <div class="modal fade" id="messageModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+      <form id="accountManagerForm">
+        <div class="modal-content hnb__modal">
+          <div class="modal-header py-2 border-bottom-0">
+            <h5 class="modal-title fs-5 fw-bolder text--hnb" id="messageModalLabel">
+              作業訊息
+            </h5>
+            <button type="button" class="m-0 p-0 btn btn-link hnb__btn--close" data-bs-dismiss="modal"
+              aria-label="Close">
+              <span class="mdi mdi-close"></span>
+            </button>
+          </div>
+          <div id="msgBody" class="modal-body bg-light"></div>
+          <div id="msgFooter" class="modal-footer justify-content-center border-top-0"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="../../assets/js/page.js"></script>
+  <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/jquery-3.7.1.js"></script>
+  <script>
+    // 確認 訊息及按鈕
+    const msgBody = document.querySelector('#msgBody');
+    const msgFooter = document.querySelector('#msgFooter');
+    function sendHandler() {
+      msgBody.innerHTML = `<p class="fw-bold hnb__text--green text-center">
+        作業已完成！<br>
+        檔案已匯入
+      </p>`;
+
+      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--default" data-bs-dismiss="modal" onclick="cancelHandler()">關閉</button>`;
+      $('#messageModal').modal('show');
+    };
+
+    // 取消
+    function cancelHandler() {
+      $('#messageModal').modal('hide');
+    };
+  </script>
+</body>
+
+</html>
