@@ -48,7 +48,6 @@ const accordionMenu = {
         },        
         { id: 'SentTrfStatus', text: '傳送已轉帳狀態' },
         { id: 'ExpiredLc', text: 'CDS 過期案件主動註銷' },
-        { id: 'FpcCadSdi', text: '台塑押匯補登資料匯入' },
       ]
     },
     {
@@ -77,8 +76,6 @@ const accordionMenu = {
         { id: 'QueryOutstandLc', text: '未結案信用狀額度與保證金' },
         { id: 'QueryInterestRate', text: '利率約定 (改貸)' },
         { id: 'QueryAccount', text: '會計帳務分錄' },
-        { id: 'QueryFpcCtsv', text: '台塑網通訊傳輸排程檢視' },
-        { id: 'QueryFpcLcRpt', text: '台塑信用狀統計表' },
       ]
     },
     {
@@ -105,7 +102,6 @@ const accordionMenu = {
         { id: 'SetCustomer', text: '設定客戶資料' },
         { id: 'SetCustomerBranch', text: '客戶所屬分行異動' },
         { id: 'SetBeneficiary', text: '受益人資料' },
-        { id: 'FpcBenBuImp', text: '台塑受益人事業部建檔匯入' }
       ]
     },
     {
@@ -172,9 +168,7 @@ const accordionMenu = {
         { id: 'QueryOutstandLc', text: '未結案信用狀額度與保證金' },
         { id: 'QueryInterestRate', text: '利率約定 (改貸)' },
         { id: 'QuerySar', text: '主管審核異常' },
-        { id: 'QueryAccount', text: '會計帳務分錄' },        
-        { id: 'QueryFpcCtsv', text: '台塑網通訊傳輸排程檢視' },
-        { id: 'QueryFpcLcRpt', text: '台塑信用狀統計表' },
+        { id: 'QueryAccount', text: '會計帳務分錄' },
       ]
     },
     {
@@ -235,6 +229,13 @@ const accordionMenu = {
     },
   ],
   MB: [
+    {
+      id: 'App',
+      text: '申請作業',
+      sub: [
+        { id: 'FpcCadSdi', text: '台塑押匯補登資料匯入' },
+      ]
+    },
     {
       id: 'Query',
       text: '查詢作業',
