@@ -415,7 +415,7 @@
                       onclick="creditData()">
                       授信資料
                     </button>
-                    <div class="mt-2 d-flex align-items-center">
+                    <div id="reNew" class="mt-2 d-flex align-items-center">
                       <input class="mt-0 form-check-input" type="checkbox" name="rateOptions2" id="fee2"
                         value="option1">
                       <span class="mx-1">重新引進</span>
@@ -1853,6 +1853,7 @@
     // 訊息欄位
     const inputField = document.querySelector('#inputField');
     const stringField = document.querySelector('#stringField');
+    const reNew = document.querySelector('#reNew');
 
     // 確認 訊息及按鈕
     const messageModalLabel = document.querySelector('#messageModalLabel');
@@ -1865,6 +1866,7 @@
     };
 
     if (authType === 'BS') {
+      reNew.classList.add('hnb__hide');
       inputField.classList.add('hnb__hide');
     };
 
