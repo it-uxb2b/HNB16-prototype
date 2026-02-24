@@ -114,6 +114,12 @@
                     <button type="button" class="mx-1 px-3 btn btn-sm hnb__btn--red" onclick="deleteHandler();">
                       刪除
                     </button>
+                    <button type="button" class="mx-1 px-3 btn btn-sm hnb__btn--default" onclick="messageHandler();">
+                      核准
+                    </button>
+                    <button type="button" class="mx-1 px-3 btn btn-sm hnb__btn--red" onclick="messageHandler();">
+                      拒絕
+                    </button>
                   </td>
                 </tr>
               </tbody>
@@ -389,6 +395,16 @@
            </div>`;
 
       $('#editModal').modal('show');
+    };
+
+    // 訊息 messageHandler
+    function messageHandler() {
+      messageModalLabel.innerHTML = '作業訊息';
+      msgBody.innerHTML = `<p class="fw-bold hnb__text--red text-center">
+                作業已完成
+              </p>`;
+      msgFooter.innerHTML = `<button type="button" class="px-3 btn btn-sm border-1 hnb__btn--cancel" data-bs-dismiss="modal">關閉</button>`;
+      $('#messageModal').modal('show');
     };
 
     // 刪除 deleteHandler
