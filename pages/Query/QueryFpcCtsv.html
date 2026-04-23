@@ -41,6 +41,13 @@
                     <select id="branchNo" class="form-select form-select-sm">
                       <option selected>= 請選擇 =</option>
                       <option>全部</option>
+                      <option>押匯申請</option>
+                      <option>開狀回應</option>
+                      <option>修狀回應</option>
+                      <option>刪狀回應</option>
+                      <option>匯主資料回應</option>
+                      <option>押匯發票回應</option>
+                      <option>押匯明細回應</option>
                     </select>
                   </div>
                 </div>
@@ -99,40 +106,46 @@
             <table class="mb-0 table table-striped table-sm hnb__table hnb__bg--white">
               <thead>
                 <tr>
-                  <th scope="col" class="hnb__tbhd text-nowrap">編號</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">申請書號碼</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">信用狀號碼</th>
                   <th scope="col" class="hnb__tbhd text-nowrap">資料流向</th>
                   <th scope="col" class="hnb__tbhd text-nowrap">交易類別</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">傳送狀態</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">重送次數</th>
                   <th scope="col" class="hnb__tbhd text-nowrap">傳送時間</th>
-                  <th scope="col" class="hnb__tbhd text-nowrap">檔名</th>
-                  <th scope="col" class="hnb__tbhd text-nowrap">待處理</th>
-                  <th scope="col" class="hnb__tbhd text-nowrap">待回應</th>
-                  <th scope="col" class="hnb__tbhd text-nowrap">待確認</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">傳送分行代碼</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">確認狀態</th>
+                  <th scope="col" class="hnb__tbhd text-nowrap">建立時間</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class="text-center text-nowrap">1</td>
+                  <td class="text-center text-nowrap">ENID0990000089</td>
+                  <td class="text-center text-nowrap">099700049161000861</td>
                   <td class="text-center text-nowrap">
-                    台塑網 → 華南銀行
+                    台塑網 → 彰銀
                   </td>
-                  <td class="text-center text-nowrap">WXD2SB32</td>
+                  <td class="text-center text-nowrap">押匯申請</td>
+                  <td class="text-center text-nowrap">待傳送</td>
+                  <td class="text-center text-nowrap">0</td>
                   <td class="text-center text-nowrap">2025/06/05 09:56:59</td>
-                  <td class="text-nowrap">2025062513345_J2SP_WXD2SB32.XML</td>
-                  <td class="text-center text-nowrap"></td>
-                  <td class="text-center text-nowrap"></td>
-                  <td class="text-center text-nowrap"></td>
+                  <td class="text-center text-nowrap">00440</td>
+                  <td class="text-center text-nowrap">未確認</td>
+                  <td class="text-center text-nowrap">2025/06/05 09:56:59</td>
                 </tr>
                 <tr>
-                  <td class="text-center text-nowrap">2</td>
+                  <td class="text-center text-nowrap">ENID0990000090</td>
+                  <td class="text-center text-nowrap">099700049161000862</td>
                   <td class="text-center text-nowrap">
-                    華南銀行 → 台塑網
+                    彰銀 → 台塑網
                   </td>
-                  <td class="text-center text-nowrap">TXD2SB31</td>
+                  <td class="text-center text-nowrap">開狀回應</td>
+                  <td class="text-center text-nowrap">傳送成功</td>
+                  <td class="text-center text-nowrap">0</td>
                   <td class="text-center text-nowrap">2025/04/05 08:56:59</td>
-                  <td class="text-nowrap">2025040513345_0_009_J2SP_TXD2SB31.XML</td>
-                  <td class="text-center text-nowrap"></td>
-                  <td class="text-center text-nowrap"></td>
-                  <td class="text-center text-nowrap"></td>
+                  <td class="text-center text-nowrap">00445</td>
+                  <td class="text-center text-nowrap">已確認</td>
+                  <td class="text-center text-nowrap">2025/04/05 08:56:59</td>
                 </tr>
               </tbody>
             </table>
